@@ -1,0 +1,19 @@
+.invoice-view {
+    @extend .px-2;
+    @extend .py-2;
+}
+
+.invoice-summary__row {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.78571429em 0.78571429em;
+}
+
+.invoice-summary__total {
+    background-color: map-get($colors, 'grey-4');
+}
+
+.invoice-actions {
+    display: flex;
+    justify-content: center;
+}

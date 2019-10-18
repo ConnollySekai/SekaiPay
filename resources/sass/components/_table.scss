@@ -1,0 +1,90 @@
+/* Table Override */
+.ui.table {
+    border: 1px solid map-get($colors, 'grey-4');
+    color: map-get($colors, 'grey-2');
+}
+
+/* Table Content */
+.ui.table th,
+.ui.table td {
+    box-shadow: none !important;
+    text-align: left !important;
+    transition: background 0.1s ease, color 0.1s ease;
+}
+  
+/* Headers */
+.ui.table thead th {
+    color: map-get($colors, 'grey-1');
+    border-bottom: 1px solid map-get($colors, 'grey-4') !important;
+}
+  
+/* Footer */
+.ui.table tfoot {
+        box-shadow: none;
+}
+.ui.table tfoot th {
+    border-top: 1px solid map-get($colors, 'grey-4') !important;
+    color: map-get($colors, 'grey-1');
+}
+  
+/* Table Row */
+.ui.table tr td {
+    border-top: 1px solid map-get($colors, 'grey-4') !important;
+}
+
+.ui.table.tbody.tr {
+    &:last-child {
+        border: none !important;
+    }
+}
+ 
+/* Repeated tbody */
+.ui.table tbody + tbody tr:first-child td {
+    border-top: 1px solid map-get($colors, 'grey-4') !important;
+}
+  
+
+  
+  /*******************************
+               Types
+  *******************************/
+  
+  
+  /*--------------
+      Complex
+  ---------------*/
+
+.ui.structured.sortable.table thead th {
+    border-left: 1px solid map-get($colors, 'grey-4');
+    border-right: 1px solid map-get($colors, 'grey-4');
+}
+
+.ui.structured.celled.table tr th,
+.ui.structured.celled.table tr td {
+    border-left: 1px solid map-get($colors, 'grey-4');
+    border-right: 1px solid map-get($colors, 'grey-4');
+}
+
+.ui.table:not(.unstackable) tr {
+    box-shadow: none !important;
+}
+
+/* Custom */
+.ui.table.table-primary th{
+    background-color: map-get($colors, 'blue-3') !important;
+    color: #ffffff;
+}
+
+.ui.table.table__borderless {
+    border-left: none;
+    border-radius: 0;
+    border-right: none;
+    border-top: 0;
+
+    th {
+        border-bottom: none !important;
+        border-radius: 0 !important;
+    }
+}
+  
+  

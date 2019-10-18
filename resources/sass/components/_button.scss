@@ -1,0 +1,339 @@
+/* Button Override */
+.ui.button {  
+    color: map-get($colors, 'grey-1');
+    transition: all .2s ease-in;
+}
+
+/*--------------
+    Hover
+---------------*/
+  
+.ui.button:hover {
+    color: map-get($colors, 'grey-1');
+}
+  
+/*--------------
+    Focus
+---------------*/
+.ui.button:focus {
+    color: map-get($colors, 'grey-1');
+}
+  
+/*--------------
+    Down
+---------------*/
+  
+.ui.button:active,
+.ui.active.button:active {
+    color: map-get($colors, 'grey-1');
+}
+  
+/*--------------
+    Active
+---------------*/
+  
+.ui.active.button {
+    color: map-get($colors, 'grey-1');
+}
+.ui.active.button:hover {
+    color: map-get($colors, 'grey-1');
+}
+
+/*******************************
+            Types
+*******************************/
+  
+/*-------------------
+        Inverted
+--------------------*/
+  
+/* Hover */
+.ui.inverted.button:hover {
+    color: map-get($colors, 'grey-1');
+}
+
+/* Active / Focus */
+.ui.inverted.button:focus,
+.ui.inverted.button.active {
+    color: map-get($colors, 'grey-1');
+}
+
+/* Active Focus */
+.ui.inverted.button.active:focus {
+    color: map-get($colors, 'grey-1');
+}
+ 
+/*-------------------
+        Basic
+--------------------*/
+  
+.ui.basic.buttons .button,
+.ui.basic.button {
+    color: map-get($colors, 'grey-1') !important;
+}
+
+.ui.basic.buttons .button:hover,
+.ui.basic.button:hover {
+    color: map-get($colors, 'grey-1') !important;   
+}
+.ui.basic.buttons .button:focus,
+.ui.basic.button:focus {
+    color: map-get($colors, 'grey-1') !important;
+}
+.ui.basic.buttons .button:active,
+.ui.basic.button:active {
+    color: map-get($colors, 'grey-1') !important;
+}
+.ui.basic.buttons .active.button,
+.ui.basic.active.button {
+    color: map-get($colors, 'grey-1') !important;
+}
+.ui.basic.buttons .active.button:hover,
+.ui.basic.active.button:hover {
+    background-color: map-get($colors, 'grey-1');
+}
+  
+/*-------------------
+        Colors
+--------------------*/
+  
+/*-------------------
+        Primary
+--------------------*/
+
+/*--- Standard ---*/
+
+.ui.primary.buttons .button,
+.ui.primary.button {
+    background-color: map-get($colors,'blue-3');
+}
+
+.ui.primary.buttons .button:hover,
+.ui.primary.button:hover {
+    background-color: darken(map-get($colors,'blue-3'), 15%);
+}
+.ui.primary.buttons .button:focus,
+.ui.primary.button:focus {
+    background-color: darken(map-get($colors,'blue-3'), 12%);
+}
+.ui.primary.buttons .button:active,
+.ui.primary.button:active {
+    background-color: darken(map-get($colors,'blue-3'), 12%);
+}
+.ui.primary.buttons .active.button,
+.ui.primary.buttons .active.button:active,
+.ui.primary.active.button,
+.ui.primary.button .active.button:active {
+    background-color: darken(map-get($colors,'blue-3'), 10%);
+}
+  
+/* Basic */
+.ui.basic.primary.buttons .button,
+.ui.basic.primary.button {
+    -webkit-box-shadow: 0px 0px 0px 1px map-get($colors,'blue-3') inset !important;
+            box-shadow: 0px 0px 0px 1px map-get($colors,'blue-3') inset !important;
+    color: map-get($colors,'blue-3') !important;
+}
+.ui.basic.primary.buttons .button:hover,
+.ui.basic.primary.button:hover {
+    background: transparent !important;
+    -webkit-box-shadow: 0px 0px 0px 1px darken(map-get($colors,'blue-3'), 15%) inset !important;
+            box-shadow: 0px 0px 0px 1px darken(map-get($colors,'blue-3'), 15%) inset !important;
+    color: darken(map-get($colors,'blue-3'), 15%) !important;
+}
+.ui.basic.primary.buttons .button:focus,
+.ui.basic.primary.button:focus {
+    background: transparent !important;
+    -webkit-box-shadow: 0px 0px 0px 1px darken(map-get($colors,'blue-3'), 12%) inset !important;
+            box-shadow: 0px 0px 0px 1px darken(map-get($colors,'blue-3'), 12%) inset !important;
+    color: darken(map-get($colors,'blue-3'), 12%) !important;
+}
+.ui.basic.primary.buttons .active.button,
+.ui.basic.primary.active.button {
+    background: transparent !important;
+    -webkit-box-shadow: 0px 0px 0px 1px darken(map-get($colors,'blue-3'), 12%) inset !important;
+            box-shadow: 0px 0px 0px 1px darken(map-get($colors,'blue-3'), 12%) inset !important;
+    color: darken(map-get($colors,'blue-3'), 12%) !important;
+}
+.ui.basic.primary.buttons .button:active,
+    .ui.basic.primary.button:active {
+    -webkit-box-shadow: 0px 0px 0px 1px darken(map-get($colors,'blue-3'), 10%) inset !important;
+            box-shadow: 0px 0px 0px 1px darken(map-get($colors,'blue-3'), 10%) inset !important;
+    color: darken(map-get($colors,'blue-3'), 10%) !important;
+}
+  
+/*-------------------
+    Secondary
+--------------------*/
+  
+/* Standard */
+.ui.secondary.buttons .button,
+.ui.secondary.button {
+    background-color: map-get($colors,'orange-1');
+}
+
+.ui.secondary.buttons .button:hover,
+.ui.secondary.button:hover {
+    background-color: darken(map-get($colors,'orange-1'), 15%);
+}
+.ui.secondary.buttons .button:focus,
+.ui.secondary.button:focus {
+    background-color: darken(map-get($colors,'orange-1'), 12%);
+}
+.ui.secondary.buttons .button:active,
+.ui.secondary.button:active {
+    background-color: darken(map-get($colors,'orange-1'), 12%);
+}
+.ui.secondary.buttons .active.button,
+.ui.secondary.buttons .active.button:active,
+.ui.secondary.active.button,
+.ui.secondary.button .active.button:active {
+    background-color: darken(map-get($colors,'orange-1'), 10%);
+    color: #FFFFFF;
+    text-shadow: none;
+}
+
+/* Basic */
+.ui.basic.secondary.buttons .button,
+.ui.basic.secondary.button {
+    box-shadow: 0px 0px 0px 1px map-get($colors,'orange-1') inset !important;
+    color: map-get($colors,'orange-1') !important;
+}
+.ui.basic.secondary.buttons .button:hover,
+.ui.basic.secondary.button:hover {
+    box-shadow: 0px 0px 0px 1px darken(map-get($colors,'blue-3'), 15%) inset !important;
+    color: darken(map-get($colors,'blue-3'), 15%) !important;
+}
+.ui.basic.secondary.buttons .button:focus,
+.ui.basic.secondary.button:focus {
+    box-shadow: 0px 0px 0px 1px darken(map-get($colors,'blue-3'), 12%) inset !important;
+    color: darken(map-get($colors,'blue-3'), 12%) !important;
+}
+.ui.basic.secondary.buttons .active.button,
+.ui.basic.secondary.active.button {
+    box-shadow: 0px 0px 0px 1px darken(map-get($colors,'blue-3'), 12%) inset !important;
+    color: darken(map-get($colors,'blue-3'), 12%) !important;
+}
+.ui.basic.secondary.buttons .button:active,
+.ui.basic.secondary.button:active {
+    box-shadow: 0px 0px 0px 1px darken(map-get($colors,'blue-3'), 10%) inset !important;
+    color: darken(map-get($colors,'blue-3'), 10%) !important;
+}
+
+/*---------------
+    Positive
+----------------*/
+
+/* Standard */
+.ui.positive.buttons .button,
+.ui.positive.button {
+    background-color: map-get($colors,'green-1');
+}
+
+.ui.positive.buttons .button:hover,
+.ui.positive.button:hover {
+    background-color: darken(map-get($colors,'green-1'), 15%);
+}
+.ui.positive.buttons .button:focus,
+.ui.positive.button:focus {
+    background-color: darken(map-get($colors,'green-1'), 12%);
+}
+.ui.positive.buttons .button:active,
+.ui.positive.button:active {
+    background-color: darken(map-get($colors,'green-1'), 12%);
+}
+.ui.positive.buttons .active.button,
+.ui.positive.buttons .active.button:active,
+.ui.positive.active.button,
+.ui.positive.button .active.button:active {
+    background-color: darken(map-get($colors,'green-1'), 10%);
+}
+
+/* Basic */
+.ui.basic.positive.buttons .button,
+.ui.basic.positive.button {
+    box-shadow: 0px 0px 0px 1px map-get($colors,'green-1') inset !important;
+    color: map-get($colors,'green-1') !important;
+}
+.ui.basic.positive.buttons .button:hover,
+.ui.basic.positive.button:hover {
+    box-shadow: 0px 0px 0px 1px darken(map-get($colors,'green-1'), 15%) inset !important;
+    color: darken(map-get($colors,'green-1'), 15%) !important;
+}
+.ui.basic.positive.buttons .button:focus,
+.ui.basic.positive.button:focus {
+    box-shadow: 0px 0px 0px 1px darken(map-get($colors,'green-1'), 12%) inset !important;
+    color: darken(map-get($colors,'green-1'), 12%) !important;
+}
+.ui.basic.positive.buttons .active.button,
+.ui.basic.positive.active.button {
+    box-shadow: 0px 0px 0px 1px darken(map-get($colors,'green-1'), 12%) inset !important;
+    color: darken(map-get($colors,'green-1'), 12%) !important;
+}
+.ui.basic.positive.buttons .button:active,
+.ui.basic.positive.button:active {
+    box-shadow: 0px 0px 0px 1px darken(map-get($colors,'green-1'), 10%) inset !important;
+    color: darken(map-get($colors,'green-1'), 10%) !important;
+}
+  
+/*---------------
+    Negative
+----------------*/
+
+/* Standard */
+.ui.negative.buttons .button,
+.ui.negative.button {
+    background-color: map-get($colors,'red-1');
+}
+
+.ui.negative.buttons .button:hover,
+.ui.negative.button:hover {
+    background-color: darken(map-get($colors,'red-1'), 15%);
+}
+.ui.negative.buttons .button:focus,
+.ui.negative.button:focus {
+    background-color: darken(map-get($colors,'red-1'), 12%);
+}
+.ui.negative.buttons .button:active,
+.ui.negative.button:active {
+    background-color: darken(map-get($colors,'red-1'), 12%);
+}
+.ui.negative.buttons .active.button,
+.ui.negative.buttons .active.button:active,
+.ui.negative.active.button,
+.ui.negative.button .active.button:active {
+    background-color: darken(map-get($colors,'red-1'), 10%);
+}
+
+/* Basic */
+.ui.basic.negative.buttons .button,
+.ui.basic.negative.button {
+    box-shadow: 0px 0px 0px 1px map-get($colors,'red-1') inset !important;
+    color: map-get($colors,'red-1') !important;
+}
+.ui.basic.negative.buttons .button:hover,
+.ui.basic.negative.button:hover {
+    box-shadow: 0px 0px 0px 1px darken(map-get($colors,'red-1'), 15%) inset !important;
+    color: darken(map-get($colors,'red-1'), 15%) !important;
+}
+.ui.basic.negative.buttons .button:focus,
+.ui.basic.negative.button:focus {
+    box-shadow: 0px 0px 0px 1px darken(map-get($colors,'red-1'), 12%) inset !important;
+    color: darken(map-get($colors,'red-1'), 12%) !important;
+}
+.ui.basic.negative.buttons .active.button,
+.ui.basic.negative.active.button {
+    box-shadow: 0px 0px 0px 1px darken(map-get($colors,'red-1'), 12%) inset !important;
+    color: darken(map-get($colors,'red-1'), 12%) !important;
+}
+.ui.basic.negative.buttons .button:active,
+.ui.basic.negative.button:active {
+    box-shadow: 0px 0px 0px 1px darken(map-get($colors,'red-1'), 10%) inset !important;
+    color: darken(map-get($colors,'red-1'), 15%) !important;
+}
+
+/* Custom */
+.ui.button.button__rounded {
+    border-radius: 40px !important;
+} 
+  

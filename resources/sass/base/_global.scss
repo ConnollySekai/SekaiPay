@@ -1,0 +1,14 @@
+/* Semantic UI flag override */
+i.flag:not(.icon):before {
+    background-image: url("#{$flags-image-path}/flags.png");
+}
+
+/* Adds shadow to elevate */
+.raise {
+    box-shadow: 0px 1px 9px rgba(0, 0, 0, 0.1);
+}
+
+/* Rounded Corners */
+.rounded {
+    border-radius: 10px;
+}

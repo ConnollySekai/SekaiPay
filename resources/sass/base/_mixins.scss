@@ -1,0 +1,135 @@
+/* Paddings and Margins */
+@mixin spacing() {
+
+    $spacer: 1rem;
+
+    $spacers: (
+    0: (
+        x:   0,
+        y:   0
+    ),
+    h: (
+        x:   ($spacer * 0.5),
+        y:   ($spacer * 0.5)
+    ),
+    1: (
+        x:   $spacer,
+        y:   $spacer
+    ),
+    2: (
+        x:   ($spacer * 1.5),
+        y:   ($spacer * 1.5)
+    ),
+    3: (
+        x:   ($spacer * 3),
+        y:   ($spacer * 3)
+    ),
+    4: (
+        x:   ($spacer * 4),
+        y:   ($spacer * 4)
+    ),
+    5: (
+        x:   ($spacer * 6),
+        y:   ($spacer * 6)
+    )
+    );
+
+    @each $prop, $abbrev in (margin: m, padding: p) {
+      @each $size, $lengths in $spacers {
+        $length-x:   map-get($lengths, x);
+        $length-y:   map-get($lengths, y);
+
+        .#{$abbrev}-#{$size} { #{$prop}: $length-y $length-x !important; } // a = All sides
+        .#{$abbrev}t-#{$size} { #{$prop}-top:    $length-y !important; }
+        .#{$abbrev}r-#{$size} { #{$prop}-right:  $length-x !important; }
+        .#{$abbrev}b-#{$size} { #{$prop}-bottom: $length-y !important; }
+        .#{$abbrev}l-#{$size} { #{$prop}-left:   $length-x !important; }
+        .#{$abbrev}x-#{$size} { #{$prop}-left:   $length-x !important; #{$prop}-right:  $length-x !important; }
+        .#{$abbrev}y-#{$size} { #{$prop}-top:   $length-y !important; #{$prop}-bottom:  $length-y !important; }
+      }
+    }
+}
+
+/* Media Query */
+@mixin mq($size, $type:min, $pixels: $breakpoint-xs) {
+
+    $width : $type + -width;
+    
+    @if $size == 'xs' {
+
+        @media screen and ($width:$breakpoint-xs){
+            
+            @content;
+        }
+    }
+
+    @else if $size == 'sm' {
+
+        @media screen and ($width:$breakpoint-sm){
+            
+            @content;
+        }
+    }
+
+    @else if $size == 'md' {
+        
+        @media screen and ($width:$breakpoint-md){
+            
+            @content;
+        }
+    }
+
+    @else if $size == 'lg' {
+        
+        @media screen and ($width:$breakpoint-lg){
+            
+            @content;
+        }
+    }
+
+    @else if $size == 'custom' {
+        
+        @media screen and ($width:$pixels + px){
+            
+            @content;
+        }
+    }
+
+    @else {
+
+        @content;
+    }
+}
+
+/* Displays */
+@mixin display() {
+    //commonly used display properties. Add other properties if preferred
+    $displays: none, block, flex;
+
+    @each $display in $displays {
+        .d-#{$display} {
+            display: $display !important;
+        }
+    } 
+}
+
+// Link Styling
+@mixin link($color, $hover, $visited, $focus, $active) {
+
+    color: $color !important;
+
+    &:hover {
+        color: $hover !important;
+    }
+
+    &:visited {
+        color: $visited !important;
+    }
+    &:focus {
+        color: $focus !important;
+    }
+
+    &:active {
+        color: $active !important;
+    }
+}

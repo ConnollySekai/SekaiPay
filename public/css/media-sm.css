@@ -1,0 +1,43 @@
+/* Media Query Sm */
+/* Semantic UI variables */
+/* Colors */
+/* Breakpoints for media queries */
+/* Paddings and Margins */
+/* Media Query */
+/* Displays */
+/* Invoice SM */
+@media screen and (min-width: 768px) {
+  .invoice-view {
+    padding: 3rem !important;
+  }
+
+  .invoice-actions {
+    justify-content: flex-end;
+  }
+}
+/* Site Header SM */
+@media screen and (min-width: 768px) {
+  .site-logo,
+.site-search {
+    opacity: 1 !important;
+  }
+
+  .site-search .site-search__form {
+    display: block;
+    flex-basis: 100%;
+  }
+  .site-search .site-search__icon {
+    display: none;
+  }
+
+  .site-search__mobile,
+.site-search__mobile.active {
+    opacity: 0;
+  }
+}
+/* Table SM */
+@media screen and (min-width: 768px) {
+  .ui.table [class*="right aligned"] {
+    text-align: right !important;
+  }
+}

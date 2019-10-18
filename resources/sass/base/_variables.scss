@@ -1,0 +1,41 @@
+/* Semantic UI variables */
+$import-google-fonts: false !default;
+
+$font-name: 'Muli' !default;
+
+$font-family: $font-name, sans-serif;
+
+$icons-font-path: '../fonts' !default;
+
+$flags-image-path: '../images' !default;
+
+/* Colors */
+$colors: (
+    'blue-1': #0597F2,
+    'blue-2': #5EBAF2,
+    'blue-3': #6BCCF2,
+    'blue-4': #A0E3F2,
+    'orange-1': #FF842B,
+    'green-1': #7FAF19,
+    'red-1': #EB5757,
+    'grey-1': #444444,
+    'grey-2': #6C6C6C,
+    'grey-3': #C7C7C7,
+    'grey-4': #E0E1E2
+);
+
+/* Breakpoints for media queries */
+$breakpoints: (
+    xs: 480px,
+    sm: 768px,
+    md: 992px,
+    lg: 1200px
+);
+
+$breakpoint-xs: map-get($breakpoints, xs);
+
+$breakpoint-sm: map-get($breakpoints, sm);
+
+$breakpoint-md: map-get($breakpoints, md);
+
+$breakpoint-lg: map-get($breakpoints, lg);

@@ -1,0 +1,22 @@
+@include mq(sm) {
+    .site-logo,
+    .site-search {
+        opacity: 1 !important;
+    }
+
+    .site-search {
+        & .site-search__form {
+            display: block;
+            flex-basis: 100%;
+        }
+    
+        & .site-search__icon {
+            display: none;
+        }
+    }
+
+    .site-search__mobile,
+    .site-search__mobile.active {
+        opacity: 0;
+    }
+}

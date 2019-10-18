@@ -1,8 +1,24 @@
-// Fonts
-@import url('https://fonts.googleapis.com/css?family=Nunito');
 
-// Variables
-@import 'variables';
+/* Variables */
+@import 'base/variables';
 
-// Bootstrap
-@import '~bootstrap/scss/bootstrap';
+@import 'base/mixins';
+
+/* Semantic Ui */
+@import 'vendor/semantic-ui';
+
+/* Typography */
+@import 'base/typography';
+
+/* Global Styles */
+@import 'base/global';
+
+/* Components */
+@import 'components/index';
+
+/* Layouts */
+@import 'layouts/index';
+
+@include spacing();
+
+@include display();

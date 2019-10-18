@@ -1,0 +1,9 @@
+@include mq(sm) {
+    .invoice-view {
+       padding: (1rem * 3) !important;
+    }
+
+    .invoice-actions {
+        justify-content: flex-end;
+    }
+}

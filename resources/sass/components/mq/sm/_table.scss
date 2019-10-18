@@ -1,0 +1,6 @@
+@include mq(sm) {
+
+    .ui.table [class*="right aligned"] {
+        text-align: right !important;
+    }
+}
