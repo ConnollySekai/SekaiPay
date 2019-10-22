@@ -23,16 +23,163 @@ import 'semantic-ui-sass';
 
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 
+import inputFilter from 'vue-input-filter';
 
-/**
- * Next, we will create a fresh Vue application instance and attach it to
- * the page. Then, you may begin adding components to this application
- * or customize the JavaScript scaffolding to fit your unique needs.
- */
+import PatternInput from 'vue-pattern-input';
+
 import QRCode from 'qrcode';
+
+import Convert from 'satoshi-bitcoin';
+
+import Bigjs from 'big.js';
+
+Vue.use(inputFilter);
 
 const app = new Vue({
     el: '#app',
+    components: {
+        PatternInput
+    },
+    computed: {
+        numberInput() {
+            let options = {...this.options};
+
+            console.log(this.options);
+
+            options.legalReg = [/^[1-9]\d*$/];
+
+            console.log(options);
+
+            return options;
+        },
+        btcInput() {
+            let options =  {...this.options};
+
+            options.legalReg = [/^(\d+)?([.]?\d{0,8})$/];
+
+            return options;
+        },
+    },
+    data: {
+        invoice: {
+            items: [{
+                description: '',
+                quantity: 1,
+                price: '',
+                amount: 0
+            }],
+            subtotal: 0,
+            total: 0
+        },
+        currency: 'BTC',
+        options: {
+            legalReg : [/^(\d+)?([.]?\d{0,8})$/], 
+            legalKeyCode: [8, 32, 37, 38, 39, 40, 46, 190],
+            legalKeyCodeRange: [
+                    {
+                        min: 65,
+                        max: 90
+                    },
+                    {
+                        min: 48,
+                        max: 57
+                    },
+                    {
+                        min: 96,
+                        max: 105
+                    }
+                ]
+        },
+        setting: {
+            regExp: /^[0\D]*|\D*/g, // Match any character that doesn't belong to the positive integer
+            replacement: '',
+            val: '223'
+          } 
+    },
+    methods: {
+        addItem() {
+            this.invoice.items.push({
+                description: '',
+                quantity: 1,
+                price: '',
+                amount: 0
+            });
+        },
+        computeTotal() {
+
+            const subtotal = Object.values(this.invoice.items).reduce((total, {amount}) => {
+
+                let bigjs = new Bigjs(amount);
+
+                return bigjs.plus(total);
+            },0);
+
+            this.invoice.subtotal = subtotal.toFixed();
+            this.invoice.total = subtotal.toFixed();
+        },
+        deleteItem(key) {
+            this.invoice.items.splice(key,1);
+            this.computeTotal();
+        },
+        filterInput(evt) {
+
+            const pattern = /^(\d+)?([.]?\d{0,8})$/;
+
+            console.log(pattern.test(evt.target.value));
+            
+            if (pattern.test(evt.target.value) === false) {
+                evt.preventDefault();
+            } 
+        },
+        setPrice(price) {
+
+            /* Check if there's no 0 before decimal */
+            if (price.startsWith('.')) {
+                price = '0'+price;
+            }
+
+            console.log(price.indexOf('.'),'indexof');
+
+            if (price.indexOf('.') > -1) {
+                
+                const string  = price.split('.');
+
+                let number = string[0];
+
+                console.log(string[1].length, "length");
+
+                /* work around for inputfilter adding 9th value */
+                if (string[1].length === 9) {
+
+                    
+                    let decimals = string[1].substring(0, string[1].length - 1);
+
+                    return string[0]+'.'+decimals;
+                }
+            }
+
+            return price;
+        },
+        updateAmount(key) {
+
+            let item = this.invoice.items[key];
+
+            if (item.quantity != 0 || item.price != 0) {
+
+                console.log(item.price);
+
+                let price = this.setPrice(item.price);
+
+                let amount = Convert.toSatoshi(String(price)) * item.quantity;
+                
+                item.price = price;
+                
+                item.amount = new Bigjs(Convert.toBitcoin(amount)).toFixed();
+
+                this.computeTotal();
+            }
+        }
+    },
     mounted() {
         $('.ui.dropdown').dropdown({ showOnFocus:false });
 

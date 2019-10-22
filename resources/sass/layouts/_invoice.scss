@@ -3,6 +3,22 @@
     @extend .py-2;
 }
 
+.invoice-item__amount {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.invoice-item__delete-btn {
+    cursor: pointer;
+    margin-right: -7px !important;
+    margin-left: 7px !important;
+    transition: all .2s ease-in;
+
+    &:hover {
+        color: map-get($colors, 'red-1');
+    }
+}
+
 .invoice-summary__row {
     display: flex;
     justify-content: space-between;

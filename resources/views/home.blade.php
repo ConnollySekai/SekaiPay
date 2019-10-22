@@ -50,23 +50,23 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
+                                        <tr class="invoice-item" v-for="(item,key) in invoice.items" :key="key">
                                             <td data-label="Description">
                                                 <div class="field">
-                                                    <input type="text">
+                                                    <input type="text" v-model="item.description">
                                                 </div>
                                             </td>
                                             <td data-label="Quantity" class="right aligned">
                                                 <div class="field">
-                                                    <input class="text-right" type="number" min="1">
+                                                    <input class="text-right" type="text" v-model="item.quantity" @change="updateAmount(key)" v-input-filter:number>
                                                 </div>
                                             </td>
                                             <td data-label="Price" class="right aligned">
                                                 <div class="field">
-                                                    <input class="text-right" type="number" min="0">
+                                                    <input class="text-right" type="text" v-model="item.price" @change="updateAmount(key)" v-input-filter="options">
                                                 </div>
                                             </td>
-                                            <td data-label="Amount" class="right aligned">12344</td>
+                                            <td v-cloak data-label="Amount" class="right aligned"><div class="invoice-item__amount">@{{ item.amount }} <i class="times icon invoice-item__delete-btn" @click="deleteItem(key)" v-show="invoice.items.length != 1"></i></div></td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -74,17 +74,17 @@
                         </div>
                         <div class="row pt-0">
                             <div class="sixteen wide mobile eight width tablet eight wide computer column">
-                                <button type="button" class="ui mini basic primary button button__rounded mr-1"><i class="plus icon"></i> Add Item</button>
+                                <button type="button" class="ui mini basic primary button button__rounded mr-1" @click="addItem()"><i class="plus icon"></i> Add Item</button>
                             </div>
                             <div class="sixteen wide mobile eight width tablet eight wide computer column">
                                 <div class="invoice-summary">
                                     <div class="invoice-summary__row">
                                         <div><span>Subtotal</span></div>
-                                        <div><strong>123456</strong></div>
+                                        <div v-cloak><strong>@{{ invoice.subtotal }}</strong></div>
                                     </div>
                                     <div class="invoice-summary__row invoice-summary__total">
                                         <div><span>Total</span></div>
-                                        <div><strong>123456</strong></div>
+                                        <div v-cloak><strong>@{{ `${currency} ${invoice.total}` }}</strong></div>
                                     </div>
                                 </div>
                             </div>
@@ -93,16 +93,11 @@
                     <div class="ui divider"></div>
                     <div class="ui column grid">
                         <div class="row">
+                            <div class="sixteen wide mobile eight width tablet eight wide computer column"></div>
                             <div class="sixteen wide mobile eight width tablet eight wide computer column">
-                                <div class="text-center">
-                                    <label for="">BTC Address</label>
-                                    <a href="https://chain.so/address/BTC/1BoatSLRHtKNngkdXEeobR76b53LETtpyT" target="_blank" class="d-block break-word" rel="noreferrer">1BoatSLRHtKNngkdXEeobR76b53LETtpyT</a>
-                                    <canvas id="qrCanvas"></canvas>
+                                <div class="field">
+                                    <textarea name="notes" placeholder="Notes(Optional)" aria-label="Notes" rows="4"></textarea>
                                 </div>
-                            </div>
-                            <div class="sixteen wide mobile eight width tablet eight wide computer column">
-                                <label for="notes">Notes</label>
-                                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ab, odit.</p>
                             </div>
                         </div>
                     </div>
@@ -114,7 +109,7 @@
         <div class="sixteen wide mobile sixteen wide tablet twelve wide computer column">
             <div class="ui item invoice-actions">
                 <button id="convertCurrencyBtn" class="ui small primary button button__rounded mr-1"><i class="sync alternate icon"></i> Convert Currency</button>
-                <button class="ui small negative button button__rounded"><i class="file pdf outline icon"></i> Download PDF</button>
+                <button class="ui small secondary button button__rounded"><i class="paper plane outline icon"></i> Send Invoice</button>
             </div>
         </div>
     </div>

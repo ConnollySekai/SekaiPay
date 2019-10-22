@@ -24641,6 +24641,19 @@ i.flag:not(.icon):before {
   border-radius: 10px;
 }
 
+.svg-fallback {
+  display: block;
+  position: fixed;
+  left: -100%;
+  height: 0;
+  width: 0;
+  overflow: hidden;
+}
+
+[v-cloak] {
+  display: none;
+}
+
 /* Components */
 /* Button */
 /* Button Override */
@@ -25141,6 +25154,21 @@ i.flag:not(.icon):before {
 .site-search__mobile.active {
   opacity: 1;
   z-index: 1;
+}
+
+.invoice-item__amount {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.invoice-item__delete-btn {
+  cursor: pointer;
+  margin-right: -7px !important;
+  margin-left: 7px !important;
+  transition: all 0.2s ease-in;
+}
+.invoice-item__delete-btn:hover {
+  color: #EB5757;
 }
 
 .invoice-summary__row {
