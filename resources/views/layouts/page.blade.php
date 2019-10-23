@@ -8,7 +8,7 @@
                     @include('partials.nav')
                 </div>   
             </header>
-            <main class="site-content">
+            <main class="site-content py-2">
                 @yield('content')
                 <div class="ui mini modal">
                     <div class="header">Choose Currency</div>
@@ -23,7 +23,7 @@
                             </div>
                         </div>
                         <div class="text-right">
-                            <button class="ui tiny primary button button__rounded mt-1">Convert</button>
+                            <button class="ui tiny primary button button--rounded mt-1">Convert</button>
                         </div>
                     </div>
                 </div>

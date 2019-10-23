@@ -40,26 +40,6 @@ const app = new Vue({
     components: {
         PatternInput
     },
-    computed: {
-        numberInput() {
-            let options = {...this.options};
-
-            console.log(this.options);
-
-            options.legalReg = [/^[1-9]\d*$/];
-
-            console.log(options);
-
-            return options;
-        },
-        btcInput() {
-            let options =  {...this.options};
-
-            options.legalReg = [/^(\d+)?([.]?\d{0,8})$/];
-
-            return options;
-        },
-    },
     data: {
         invoice: {
             items: [{
@@ -89,12 +69,7 @@ const app = new Vue({
                         max: 105
                     }
                 ]
-        },
-        setting: {
-            regExp: /^[0\D]*|\D*/g, // Match any character that doesn't belong to the positive integer
-            replacement: '',
-            val: '223'
-          } 
+        }
     },
     methods: {
         addItem() {
@@ -120,16 +95,6 @@ const app = new Vue({
         deleteItem(key) {
             this.invoice.items.splice(key,1);
             this.computeTotal();
-        },
-        filterInput(evt) {
-
-            const pattern = /^(\d+)?([.]?\d{0,8})$/;
-
-            console.log(pattern.test(evt.target.value));
-            
-            if (pattern.test(evt.target.value) === false) {
-                evt.preventDefault();
-            } 
         },
         setPrice(price) {
 
@@ -160,15 +125,19 @@ const app = new Vue({
 
             return price;
         },
-        updateAmount(key) {
+        updateAmount(index,key, evt) {
 
-            let item = this.invoice.items[key];
+            let item = this.invoice.items[index];
+
+            if (key === 'quantity') {
+                item.quantity = evt.target.value;
+            } else {
+                item.price = evt.target.value;
+            }
 
             if (item.quantity != 0 || item.price != 0) {
 
-                console.log(item.price);
-
-                let price = this.setPrice(item.price);
+                let price = item.price;
 
                 let amount = Convert.toSatoshi(String(price)) * item.quantity;
                 
@@ -178,6 +147,8 @@ const app = new Vue({
 
                 this.computeTotal();
             }
+
+            console.log(this.invoice.items);
         }
     },
     mounted() {
@@ -185,7 +156,9 @@ const app = new Vue({
 
         const canvas = document.getElementById('qrCanvas');
 
-        QRCode.toCanvas(canvas, '1BoatSLRHtKNngkdXEeobR76b53LETtpyT',{ width:146 }, function (error) {
+        const btcAddress = document.getElementById('btcAddress');
+
+        QRCode.toCanvas(canvas, btcAddress.value,{ width:146 }, function (error) {
             if (error) console.error(error)
             console.log('success!');
         });

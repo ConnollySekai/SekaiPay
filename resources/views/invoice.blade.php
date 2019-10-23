@@ -17,13 +17,14 @@
                         <div class="sixteen wide mobile eight width tablet eight wide computer column">
                             <div class="mb-1">
                                 <label for="contractId">Contract ID</label>
-                                <span id="contractId">5da6c0f6c712e</span>
+                                <span id="contractId">{{ $invoice->contract_id }}</span>
                             </div>
                             <div class="mb-h">
                                 <label for="fromInfo">From</label>
                                 <div id="fromInfo">
-                                    <span class="d-block">Axion Metal Corporation</span>
-                                    <span>axionmetalcorp@axion.com</span>
+                                    <span class="d-block">{{ $invoice->business_name }}</span>
+                                    <span class="d-block">{{ $invoice->business_email }}</span>
+                                    <span class="d-block">{{ $invoice->business_contact_number }}</span>
                                 </div>
                             </div>
                         </div>
@@ -35,8 +36,9 @@
                             <div class="mb-h">
                                 <label for="toInfo">To</label>
                                 <div id="toInfo">
-                                    <span class="d-block">Interstate Rush Corp.</span>
-                                    <span>rushcorp@gmail.com</span>
+                                    <span class="d-block">{{ $invoice->client_name }}</span>
+                                    <span class="d-block">{{ $invoice->client_email }}</span>
+                                    <span class="d-block">{{ $invoice->client_contact_number }}</span>
                                 </div>
                             </div>
                         </div>
@@ -102,13 +104,14 @@
                         <div class="sixteen wide mobile eight width tablet eight wide computer column">
                             <div class="text-center">
                                 <label for="">BTC Address</label>
-                                <a href="https://chain.so/address/BTC/1BoatSLRHtKNngkdXEeobR76b53LETtpyT" target="_blank" class="d-block break-word" rel="noreferrer">1BoatSLRHtKNngkdXEeobR76b53LETtpyT</a>
+                                <a href="https://chain.so/address/BTC/{{ $invoice->btc_address }}" target="_blank" class="d-block break-word" rel="noreferrer">{{ $invoice->btc_address }}</a>
                                 <canvas id="qrCanvas"></canvas>
+                                <input id="btcAddress" type="hidden" value="{{ $invoice->btc_address }}">
                             </div>
                         </div>
                         <div class="sixteen wide mobile eight width tablet eight wide computer column">
                             <label for="notes">Notes</label>
-                            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ab, odit.</p>
+                            <p>{{ $invoice->notes }}</p>
                         </div>
                     </div>
                 </div>
@@ -118,7 +121,7 @@
     <div class="row centered">
         <div class="sixteen wide mobile sixteen wide tablet twelve wide computer column">
             <div class="ui item invoice-actions">
-                <button id="convertCurrencyBtn" class="ui tiny primary button button__rounded mr-1"><i class="sync alternate icon"></i> Convert Currency</button>
+                <button id="convertCurrencyBtn" class="ui small primary button button--rounded mr-1"><i class="calculator icon"></i> Show Converter</button>
                 <button class="ui tiny negative button button__rounded"><i class="file pdf outline icon"></i> Download PDF</button>
             </div>
         </div>

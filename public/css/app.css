@@ -25007,13 +25007,58 @@ i.flag:not(.icon):before {
 }
 
 /* Custom */
-.ui.button.button__rounded {
+.ui.button.button--rounded {
   border-radius: 40px !important;
 }
 
 /* Divider */
 .ui.divider:not(.vertical):not(.horizontal) {
   border-top: 1px solid #E0E1E2;
+}
+
+/* Notification */
+.notification {
+  align-items: center;
+  background-color: #ffffff;
+  display: flex;
+  justify-content: space-between;
+  padding: 15px;
+  position: relative;
+}
+.notification--positive .notification__message-icon i {
+  color: #7FAF19;
+}
+.notification--negative .notification__message-icon i {
+  color: #EB5757;
+}
+
+.notification__message {
+  align-items: center;
+  display: flex;
+}
+
+.notification__message-icon i {
+  font-size: 30px;
+}
+
+.notification__close {
+  background: #ffffff;
+  border-radius: 50%;
+  box-shadow: 0px 1px 9px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  height: 25px;
+  position: absolute;
+  right: -12px;
+  top: -12px;
+  text-align: center;
+  transition: all 0.2s ease-in;
+  width: 25px;
+}
+.notification__close i {
+  margin: 0;
+}
+.notification__close:hover {
+  box-shadow: 0px 1px 9px rgba(0, 0, 0, 0.3);
 }
 
 /* Table */

@@ -11,6 +11,6 @@
 |
 */
 
-Route::get('/', function () {
-    return view('home');
-});
+Route::get('/','HomeController@index')->name('home.index');
+
+Route::get('/invoice/{invoice}','InvoiceController@show')->name('invoice.show');
