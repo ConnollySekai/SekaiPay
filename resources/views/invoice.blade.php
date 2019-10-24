@@ -3,10 +3,10 @@
 @section('title', 'Home')
 
 @section('content')
-<div class="ui container vertically padded grid py-3">
-    <div class="row centered">
+<div class="ui container vertically padded grid pb-3">
+    <div class="row centered pt-0">
         <div class="sixteen wide mobile sixteen wide tablet twelve wide computer column">
-            <div class="invoice-view raise rounded">
+            <div class="invoice-view raise rounded mt-2">
                 <div class="ui column grid">
                     <div class="row">
                         <div class="column">
@@ -121,8 +121,7 @@
     <div class="row centered">
         <div class="sixteen wide mobile sixteen wide tablet twelve wide computer column">
             <div class="ui item invoice-actions">
-                <button id="convertCurrencyBtn" class="ui small primary button button--rounded mr-1"><i class="calculator icon"></i> Show Converter</button>
-                <button class="ui tiny negative button button__rounded"><i class="file pdf outline icon"></i> Download PDF</button>
+                <button class="ui tiny negative button button--rounded"><i class="file pdf outline icon"></i> Download PDF</button>
             </div>
         </div>
     </div>

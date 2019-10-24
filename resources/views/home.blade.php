@@ -4,39 +4,35 @@
 
 @section('content')
 
-@if (request('contract_id'))
-<div class="ui container vertically padded grid centered">
-    <div class="sixteen wide mobile sixteen wide tablet twelve wide computer column">
-        <div class="notification @if ($invoice) notification--positive @else notification--negative @endif raise rounded">
-            <div class="notification__message">
-                @if ($invoice)
-                    <div class="notification__message-icon mr-h">
-                        <i class="check circle outline icon"></i>
-                    </div>
-                    <div class="notification__message-text"><strong>{{ request('contract_id') }}</strong> found</div>
-                @else 
-                    <div class="notification__message-icon mr-h">
-                        <i class="times circle outline icon"></i>
-                    </div>
-                    <div class="notification__message-text">Must enter valid contract ID</div>
-                @endif
-            </div>
-            @if ($invoice)
-                <div class="notification__action">
-                    <a href="{{ route('invoice.show',['invoice' => $invoice]) }}" class="ui mini basic positive button button--rounded">View Contract</a>
-                </div>
-            @endif
-            <div class="notification__close">
-                <i class="times icon"></i>
-            </div>
-        </div>
-    </div>
-</div>
-@endif
-<div class="ui container vertically padded grid pt-2">
+<div class="ui container vertically padded grid">
     <div class="row centered pt-0">
         <div class="sixteen wide mobile sixteen wide tablet twelve wide computer column">
-            <div class="invoice-view raise rounded">
+            @if (request('contract_id'))
+                <div class="notification @if ($invoice) notification--positive @else notification--negative @endif raise rounded mb-2 ">
+                    <div class="notification__message">
+                        @if ($invoice)
+                            <div class="notification__message-icon mr-h">
+                                <i class="check circle outline icon"></i>
+                            </div>
+                            <div class="notification__message-text"><strong>{{ request('contract_id') }}</strong> found</div>
+                        @else 
+                            <div class="notification__message-icon mr-h">
+                                <i class="times circle outline icon"></i>
+                            </div>
+                            <div class="notification__message-text">Must enter valid contract ID</div>
+                        @endif
+                    </div>
+                    @if ($invoice)
+                        <div class="notification__action">
+                            <a href="{{ route('invoice.show',['invoice' => $invoice]) }}" class="ui mini basic positive button button--rounded">View Contract</a>
+                        </div>
+                    @endif
+                    <div class="notification__close">
+                        <i class="times icon"></i>
+                    </div>
+                </div>
+            @endif
+            <div class="invoice-view raise rounded mt-2">
                 <form class="ui form">
                     <div class="ui column grid">
                         <div class="row">
@@ -144,45 +140,15 @@
             </div>
         </div>
     </div>
-    <div class="row centered">
+    <div class="row centered pt-0">
         <div class="sixteen wide mobile sixteen wide tablet twelve wide computer column">
-            <div class="converter raise rounded px-2 py-3 text-center">
-                <h4 class="mb-2">1 BTC = 7,957.28 USD </h4>
-                <div class="ui form">
-                    <div class="two fields">
-                        <div class="field">
-                            <div class="ui right action input">
-                                <input type="text" placeholder="From">
-                                <div class="ui basic floating dropdown button">
-                                    <div class="text"><i class="bitcoin icon mr-h"></i> BTC</div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="field">
-                            <div class="ui right action input">
-                                <input type="text" placeholder="To">
-                                <div class="ui basic floating dropdown button">
-                                    <div class="text"><strong>$</strong> USD</div>
-                                    <i class="dropdown icon"></i>
-                                    <div class="menu">
-                                    <div class="item"><strong>$</strong> USD</div>
-                                    <div class="item"><strong>$</strong> AUD</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="field text-right">
-                        <div class="ui small basic primary button button--rounded"><i class="sync alternate icon"></i>Convert</div>
-                    </div>
-                </div>
-            </div>
+            <converter class="my-1"></converter>
         </div>
     </div>
-    <div class="row centered">
+    <div class="row centered pt-0">
         <div class="sixteen wide mobile sixteen wide tablet twelve wide computer column">
             <div class="ui item invoice-actions">
-                <button id="convertCurrencyBtn" class="ui small primary button button--rounded mr-1"><i class="calculator icon"></i> Show Converter</button>
+                <button id="showConverterBtn" class="ui small primary button button--rounded mr-1"><i class="calculator icon"></i> <span>Show Converter</span></button>
                 <button class="ui small secondary button button--rounded"><i class="paper plane outline icon"></i> Send Invoice</button>
             </div>
         </div>

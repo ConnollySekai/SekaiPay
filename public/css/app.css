@@ -24621,6 +24621,10 @@ a:active {
   text-align: right;
 }
 
+.text-left {
+  text-align: left;
+}
+
 .break-word {
   word-break: break-word;
 }
@@ -24655,6 +24659,29 @@ i.flag:not(.icon):before {
 }
 
 /* Components */
+/* Animation */
+.rotation {
+  -webkit-animation: rotation 1s infinite linear;
+          animation: rotation 1s infinite linear;
+}
+
+@-webkit-keyframes rotation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(359deg);
+  }
+}
+
+@keyframes rotation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(359deg);
+  }
+}
 /* Button */
 /* Button Override */
 .ui.button {
@@ -25016,6 +25043,91 @@ i.flag:not(.icon):before {
   border-top: 1px solid #E0E1E2;
 }
 
+/* Dropdown */
+/* Dropdown override */
+.ui.dropdown .menu > .item {
+  color: #6C6C6C;
+}
+
+/* Menu Item Active */
+.ui.dropdown .menu .active.item {
+  color: #6C6C6C;
+}
+
+/* Menu Item Hover */
+.ui.dropdown .menu > .item:hover {
+  color: #6C6C6C;
+}
+
+.ui.dropdown:not(.button) > .default.text,
+.ui.default.dropdown:not(.button) > .text {
+  color: green;
+}
+
+.ui.dropdown:not(.button) > input:focus ~ .default.text,
+.ui.default.dropdown:not(.button) > input:focus ~ .text {
+  color: green;
+}
+
+/* Selected Item */
+.ui.dropdown.selected,
+.ui.dropdown .menu .selected.item {
+  color: #444444;
+}
+
+/* Form */
+/* Form Override */
+.ui.form .field > label {
+  color: #444444;
+}
+
+.ui.form input:not([type]),
+.ui.form input[type=date],
+.ui.form input[type=datetime-local],
+.ui.form input[type=email],
+.ui.form input[type=number],
+.ui.form input[type=password],
+.ui.form input[type=search],
+.ui.form input[type=tel],
+.ui.form input[type=time],
+.ui.form input[type=text],
+.ui.form input[type=file],
+.ui.form input[type=url] {
+  color: #6C6C6C;
+}
+
+/* Text Area */
+.ui.form textarea {
+  color: #6C6C6C;
+}
+
+/* Select */
+.ui.form select {
+  color: #6C6C6C;
+}
+
+/*--------------------
+        Focus
+---------------------*/
+.ui.form input:not([type]):focus,
+.ui.form input[type=date]:focus,
+.ui.form input[type=datetime-local]:focus,
+.ui.form input[type=email]:focus,
+.ui.form input[type=number]:focus,
+.ui.form input[type=password]:focus,
+.ui.form input[type=search]:focus,
+.ui.form input[type=tel]:focus,
+.ui.form input[type=time]:focus,
+.ui.form input[type=text]:focus,
+.ui.form input[type=file]:focus,
+.ui.form input[type=url]:focus {
+  color: #444444;
+}
+
+.ui.form textarea:focus {
+  color: #444444;
+}
+
 /* Notification */
 .notification {
   align-items: center;
@@ -25145,6 +25257,44 @@ i.flag:not(.icon):before {
 }
 
 /* Layouts */
+.converter {
+  display: none;
+}
+
+.converter__button {
+  width: 100%;
+}
+
+.invoice-item__amount {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.invoice-item__delete-btn {
+  cursor: pointer;
+  margin-right: -7px !important;
+  margin-left: 7px !important;
+  transition: all 0.2s ease-in;
+}
+.invoice-item__delete-btn:hover {
+  color: #EB5757;
+}
+
+.invoice-summary__row {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.78571429em 0.78571429em;
+}
+
+.invoice-summary__total {
+  background-color: #E0E1E2;
+}
+
+.invoice-actions {
+  display: flex;
+  justify-content: center;
+}
+
 .site-header__nav .column {
   display: flex !important;
   justify-content: space-between;
@@ -25199,36 +25349,6 @@ i.flag:not(.icon):before {
 .site-search__mobile.active {
   opacity: 1;
   z-index: 1;
-}
-
-.invoice-item__amount {
-  display: flex;
-  justify-content: flex-end;
-}
-
-.invoice-item__delete-btn {
-  cursor: pointer;
-  margin-right: -7px !important;
-  margin-left: 7px !important;
-  transition: all 0.2s ease-in;
-}
-.invoice-item__delete-btn:hover {
-  color: #EB5757;
-}
-
-.invoice-summary__row {
-  display: flex;
-  justify-content: space-between;
-  padding: 0.78571429em 0.78571429em;
-}
-
-.invoice-summary__total {
-  background-color: #E0E1E2;
-}
-
-.invoice-actions {
-  display: flex;
-  justify-content: center;
 }
 
 .m-0 {

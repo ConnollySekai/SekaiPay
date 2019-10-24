@@ -10,35 +10,24 @@ window.Vue = require('vue');
 
 import 'semantic-ui-sass';
 
-/**
- * The following block of code may be used to automatically register your
- * Vue components. It will recursively scan this directory for the Vue
- * components and automatically register them with their "basename".
- *
- * Eg. ./components/ExampleComponent.vue -> <example-component></example-component>
- */
-
-// const files = require.context('./', true, /\.vue$/i)
-// files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
-
-Vue.component('example-component', require('./components/ExampleComponent.vue').default);
-
 import inputFilter from 'vue-input-filter';
 
-import PatternInput from 'vue-pattern-input';
-
 import QRCode from 'qrcode';
+
+import filterOptions from './filterOptions';
 
 import Convert from 'satoshi-bitcoin';
 
 import Bigjs from 'big.js';
+
+import Converter from './components/Converter';
 
 Vue.use(inputFilter);
 
 const app = new Vue({
     el: '#app',
     components: {
-        PatternInput
+        Converter
     },
     data: {
         invoice: {
@@ -52,24 +41,7 @@ const app = new Vue({
             total: 0
         },
         currency: 'BTC',
-        options: {
-            legalReg : [/^(\d+)?([.]?\d{0,8})$/], 
-            legalKeyCode: [8, 32, 37, 38, 39, 40, 46, 190],
-            legalKeyCodeRange: [
-                    {
-                        min: 65,
-                        max: 90
-                    },
-                    {
-                        min: 48,
-                        max: 57
-                    },
-                    {
-                        min: 96,
-                        max: 105
-                    }
-                ]
-        }
+        options: filterOptions.btc
     },
     methods: {
         addItem() {
@@ -90,6 +62,7 @@ const app = new Vue({
             },0);
 
             this.invoice.subtotal = subtotal.toFixed();
+            
             this.invoice.total = subtotal.toFixed();
         },
         deleteItem(key) {
@@ -102,8 +75,6 @@ const app = new Vue({
             if (price.startsWith('.')) {
                 price = '0'+price;
             }
-
-            console.log(price.indexOf('.'),'indexof');
 
             if (price.indexOf('.') > -1) {
                 
@@ -152,16 +123,15 @@ const app = new Vue({
         }
     },
     mounted() {
-        $('.ui.dropdown').dropdown({ showOnFocus:false });
-
+    
         const canvas = document.getElementById('qrCanvas');
 
-        const btcAddress = document.getElementById('btcAddress');
+        /* const btcAddress = document.getElementById('btcAddress');
 
         QRCode.toCanvas(canvas, btcAddress.value,{ width:146 }, function (error) {
             if (error) console.error(error)
             console.log('success!');
-        });
+        }); */
 
         $('#searchOpenBtn').click(function() {
             $('.site-search__mobile').addClass('active');
@@ -173,8 +143,27 @@ const app = new Vue({
             $('.site-logo, .site-search').addClass('active');
         });
 
-        $('#convertCurrencyBtn').click(function() {
-            $('.ui.modal').modal('show');
+        $('#showConverterBtn').click(function() {
+
+            const converter = $('.converter');
+
+            if (converter.is(':hidden')) {
+                
+                $(this).find('span').text('Hide Converter');
+
+                $(this).removeClass('primary');
+            } else {
+                $(this).find('span').text('Show Converter');
+
+                $(this).addClass('primary');
+            }
+
+            $('.converter').transition('fade down');
+        });
+
+        $('.notification__close').click(function(){
+
+            $('.notification').transition('fade down');
         });
     }
 });

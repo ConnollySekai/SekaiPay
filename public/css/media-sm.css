@@ -5,6 +5,12 @@
 /* Paddings and Margins */
 /* Media Query */
 /* Displays */
+/* Converter SM */
+@media screen and (min-width: 768px) {
+  .converter__button {
+    width: auto;
+  }
+}
 /* Invoice SM */
 @media screen and (min-width: 768px) {
   .invoice-view {

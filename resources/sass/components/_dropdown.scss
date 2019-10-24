@@ -1,0 +1,33 @@
+/* Dropdown override */
+
+.ui.dropdown .menu > .item {
+    color: map-get($colors, 'grey-2');
+}
+  
+/* Menu Item Active */
+.ui.dropdown .menu .active.item {
+    color: map-get($colors, 'grey-2');
+}
+  
+/* Menu Item Hover */
+.ui.dropdown .menu > .item:hover {
+    color: map-get($colors, 'grey-2');
+}
+  
+  
+.ui.dropdown:not(.button) > .default.text,
+.ui.default.dropdown:not(.button) > .text {
+    color: green;
+}
+.ui.dropdown:not(.button) > input:focus ~ .default.text,
+.ui.default.dropdown:not(.button) > input:focus ~ .text {
+    color: green;
+}
+  
+/* Selected Item */
+.ui.dropdown.selected,
+.ui.dropdown .menu .selected.item { 
+    color: map-get($colors, 'grey-1');
+}
+  
+  
