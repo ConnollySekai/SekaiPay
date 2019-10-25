@@ -18,9 +18,9 @@ class CreateInvoiceItemsTable extends Migration
             $table->bigInteger('invoice_id')->unsigned();
             $table->text('description');
             $table->integer('quantity');
-            $table->bigInteger('price_in_btc');
-            $table->decimal('price',9,2)->nullable();
-            $table->string('currency_symbol');
+            $table->string('price');
+            $table->string('amount');
+            $table->bigInteger('price_in_satoshi');
             $table->timestamps();
         });
     }

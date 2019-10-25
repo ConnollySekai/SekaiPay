@@ -2,17 +2,19 @@
     <div class="converter raise rounded px-2 py-3 text-center">
         <div class="ui form">
             <div class="two fields">
-                <div class="field">
+                <div class="field text-left">
+                    <label for="btcInput">From</label>
                     <div class="ui right action input">
-                        <input type="text" placeholder="From" v-model="btcInput" v-input-filter="options">
+                        <input type="text" id="btcInput" v-model="btcInput" v-input-filter="options">
                         <div class="ui basic floating dropdown button from">
                             <div class="text">BTC</div>
                         </div>
                     </div>
                 </div>
-                <div class="field">
+                <div class="field text-left">
+                    <label for="resultInput">To</label>
                     <div class="ui right action input">
-                        <input type="text" placeholder="To" v-model="resultInput">
+                        <input type="text" id="resultInput" v-model="resultInput">
                         <div class="ui basic floating dropdown button to">
                             <div class="text">{{ to }}</div>
                             <i class="dropdown icon"></i>
@@ -28,7 +30,7 @@
                     <h4>1 BTC = {{ rate }} </h4>
                 </div>
                 <div class="field text-right">
-                    <button class="ui small primary button button--rounded converter__button" @click="convertCurrency()"><i class="sync alternate icon" :class="{ rotation: loading }"></i>{{ btnText }}</button>
+                    <button type="button" class="ui small primary button button--rounded converter__button" @click="convertCurrency()"><i class="sync alternate icon" :class="{ rotation: loading }"></i>{{ btnText }}</button>
                 </div>
             </div>
         </div>
@@ -56,7 +58,7 @@
                 resultInput:'',
                 selection: ['USD','EUR','GBP','JPY','AUD','CAD'],
                 url: 'https://api.coinbase.com/v2/prices/spot?currency=',
-                options: filterOptions.btc,
+                options: filterOptions.getOption('btc'),
                 loading: false,
                 btnText: 'Convert'
             }

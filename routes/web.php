@@ -14,3 +14,7 @@
 Route::get('/','HomeController@index')->name('home.index');
 
 Route::get('/invoice/{invoice}','InvoiceController@show')->name('invoice.show');
+
+Route::get('/invoice/get/data', 'InvoiceController@getData')->name('invoice.getData');
+
+Route::post('/invoice/store','InvoiceController@store')->name('invoice.store');

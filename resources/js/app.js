@@ -20,7 +20,10 @@ import Convert from 'satoshi-bitcoin';
 
 import Bigjs from 'big.js';
 
+import Form from 'form-backend-validation';
+
 import Converter from './components/Converter';
+import Axios from 'axios';
 
 Vue.use(inputFilter);
 
@@ -31,30 +34,47 @@ const app = new Vue({
     },
     data: {
         invoice: {
-            items: [{
-                description: '',
-                quantity: 1,
-                price: '',
-                amount: 0
-            }],
+            data: {},
             subtotal: 0,
             total: 0
         },
         currency: 'BTC',
-        options: filterOptions.btc
-    },
-    methods: {
-        addItem() {
-            this.invoice.items.push({
+        options: {
+            btc: filterOptions.getOption('btc')
+        },
+        form: new Form({
+            business_name:'',
+            business_email: '',
+            business_mobile_number: '',
+            btc_address: '',
+            btc_address_confirmation: '',
+            client_name: '',
+            client_email: '',
+            client_mobile_number: '',
+            notes: '',
+            items: [{
                 description: '',
                 quantity: 1,
                 price: '',
+                price_in_satoshi: '',
+                amount: 0
+            }]
+
+        },{resetOnSuccess: false})
+    },
+    methods: {
+        addItem() {
+            this.form.items.push({
+                description: '',
+                quantity: 1,
+                price: '',
+                price_in_satoshi: '',
                 amount: 0
             });
         },
         computeTotal() {
 
-            const subtotal = Object.values(this.invoice.items).reduce((total, {amount}) => {
+            const subtotal = Object.values(this.form.items).reduce((total, {amount}) => {
 
                 let bigjs = new Bigjs(amount);
 
@@ -66,8 +86,34 @@ const app = new Vue({
             this.invoice.total = subtotal.toFixed();
         },
         deleteItem(key) {
-            this.invoice.items.splice(key,1);
+            this.form.items.splice(key,1);
             this.computeTotal();
+        },
+        getItems() {
+
+            const vm = this;
+
+            const contract_id = window.location.pathname.split("/").pop();
+
+            axios.get('/invoice/get/data',{
+                params: {
+                    contract_id
+                }
+            }).then(response => {
+                
+                const data = response.data;
+
+                vm.invoice.data = data.invoice;
+            }); 
+        },
+        handleSubmit() {
+    
+            this.form.post(this.$refs.form.action).then(response => {
+                
+                if (response.message === 'success') {
+                    document.location.href = '/invoice/'+response.contract_id;
+                }
+            });
         },
         setPrice(price) {
 
@@ -98,7 +144,7 @@ const app = new Vue({
         },
         updateAmount(index,key, evt) {
 
-            let item = this.invoice.items[index];
+            let item = this.form.items[index];
 
             if (key === 'quantity') {
                 item.quantity = evt.target.value;
@@ -110,7 +156,11 @@ const app = new Vue({
 
                 let price = item.price;
 
-                let amount = Convert.toSatoshi(String(price)) * item.quantity;
+                let satoshi = Convert.toSatoshi(String(price));
+
+                let amount = satoshi * item.quantity;
+
+                item.price_in_satoshi = satoshi;
                 
                 item.price = price;
                 
@@ -118,11 +168,11 @@ const app = new Vue({
 
                 this.computeTotal();
             }
-
-            console.log(this.invoice.items);
         }
     },
     mounted() {
+
+        const vm = this;
     
         const canvas = document.getElementById('qrCanvas');
 
@@ -133,6 +183,8 @@ const app = new Vue({
             console.log('success!');
         }); */
 
+
+        this.getItems();
         $('#searchOpenBtn').click(function() {
             $('.site-search__mobile').addClass('active');
             $('.site-logo, .site-search').removeClass('active');

@@ -7,6 +7,7 @@
     <div class="row centered pt-0">
         <div class="sixteen wide mobile sixteen wide tablet twelve wide computer column">
             <div class="invoice-view raise rounded mt-2">
+                <input type="hidden" ref="invoiceId" value="{{ $invoice->id }}">
                 <div class="ui column grid">
                     <div class="row">
                         <div class="column">
@@ -58,22 +59,10 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td data-label="Description">James</td>
-                                        <td data-label="Quantity" class="right aligned">24</td>
-                                        <td data-label="Price" class="right aligned">12</td>
-                                        <td data-label="Amount" class="right aligned">12344</td>
-                                    </tr>
-                                    <tr>
-                                        <td data-label="Description">James</td>
-                                        <td data-label="Quantity" class="right aligned">24</td>
-                                        <td data-label="Price" class="right aligned">12</td>
-                                        <td data-label="Amount" class="right aligned">12344</td>
-                                    </tr>
-                                    <tr>
-                                        <td data-label="Description">James</td>
-                                        <td data-label="Quantity" class="right aligned">24</td>
-                                        <td data-label="Price" class="right aligned">12</td>
+                                    <tr v-for="(item,key) in invoice.data.items" :key="key" v-cloak>
+                                        <td data-label="Description">@{{ item.description }}</td>
+                                        <td data-label="Quantity" class="right aligned">@{{ item.quantity }}</td>
+                                        <td data-label="Price" class="right aligned">@{{ item.price_in_satoshi }}</td>
                                         <td data-label="Amount" class="right aligned">12344</td>
                                     </tr>
                                 </tbody>

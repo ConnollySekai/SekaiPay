@@ -1,7 +1,11 @@
-export default {
-    btc: {
-        legalReg : [/^(\d+)?([.]?\d{0,8})$/], 
-        legalKeyCode: [8, 32, 37, 38, 39, 40, 46, 190],
+export default (function(){
+
+    const rules = {
+        btc: [/^(\d+)?([.]?\d{0,8})$/],
+    }
+
+    let options = {
+        legalKeyCode: [8, 9, 32, 37, 38, 39, 40, 46, 190],
         legalKeyCodeRange: [
                 {
                     min: 65,
@@ -17,4 +21,20 @@ export default {
                 }
             ]
     }
-}
+    
+
+    function getOption(rule) {
+
+        const legalReg = rules[rule];
+
+        let newOptions = {...options};
+
+        newOptions.legalReg = legalReg;
+
+        return newOptions;
+    }
+
+    return {
+        getOption
+    }
+})();

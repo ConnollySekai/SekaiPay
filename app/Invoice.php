@@ -39,5 +39,14 @@ class Invoice extends Model
     {
         return 'contract_id';
     }
+
+    /**
+     * Invoice items relationship
+     *
+     */
+    public function items()
+    {
+        return $this->hasMany('App\InvoiceItem');
+    }
 }
 
