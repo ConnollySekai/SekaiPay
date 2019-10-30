@@ -10,8 +10,6 @@ window.Vue = require('vue');
 
 import 'semantic-ui-sass';
 
-import inputFilter from 'vue-input-filter';
-
 import QRCode from 'qrcode';
 
 import filterOptions from './filterOptions';
@@ -23,14 +21,14 @@ import Bigjs from 'big.js';
 import Form from 'form-backend-validation';
 
 import Converter from './components/Converter';
-import Axios from 'axios';
 
-Vue.use(inputFilter);
+import {IMaskComponent} from 'vue-imask';
 
 const app = new Vue({
     el: '#app',
     components: {
-        Converter
+        Converter,
+        'imask-input': IMaskComponent
     },
     data: {
         invoice: {
@@ -45,19 +43,21 @@ const app = new Vue({
         form: new Form({
             business_name:'',
             business_email: '',
+            business_calling_code: '',
             business_mobile_number: '',
             btc_address: '',
             btc_address_confirmation: '',
             client_name: '',
             client_email: '',
+            client_calling_code: '',
             client_mobile_number: '',
             notes: '',
             items: [{
                 description: '',
-                quantity: 1,
+                quantity: '1',
                 price: '',
                 price_in_satoshi: '',
-                amount: 0
+                amount: ''
             }]
 
         },{resetOnSuccess: false})
@@ -66,19 +66,23 @@ const app = new Vue({
         addItem() {
             this.form.items.push({
                 description: '',
-                quantity: 1,
+                quantity: '1',
                 price: '',
                 price_in_satoshi: '',
-                amount: 0
+                amount: ''
             });
         },
         computeTotal() {
 
             const subtotal = Object.values(this.form.items).reduce((total, {amount}) => {
 
-                let bigjs = new Bigjs(amount);
+                if (amount != '') {
+                    let bigjs = new Bigjs(amount);
 
-                return bigjs.plus(total);
+                    return bigjs.plus(total);
+                }
+
+                return 0;
             },0);
 
             this.invoice.subtotal = subtotal.toFixed();
@@ -114,6 +118,9 @@ const app = new Vue({
                     document.location.href = '/invoice/'+response.contract_id;
                 }
             });
+
+            console.log(this.form.items);
+
         },
         setPrice(price) {
 
@@ -142,28 +149,18 @@ const app = new Vue({
 
             return price;
         },
-        updateAmount(index,key, evt) {
+        updateAmount(index) {
 
             let item = this.form.items[index];
 
-            if (key === 'quantity') {
-                item.quantity = evt.target.value;
-            } else {
-                item.price = evt.target.value;
-            }
+            if (item.quantity != '' || item.price != '') {
 
-            if (item.quantity != 0 || item.price != 0) {
+                let price_in_satoshi = Convert.toSatoshi(String(item.price));
 
-                let price = item.price;
+                let amount = price_in_satoshi * item.quantity;
 
-                let satoshi = Convert.toSatoshi(String(price));
+                item.price_in_satoshi = price_in_satoshi;
 
-                let amount = satoshi * item.quantity;
-
-                item.price_in_satoshi = satoshi;
-                
-                item.price = price;
-                
                 item.amount = new Bigjs(Convert.toBitcoin(amount)).toFixed();
 
                 this.computeTotal();
@@ -184,7 +181,7 @@ const app = new Vue({
         }); */
 
 
-        this.getItems();
+       // this.getItems();
         $('#searchOpenBtn').click(function() {
             $('.site-search__mobile').addClass('active');
             $('.site-logo, .site-search').removeClass('active');
@@ -219,3 +216,5 @@ const app = new Vue({
         });
     }
 });
+
+//^[+]?(\d+[ |-]?)*$

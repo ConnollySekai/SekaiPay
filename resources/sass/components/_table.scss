@@ -79,7 +79,7 @@
     border-left: none;
     border-radius: 0;
     border-right: none;
-    border-top: 0;
+    border-top: none;
 
     th {
         border-bottom: none !important;
@@ -87,4 +87,6 @@
     }
 }
   
-  
+.ui.basic.table tbody tr:last-child {
+    border-bottom: none;
+}  

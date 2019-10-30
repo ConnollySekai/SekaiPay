@@ -21,4 +21,15 @@ class InvoiceItem extends Model
     {
         return $this->belongsTo('App\Invoice');
     }
+
+    /**
+     * Converts satoshi to btc
+     *
+     * @return string
+     */
+    public function getPriceInBtcAttribute()
+    {
+        return to_btc((string)$this->price_in_satoshi);
+    }
+
 }

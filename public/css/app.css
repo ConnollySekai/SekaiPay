@@ -25061,12 +25061,12 @@ i.flag:not(.icon):before {
 
 .ui.dropdown:not(.button) > .default.text,
 .ui.default.dropdown:not(.button) > .text {
-  color: green;
+  color: #6C6C6C;
 }
 
 .ui.dropdown:not(.button) > input:focus ~ .default.text,
 .ui.default.dropdown:not(.button) > input:focus ~ .text {
-  color: green;
+  color: #6C6C6C;
 }
 
 /* Selected Item */
@@ -25126,6 +25126,11 @@ i.flag:not(.icon):before {
 
 .ui.form textarea:focus {
   color: #444444;
+}
+
+.ui.form .field:last-child,
+.ui.form .fields:last-child .field {
+  margin-bottom: 1em;
 }
 
 /* Notification */
@@ -25249,11 +25254,15 @@ i.flag:not(.icon):before {
   border-left: none;
   border-radius: 0;
   border-right: none;
-  border-top: 0;
+  border-top: none;
 }
 .ui.table.table__borderless th {
   border-bottom: none !important;
   border-radius: 0 !important;
+}
+
+.ui.basic.table tbody tr:last-child {
+  border-bottom: none;
 }
 
 /* Layouts */
@@ -25263,6 +25272,22 @@ i.flag:not(.icon):before {
 
 .converter__button {
   width: 100%;
+}
+
+.invoice-view__calling-code {
+  max-width: 100px;
+}
+
+.invoice-items__quantity {
+  width: 100px;
+}
+
+.invoice-items__price {
+  width: 200px;
+}
+
+.invoice-items__amount {
+  min-width: 140px;
 }
 
 .invoice-item__amount {

@@ -20,15 +20,19 @@ class InvoiceController extends Controller
 
         $invoice = DB::transaction(function() use($request) {
 
+            $business_mobile_number = ($request->input('business_calling_code') && $request->input('business_mobile_number')) ? $request->input('business_calling_code')." ".$request->input('business_mobile_number'): null;
+
+            $client_mobile_number = ($request->input('client_calling_code') && $request->input('client_mobile_number')) ? $request->input('client_calling_code')." ".$request->input('client_mobile_number'): null;
+
             $created = Invoice::create([
                 'contract_id' => md5(uniqid(rand(), true)),
                 'business_name' => $request->input('business_name'),
                 'business_email' => $request->input('business_email'),
-                'business_mobile_number' => $request->input('business_mobile_number'),
+                'business_mobile_number' => $business_mobile_number,
                 'btc_address' => $request->input('btc_address'),
                 'client_name' => $request->input('client_name'),
                 'client_email' => $request->input('client_email'),
-                'client_mobile_number' => $request->input('client_mobile_number'),
+                'client_mobile_number' => $client_mobile_number,
                 'notes' => $request->input('notes')
             ]);
 
@@ -87,4 +91,3 @@ class InvoiceController extends Controller
         ]);
     }
 }
-//https://github.com/denpamusic/php-bitcoinrpc/blob/master/src/functions.php

@@ -25,7 +25,7 @@
                                 <div id="fromInfo">
                                     <span class="d-block">{{ $invoice->business_name }}</span>
                                     <span class="d-block">{{ $invoice->business_email }}</span>
-                                    <span class="d-block">{{ $invoice->business_contact_number }}</span>
+                                    <span class="d-block">{{ $invoice->business_mobile_number }}</span>
                                 </div>
                             </div>
                         </div>
@@ -39,7 +39,7 @@
                                 <div id="toInfo">
                                     <span class="d-block">{{ $invoice->client_name }}</span>
                                     <span class="d-block">{{ $invoice->client_email }}</span>
-                                    <span class="d-block">{{ $invoice->client_contact_number }}</span>
+                                    <span class="d-block">{{ $invoice->client_mobile_number }}</span>
                                 </div>
                             </div>
                         </div>
@@ -59,12 +59,18 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr v-for="(item,key) in invoice.data.items" :key="key" v-cloak>
-                                        <td data-label="Description">@{{ item.description }}</td>
-                                        <td data-label="Quantity" class="right aligned">@{{ item.quantity }}</td>
-                                        <td data-label="Price" class="right aligned">@{{ item.price_in_satoshi }}</td>
-                                        <td data-label="Amount" class="right aligned">12344</td>
-                                    </tr>
+                                    @if ($invoice->items->count())
+                                        @php ($amount = 0)
+                                        @foreach ($invoice->items as $item)
+                                            @php ($amount = $amount + ($item->quantity * $item->price_in_satoshi))
+                                            <tr>
+                                                <td data-label="Description">{{ $item->description }}</td>
+                                                <td data-label="Quantity" class="right aligned">{{ $item->quantity }}</td>
+                                                <td data-label="Price" class="right aligned">{{ format_number($item->priceInBtc) }}</td>
+                                                <td data-label="Amount" class="right aligned">{{ format_number(compute_amount($item->price_in_satoshi, $item->quantity)) }}</td>
+                                            </tr>
+                                        @endforeach
+                                    @endif
                                 </tbody>
                             </table>
                         </div>
@@ -77,11 +83,11 @@
                             <div class="invoice-summary">
                                 <div class="invoice-summary__row">
                                     <div><span>Subtotal</span></div>
-                                    <div><strong>123456</strong></div>
+                                    <div><strong>{{ format_number(to_btc((string)$amount)) }}</strong></div>
                                 </div>
                                 <div class="invoice-summary__row invoice-summary__total">
                                     <div><span>Total</span></div>
-                                    <div><strong>123456</strong></div>
+                                    <div><strong>{{ format_number(to_btc((string)$amount)) }}</strong></div>
                                 </div>
                             </div>
                         </div>

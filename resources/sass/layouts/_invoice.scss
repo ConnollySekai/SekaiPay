@@ -3,6 +3,22 @@
     @extend .py-2;
 }
 
+.invoice-view__calling-code {
+    max-width: 100px;
+}
+
+.invoice-items__quantity {
+    width: 100px;
+}
+
+.invoice-items__price {
+    width: 200px;
+}
+
+.invoice-items__amount {
+    min-width: 140px;
+}
+
 .invoice-item__amount {
     display: flex;
     justify-content: flex-end;

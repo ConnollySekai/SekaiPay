@@ -5,7 +5,7 @@
                 <div class="field text-left">
                     <label for="btcInput">From</label>
                     <div class="ui right action input">
-                        <input type="text" id="btcInput" v-model="btcInput" v-input-filter="options">
+                        <imask-input id="btcInput" v-model="btcInput" :mask="/^(\d+)?([.]?\d{0,8})$/"/>
                         <div class="ui basic floating dropdown button from">
                             <div class="text">BTC</div>
                         </div>
@@ -37,13 +37,17 @@
     </div>
 </template>
 <script>
-    import inputFilter from 'vue-input-filter';
+
+    import {IMaskComponent} from 'vue-imask';
 
     import Bigjs from 'big.js';
 
     import filterOptions from './../filterOptions';
 
     export default {
+        components: {
+            'imask-input': IMaskComponent
+        },
         computed: {
             rate() {
                 return `${this.toValue} ${this.ticker}`;

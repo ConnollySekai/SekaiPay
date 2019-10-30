@@ -17,11 +17,11 @@
   
 .ui.dropdown:not(.button) > .default.text,
 .ui.default.dropdown:not(.button) > .text {
-    color: green;
+    color: map-get($colors, 'grey-2');
 }
 .ui.dropdown:not(.button) > input:focus ~ .default.text,
 .ui.default.dropdown:not(.button) > input:focus ~ .text {
-    color: green;
+    color: map-get($colors, 'grey-2');
 }
   
 /* Selected Item */

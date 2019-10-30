@@ -4,7 +4,7 @@
 
 @section('content')
 
-<form action="{{ route('invoice.store') }}" method="post" class="ui form" ref="form" @submit.prevent="handleSubmit()" v-cloak>
+<form action="{{ route('invoice.store') }}" method="post" class="ui form" ref="form" @submit.prevent="handleSubmit()" @keydown="form.errors.clear($event.target.name)" v-cloak>
     <div class="ui container vertically padded grid">
         <div class="row centered pt-0">
             <div class="sixteen wide mobile sixteen wide tablet twelve wide computer column">
@@ -30,10 +30,14 @@
                                     <input type="text" id="businessEmail" name="business_email" placeholder="youremail@example.com" v-model="form.business_email">
                                     <div v-if="form.errors.has('business_email')" class="ui mini basic negative pointing prompt label visible">@{{ form.errors.first('business_email') }}</div>
                                 </div>
-                                <div class="field" :class="form.errors.has('business_mobile_number') ? 'error':''">
+                                <div class="field" :class="(form.errors.has('business_calling_code') || form.errors.has('business_mobile_number')) ? 'error':''">
                                     <label for="businessMobileNumber">Mobile Number <small>(Optional)</small></label>
-                                    <input type="text" id="businessMobileNumber" name="business_contact_number" placeholder="+12025550111"  v-model="form.business_mobile_number">
+                                    <div class="d-flex">
+                                        <div class="invoice-view__calling-code mr-1"><imask-input v-model="form.business_calling_code" placeholder="+1" name="business_calling_code" :mask="'+num'" :blocks="{ num: { mask: Number}}" :lazy="true" /></div>
+                                        <imask-input v-model="form.business_mobile_number" placeholder="202-555-111" name="business_mobile_number" :mask="/^[+]?\d*/"/>
+                                    </div>
                                     <div v-if="form.errors.has('business_mobile_number')" class="ui mini basic negative pointing prompt label visible">@{{ form.errors.first('business_mobile_number') }}</div>
+                                    <div v-if="form.errors.has('business_calling_code')" class="ui mini basic negative pointing prompt label visible">@{{ form.errors.first('business_calling_code') }}</div>
                                 </div>
                                 <div class="field" :class="form.errors.has('btc_address') ? 'error':''">
                                     <label for="btcAddress">BTC Address</label>
@@ -56,10 +60,14 @@
                                     <input type="text" id="clientEmail" name="client_email" placeholder="clientemail@example.com"  v-model="form.client_email">
                                     <div v-if="form.errors.has('client_email')" class="ui mini basic negative pointing prompt label visible">@{{ form.errors.first('client_email') }}</div>
                                 </div>
-                                <div class="field" :class="form.errors.has('client_mobile_number') ? 'error':''">
+                                <div class="field" :class="(form.errors.has('client_calling_code') || form.errors.has('client_mobile_number')) ? 'error':''">
                                     <label for="clientMobileNumber">Mobile Number <small>(Optional)</small></label>
-                                    <input type="text" name="client_mobile_number" placeholder="Contact Number (optional) " v-model="form.client_mobile_number">
+                                    <div class="d-flex">
+                                        <div class="invoice-view__calling-code mr-1"><imask-input v-model="form.client_calling_code" placeholder="+1" name="client_calling_code" :mask="'+num'" :blocks="{ num: { mask: Number}}" :lazy="true"/></div>
+                                        <imask-input v-model="form.client_mobile_number" placeholder="202-555-111" name="client_mobile_number" :mask="/^(\d+[-]{0,1})*$/"/>
+                                    </div>
                                     <div v-if="form.errors.has('client_mobile_number')" class="ui mini basic negative pointing prompt label visible">@{{ form.errors.first('client_mobile_number') }}</div>
+                                    <div v-if="form.errors.has('client_calling_code')" class="ui mini basic negative pointing prompt label visible">@{{ form.errors.first('client_calling_code') }}</div>     
                                 </div>
                             </div>
                         </div>
@@ -68,30 +76,30 @@
                     <div class="ui column grid">
                         <div class="row">
                             <div class="sixteen wide column">
-                                <table class="ui basic table table-primary table__borderless mt-h">
+                                <table class="invoice-items ui basic table table-primary table__borderless mt-h">
                                     <thead>
                                         <tr>
                                             <th>Description</th>
-                                            <th class="right aligned">Quantity</th>
-                                            <th class="right aligned">Price</th>
-                                            <th class="right aligned">Amount</th>
+                                            <th class="invoice-items__quantity right aligned">Quantity</th>
+                                            <th class="invoice-items__price right aligned">Price</th>
+                                            <th class="invoice-items__amount right aligned">Amount</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr class="invoice-item" v-for="(item,key) in form.items" :key="key">
+                                        <tr class="invoice-item" v-for="(item,key) in form.items" :key="`item-${key}`">
                                             <td data-label="Description">
-                                                <div class="field">
-                                                    <input type="text" v-model="item.description">
+                                                <div class="field mb-0" :class="form.errors.has(`items.${key}.description`) ? 'error':''">
+                                                    <input type="text" v-model="form.items[key].description" :name="`items.${key}.description`">
                                                 </div>
                                             </td>
                                             <td data-label="Quantity" class="right aligned">
-                                                <div class="field">
-                                                    <input class="text-right" type="text"  @change="updateAmount(key,'quantity',$event)" v-input-filter:number>
+                                                <div class="field mb-0" :class="form.errors.has(`items.${key}.quantity`) ? 'error':''">
+                                                    <imask-input class="text-right" :name="`items.${key}.quantity`" v-model="form.items[key].quantity" :mask="Number" @change="updateAmount(key)"/>
                                                 </div>
                                             </td>
                                             <td data-label="Price" class="right aligned">
-                                                <div class="field">
-                                                    <input class="text-right" type="text" @change="updateAmount(key,'price',$event)" v-input-filter="options.btc">
+                                                <div class="field mb-0" :class="form.errors.has(`items.${key}.price_in_satoshi`) ? 'error':''">
+                                                    <imask-input class="text-right" :name="`items.${key}.price_in_satoshi`" v-model="form.items[key].price" :mask="/^(\d+)?([.]?\d{0,8})$/" @change="updateAmount(key)"/>
                                                 </div>
                                             </td>
                                             <td v-cloak data-label="Amount" class="right aligned"><div class="invoice-item__amount">@{{ item.amount }} <i class="times icon invoice-item__delete-btn" @click="deleteItem(key)" v-show="form.items.length != 1"></i></div></td>
