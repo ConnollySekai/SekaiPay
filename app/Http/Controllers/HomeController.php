@@ -12,7 +12,6 @@ class HomeController extends Controller
      *
      * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
-     * @return 
      */
     public function index(Request $request)
     {

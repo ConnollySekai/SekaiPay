@@ -4,7 +4,7 @@
             <div class="notification__message-icon mr-h">
                 <i class="check circle outline icon"></i>
             </div>
-            <div class="notification__message-text"><strong>{{ request('contract_id') }}</strong> found</div>
+            <div class="notification__message-text"><strong class="break-word">{{ request('contract_id') }}</strong> found</div>
         @else 
             <div class="notification__message-icon mr-h">
                 <i class="times circle outline icon"></i>

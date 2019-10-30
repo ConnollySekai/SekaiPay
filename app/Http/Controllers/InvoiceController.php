@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use DB;
+use PDF;
 use App\Invoice;
 use App\InvoiceItem;
 use Illuminate\Http\Request;
@@ -13,16 +14,16 @@ class InvoiceController extends Controller
     /**
      * Creates a new invoice
      *
-     * @param Illuminate\Http\Request;
+     * @param \Illuminate\Http\Request $request;
      */
     public function store(InvoiceRequest $request)
     {
 
         $invoice = DB::transaction(function() use($request) {
 
-            $business_mobile_number = ($request->input('business_calling_code') && $request->input('business_mobile_number')) ? $request->input('business_calling_code')." ".$request->input('business_mobile_number'): null;
+            $business_mobile_number = ($request->input('business_calling_code') && $request->input('business_mobile_number')) ? $request->input('business_calling_code')." ".trim_mobile_number($request->input('business_mobile_number')): null;
 
-            $client_mobile_number = ($request->input('client_calling_code') && $request->input('client_mobile_number')) ? $request->input('client_calling_code')." ".$request->input('client_mobile_number'): null;
+            $client_mobile_number = ($request->input('client_calling_code') && $request->input('client_mobile_number')) ? $request->input('client_calling_code')." ".trim_mobile_number($request->input('client_mobile_number')): null;
 
             $created = Invoice::create([
                 'contract_id' => md5(uniqid(rand(), true)),
@@ -62,8 +63,9 @@ class InvoiceController extends Controller
     /**
      * Display Invoice 
      *
-     * @param 
-     * @return 
+     * @param \Illuminate\Http\Request
+     * @param \App\Invoice $invoice
+     * @return \Illuminate\Http\Response 
      */
     public function show(Request $request, Invoice $invoice)
     {
@@ -73,21 +75,20 @@ class InvoiceController extends Controller
     }
 
     /**
-     * Get invoice data
+     * Download pdf
      *
-     * @return 
+     * @param \Illuminate\Http\Request
+     * @param \App\Invoice $invoice
+     * @return \Illuminate\Http\Response 
      */
-    public function getData(Request $request)
+    public function downloadPDF(Request $request, Invoice $invoice)
     {
-        $contract_id = $request->input('contract_id');
+        $pdf = PDF::loadView('pdf', ['invoice' => $invoice]);
 
-        $invoice = Invoice::with('items')
-                    ->where('contract_id',$contract_id)
-                    ->first();
+        return $pdf->download('invoice.pdf');
 
-        return response()->json([
-            'message' => 'success',
-            'invoice' => $invoice
-        ]);
+       //return $pdf->stream();
+
+       //return view('pdf')->with(['invoice' => $invoice]);
     }
 }

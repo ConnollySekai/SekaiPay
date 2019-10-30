@@ -60,3 +60,17 @@ if (!function_exists('format_number')) {
         return preg_replace('/(\.?0+)$/', '', (string)$number);
     }
 }
+
+if (!function_exists('trim_mobile_number')) {
+
+    /**
+     * Removes training dash in the mobile number 
+     *
+     * @param $mobile_number
+     * @return string
+     */
+    function trim_mobile_number($mobile_number) 
+    {
+        return rtrim($mobile_number,'-');
+    }
+}

@@ -67,7 +67,7 @@
                                                 <td data-label="Description">{{ $item->description }}</td>
                                                 <td data-label="Quantity" class="right aligned">{{ $item->quantity }}</td>
                                                 <td data-label="Price" class="right aligned">{{ format_number($item->priceInBtc) }}</td>
-                                                <td data-label="Amount" class="right aligned">{{ format_number(compute_amount($item->price_in_satoshi, $item->quantity)) }}</td>
+                                                <td data-label="Amount" class="right aligned">{{ format_number(compute_amount($item->price_in_satoshi, $item->quantity)) }}{{ $item->price_in_satoshi * 1}}</td>
                                             </tr>
                                         @endforeach
                                     @endif
@@ -82,7 +82,7 @@
                         <div class="sixteen wide mobile eight width tablet eight wide computer column">
                             <div class="invoice-summary">
                                 <div class="invoice-summary__row">
-                                    <div><span>Subtotal</span></div>
+                                    <div><span>Subtotal</span></div>{{ number_format($amount, 0, '', '') }}
                                     <div><strong>{{ format_number(to_btc((string)$amount)) }}</strong></div>
                                 </div>
                                 <div class="invoice-summary__row invoice-summary__total">
@@ -101,12 +101,14 @@
                                 <label for="">BTC Address</label>
                                 <a href="https://chain.so/address/BTC/{{ $invoice->btc_address }}" target="_blank" class="d-block break-word" rel="noreferrer">{{ $invoice->btc_address }}</a>
                                 <canvas id="qrCanvas"></canvas>
-                                <input id="btcAddress" type="hidden" value="{{ $invoice->btc_address }}">
+                                <input ref="btcAddress" type="hidden" value="{{ $invoice->btc_address }}">
                             </div>
                         </div>
                         <div class="sixteen wide mobile eight width tablet eight wide computer column">
-                            <label for="notes">Notes</label>
-                            <p>{{ $invoice->notes }}</p>
+                            @if ($invoice->notes)
+                                <label for="notes">Notes</label>
+                                <p>{{ $invoice->notes }}</p>
+                            @endif
                         </div>
                     </div>
                 </div>
@@ -116,10 +118,11 @@
     <div class="row centered">
         <div class="sixteen wide mobile sixteen wide tablet twelve wide computer column">
             <div class="ui item invoice-actions">
-                <button class="ui tiny negative button button--rounded"><i class="file pdf outline icon"></i> Download PDF</button>
+                <a href="{{ route('invoice.downloadPDF',['invoice' => $invoice]) }}" class="ui tiny negative button button--rounded"><i class="file pdf outline icon"></i> Download PDF</a>
             </div>
         </div>
     </div>
 </div>
-
 @endsection
+
+@section('page', 'invoice_view')

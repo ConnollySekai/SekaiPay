@@ -1,5 +1,5 @@
 <template>
-    <div class="converter raise rounded px-2 py-3 text-center">
+    <div id="converter" class="converter raise rounded px-2 py-3 text-center">
         <div class="ui form">
             <div class="two fields">
                 <div class="field text-left">
@@ -42,8 +42,6 @@
 
     import Bigjs from 'big.js';
 
-    import filterOptions from './../filterOptions';
-
     export default {
         components: {
             'imask-input': IMaskComponent
@@ -62,7 +60,6 @@
                 resultInput:'',
                 selection: ['USD','EUR','GBP','JPY','AUD','CAD'],
                 url: 'https://api.coinbase.com/v2/prices/spot?currency=',
-                options: filterOptions.getOption('btc'),
                 loading: false,
                 btnText: 'Convert'
             }

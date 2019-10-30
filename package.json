@@ -30,6 +30,7 @@
         "big.js": "^5.2.2",
         "form-backend-validation": "^2.3.9",
         "satoshi-bitcoin": "^1.0.4",
+        "smooth-scroll": "^16.1.0",
         "vue-imask": "^5.2.1"
     }
 }

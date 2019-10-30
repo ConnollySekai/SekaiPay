@@ -18,3 +18,5 @@ Route::get('/invoice/{invoice}','InvoiceController@show')->name('invoice.show');
 Route::get('/invoice/get/data', 'InvoiceController@getData')->name('invoice.getData');
 
 Route::post('/invoice/store','InvoiceController@store')->name('invoice.store');
+
+Route::get('/invoice/download/pdf/{invoice}','InvoiceController@downloadPDF')->name('invoice.downloadPDF');

@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Invoice;
+use App\Observers\InvoiceObserver;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\ServiceProvider;
 
@@ -24,6 +26,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        Invoice::observe(InvoiceObserver::class);
     }
 }
