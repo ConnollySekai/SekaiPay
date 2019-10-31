@@ -41,8 +41,8 @@ if (!function_exists('compute_amount')) {
      */
     function compute_amount($price, $quantity)
     {
-        $amount = $price * $quantity;
-
+        $amount = bcmul((string)$price, (string)$quantity, 8);
+      //  return $amount/ 1e8;
         return to_btc($amount);
     }
 }
@@ -57,7 +57,7 @@ if (!function_exists('format_number')) {
      */
     function format_number($number)
     {
-        return preg_replace('/(\.?0+)$/', '', (string)$number);
+        return preg_replace('/(\.{1}0+)$/', '', (string)$number);
     }
 }
 

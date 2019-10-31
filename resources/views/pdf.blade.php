@@ -18,8 +18,6 @@
                 line-height: 1.45;
             }
 
-            p {margin-bottom: 1.25em;}
-
             h1, h2, h3, h4, h5 {
                 margin: 2.75rem 0 1rem;
                 font-weight: 800;
@@ -30,6 +28,11 @@
                 display: block;
                 font-weight: 800;
                 margin-bottom: 0.5rem;
+            }
+
+            table {
+                border-collapse: collapse;
+                width: 100%;
             }
 
             .block {
@@ -70,13 +73,11 @@
                 text-align: right;
             }
 
-            .invoice__items,
-            .invoice__summary {
-                border-collapse: collapse;
+            .mt {
                 margin-top: 20px;
-                width: 100%;
             }
 
+        
             .invoice__items thead {
                 background-color: #5EBAF2;
                 color: #ffffff;
@@ -95,10 +96,6 @@
                 padding: 0.78571429em 0.78571429em;
             }
 
-            .invoice__footer {
-                margin-top: 20px;
-            }
-
             .invoice__footer a {
                 color: #0597F2;
                 text-decoration: none;
@@ -108,6 +105,7 @@
     </head>
     <body>
         <div id="app" class="wrapper">
+            
             <div class="invoice">
                 <div class="invoice__head">
                     <div class="invoice__title"><h2>Invoice</h2></div>
@@ -119,7 +117,7 @@
                             </div>
                             <div class="column half">
                                 <label>Invoice Date</label>
-                                <span>{{ $invoice->created_at }}</span>
+                                <span>{{ $invoice->created_at->format('m-d-Y') }}</span>
                             </div>
                         </div>
                         <div class="row">
@@ -139,7 +137,7 @@
                     </div>
                 </div>
                 <div class="divider"></div>
-                <div class="invoice__body">
+                <div class="invoice__body mt">
                     <table class="invoice__items">
                         <thead>
                             <tr>
@@ -153,7 +151,7 @@
                             @if ($invoice->items->count())
                                 @php ($amount = 0)
                                 @foreach ($invoice->items as $item)
-                                    @php ($amount = $amount + ($item->quantity * $item->price_in_satoshi))
+                                    @php ($amount = bcadd($amount,bcmul($item->quantity,$item->price_in_satoshi)))
                                     <tr>
                                         <td>{{ $item->description }}</td>
                                         <td class="text-right">{{ $item->quantity }}</td>
@@ -164,29 +162,31 @@
                             @endif
                         </tbody>
                     </table>
-                    <div class="row">
-                        <div class="column half"></div>
-                        <div class="column half">
-                            <table class="invoice__summary">
-                                <tr>
-                                    <td>Subtotal</td>
-                                    <td class="text-right"><strong>{{ format_number(to_btc((string)$amount)) }}</strong></td>
-                                </tr>
-                                <tr style="background-color:#E0E1E2">
-                                    <td>Total</td>
-                                    <td class="text-right"><strong>{{ format_number(to_btc((string)$amount)) }}</strong></td>
-                                </tr>
-                            </table>
-                        </div>
-                    </div>
+                    <table>
+                        <tr>
+                            <td class="half"></td>
+                            <td class="half">
+                                <table class="invoice__summary">
+                                    <tr>
+                                        <td>Subtotal</td>
+                                        <td class="text-right"><strong>{{ format_number(to_btc((string)$amount)) }}</strong></td>
+                                    </tr>
+                                    <tr style="background-color:#E0E1E2">
+                                        <td>Total</td>
+                                        <td class="text-right"><strong>{{ format_number(to_btc((string)$amount)) }}</strong></td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                    </table>
                 </div>
-                <div class="divider"></div>
-                <div class="invoice__footer">
+                <div class="divider mt"></div>
+                <div class="invoice__footer mt">
                     <div class="row">
                         <div class="column half">
                             <div class="text-center">
-                                <label for="">BTC Address</label>
-                                <a href="https://chain.so/address/BTC/{{ $invoice->btc_address }}" target="_blank" class="d-block break-word" rel="noreferrer">{{ $invoice->btc_address }}</a>
+                                <label>BTC Address</label>
+                                <a href="https://chain.so/address/BTC/{{ $invoice->btc_address }}" target="_blank" class="block" rel="noreferrer">{{ $invoice->btc_address }}</a>
                                 <img src="data:image/png;base64, {{ base64_encode(QrCode::format('png')->size(146)->generate($invoice->btc_address)) }} ">
                             </div>
                         </div>
@@ -200,5 +200,19 @@
                 </div>
             </div>
         </div>
+        <script type="text/php">
+            if (isset($pdf) && $PAGE_COUNT > 1) {
+                $x = (ceil($pdf->get_width()) / 2) - 20;
+                $y = ceil($pdf->get_height()) -35;
+                $text = "Page {PAGE_NUM}";
+                $font = null;
+                $size = 10;
+                $color = null;
+                $word_space = 0.0;  //  default
+                $char_space = 0.0;  //  default
+                $angle = 0.0;   //  default
+                $pdf->page_text($x, $y, $text, $font, $size, $color, $word_space, $char_space, $angle);
+            }
+        </script>
     </body> 
 </html>

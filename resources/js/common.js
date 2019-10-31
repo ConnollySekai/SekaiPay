@@ -1,7 +1,5 @@
 /* File that contains common functions that are used throughout the site */
 
-import QRCode from 'qrcode';
-
 import SmoothScroll from 'smooth-scroll';
 
 /* Hides notification when the close button is clicked */
@@ -63,16 +61,6 @@ export function toggleConverter() {
     });
 }
 
-/* Generates BTC QRCode */
-export function createQRCode(btcAddress) {
-
-    const canvas = document.getElementById('qrCanvas');
-
-    if (typeof btcAddress !== 'undefined' && typeof canvas !== 'undefined') {
-        QRCode.toCanvas(canvas, btcAddress,{ width:146 }, () => {});
-    }
-}
-
 /* Scroll to input with error */
 export function scrollToError(errors) {
     
@@ -82,5 +70,5 @@ export function scrollToError(errors) {
 
     const scrollAnchor = document.querySelector(`[data-scroll-anchor='${errorKeys[0]}']`);
 
-    scroll.animateScroll(scrollAnchor);
+    scroll.animateScroll(scrollAnchor,{},{updateURL:false});
 }   

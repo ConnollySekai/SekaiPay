@@ -1,12 +1,12 @@
-import {hideNotification, toggleSearchBar,toggleConverter, createQRCode} from './../common';
+import Converter from './../components/Converter';
+
+import {hideNotification, toggleSearchBar,toggleConverter} from './../common';
 
 export default {
-    
+    components: {
+        Converter,
+    },
     mounted() {
-
-        const btcAddress = this.$refs.btcAddress.value;
-
-        createQRCode(btcAddress);
    
         toggleConverter();
 

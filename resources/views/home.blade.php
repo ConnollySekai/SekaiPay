@@ -1,6 +1,6 @@
 @extends('layouts.page')
 
-@section('title', 'Home')
+@section('title', trans('translations.home'))
 
 @section('content')
 
@@ -15,60 +15,60 @@
                     <div class="ui column grid">
                         <div class="row">
                             <div class="column">
-                                <h2>Invoice</h2>
+                                <h2>{{ trans('translations.invoice') }}</h2>
                             </div>
                         </div>
                         <div class="row">
                             <div class="sixteen wide mobile eight width tablet eight wide computer column">
                                 <div class="field" :class="invoice.form.errors.has('business_name') ? 'error':''">
-                                    <label for="businessName">Business Name</label>
-                                    <input type="text" id="businessName" name="business_name" placeholder="Company XYZ" v-model="invoice.form.business_name" data-scroll-anchor="business_name">
+                                    <label for="businessName">{{ trans('translations.business_name') }}</label>
+                                    <input type="text" id="businessName" name="business_name" placeholder="{{ trans('translations.business_name_placeholder') }}" v-model="invoice.form.business_name" data-scroll-anchor="business_name">
                                     <div v-if="invoice.form.errors.has('business_name')" class="ui mini basic negative pointing prompt label visible">@{{ invoice.form.errors.first('business_name') }}</div>
                                 </div>
                                 <div class="field" :class="invoice.form.errors.has('business_email') ? 'error':''">
-                                    <label for="businessEmail">Business Email</label>
-                                    <input type="text" id="businessEmail" name="business_email" placeholder="youremail@example.com" v-model="invoice.form.business_email" data-scroll-anchor="business_email">
+                                    <label for="businessEmail">{{ trans('translations.business_email') }}</label>
+                                    <input type="text" id="businessEmail" name="business_email" placeholder="{{ trans('translations.business_email_placeholder') }}" v-model="invoice.form.business_email" data-scroll-anchor="business_email">
                                     <div v-if="invoice.form.errors.has('business_email')" class="ui mini basic negative pointing prompt label visible">@{{ invoice.form.errors.first('business_email') }}</div>
                                 </div>
                                 <div class="field" :class="(invoice.form.errors.has('business_calling_code') || invoice.form.errors.has('business_mobile_number')) ? 'error':''">
-                                    <label for="businessMobileNumber">Mobile Number <small>(Optional)</small></label>
+                                    <label for="businessMobileNumber">{{ trans('translations.mobile_number') }} <small>({{ trans('translations.optional') }})</small></label>
                                     <div class="d-flex">
                                         <div class="invoice-view__calling-code mr-1">
-                                            <imask-input v-model="invoice.form.business_calling_code" placeholder="+1" name="business_calling_code" :mask="'+num'" :blocks="{ num: { mask: Number}}" :lazy="true" data-scroll-anchor="business_calling_code" aria-label="Business Calling Code"/>
+                                            <imask-input v-model="invoice.form.business_calling_code" placeholder="{{ trans('translations.calling_code_placeholder') }}" name="business_calling_code" :mask="'+num'" :blocks="{ num: { mask: Number}}" :lazy="true" data-scroll-anchor="business_calling_code" aria-label="Business Calling Code"/>
                                         </div>
-                                        <imask-input id="businessMobileNumber" v-model="invoice.form.business_mobile_number" placeholder="202-555-111" name="business_mobile_number" :mask="/^(\d+[-]{0,1})*$/" data-scroll-anchor="business_mobile_number" />
+                                        <imask-input id="businessMobileNumber" v-model="invoice.form.business_mobile_number" placeholder="{{ trans('translations.mobile_number_placeholder') }}" name="business_mobile_number" :mask="/^(\d+[-]{0,1})*$/" data-scroll-anchor="business_mobile_number" />
                                     </div>
                                     <div v-if="invoice.form.errors.has('business_mobile_number')" class="ui mini basic negative pointing prompt label visible">@{{ invoice.form.errors.first('business_mobile_number') }}</div>
                                     <div v-if="invoice.form.errors.has('business_calling_code')" class="ui mini basic negative pointing prompt label visible">@{{ invoice.form.errors.first('business_calling_code') }}</div>
                                 </div>
                                 <div class="field" :class="invoice.form.errors.has('btc_address') ? 'error':''">
-                                    <label for="btcAddress">BTC Address</label>
-                                    <input type="text" id="btcAddress" name="btc_address" placeholder="1AoojGN94Uab8mT2LHDnbsuM4ojHnm85jA" v-model="invoice.form.btc_address" data-scroll-anchor="btc_address">
+                                    <label for="btcAddress">{{ trans('translations.btc_address') }}</label>
+                                    <input type="text" id="btcAddress" name="btc_address" placeholder="{{ trans('translations.btc_address_placeholder') }}" v-model="invoice.form.btc_address" data-scroll-anchor="btc_address">
                                     <div v-if="invoice.form.errors.has('btc_address')" class="ui mini basic negative pointing prompt label visible">@{{ invoice.form.errors.first('btc_address') }}</div>
                                 </div>
                                 <div class="field">
-                                    <label for="btcAddressConfirmation">Confirm BTC Address</label>
-                                    <input type="text" id="btcAddressConfirmation" name="btc_address_confirmation" placeholder="1AoojGN94Uab8mT2LHDnbsuM4ojHnm85jA" v-model="invoice.form.btc_address_confirmation">
+                                    <label for="btcAddressConfirmation">{{ trans('translations.confirm_btc_address') }}</label>
+                                    <input type="text" id="btcAddressConfirmation" name="btc_address_confirmation" placeholder="{{ trans('translations.btc_address_placeholder') }}" v-model="invoice.form.btc_address_confirmation">
                                 </div>
                             </div>
                             <div class="sixteen wide mobile eight width tablet eight wide computer column">
                                 <div class="field" :class="invoice.form.errors.has('client_name') ? 'error':''">
-                                    <label for="clientName">Client Name</label>
-                                    <input type="text" id="clientName" name="client_name" placeholder="John Doe" v-model="invoice.form.client_name" data-scroll-anchor="client_name">
+                                    <label for="clientName">{{ trans('translations.client_name') }}</label>
+                                    <input type="text" id="clientName" name="client_name" placeholder="{{ trans('translations.client_name_placeholder') }}" v-model="invoice.form.client_name" data-scroll-anchor="client_name">
                                     <div v-if="invoice.form.errors.has('client_name')" class="ui mini basic negative pointing prompt label visible">@{{ invoice.form.errors.first('client_name') }}</div>
                                 </div>
                                 <div class="field" :class="invoice.form.errors.has('client_email') ? 'error':''">
-                                    <label for="clientEmail">Client Email</label>
-                                    <input type="text" id="clientEmail" name="client_email" placeholder="clientemail@example.com"  v-model="invoice.form.client_email" data-scroll-anchor="client_email">
+                                    <label for="clientEmail">{{ trans('translations.client_email') }}</label>
+                                    <input type="text" id="clientEmail" name="client_email" placeholder="{{ trans('translations.client_email_placeholder') }}"  v-model="invoice.form.client_email" data-scroll-anchor="client_email">
                                     <div v-if="invoice.form.errors.has('client_email')" class="ui mini basic negative pointing prompt label visible">@{{ invoice.form.errors.first('client_email') }}</div>
                                 </div>
                                 <div class="field" :class="(invoice.form.errors.has('client_calling_code') || invoice.form.errors.has('client_mobile_number')) ? 'error':''">
-                                    <label for="clientMobileNumber">Mobile Number <small>(Optional)</small></label>
+                                    <label for="clientMobileNumber">{{ trans('translations.mobile_number') }} <small>({{ trans('translations.optional') }})</small></label>
                                     <div class="d-flex">
                                         <div class="invoice-view__calling-code mr-1">
-                                            <imask-input v-model="invoice.form.client_calling_code" placeholder="+1" name="client_calling_code" :mask="'+num'" :blocks="{ num: { mask: Number}}" :lazy="true" data-scroll-anchor="client_calling_code" aria-label="Client Calling Code"/>
+                                            <imask-input v-model="invoice.form.client_calling_code" placeholder="{{ trans('translations.calling_code_placeholder') }}" name="client_calling_code" :mask="'+num'" :blocks="{ num: { mask: Number}}" :lazy="true" data-scroll-anchor="client_calling_code" aria-label="Client Calling Code"/>
                                         </div>
-                                        <imask-input id="clientMobileNumber" v-model="invoice.form.client_mobile_number" placeholder="202-555-111" name="client_mobile_number" :mask="/^(\d+[-]{0,1})*$/" data-scroll-anchor="client_mobile_number"/>
+                                        <imask-input id="clientMobileNumber" v-model="invoice.form.client_mobile_number" placeholder="{{ trans('translations.mobile_number_placeholder') }}" name="client_mobile_number" :mask="/^(\d+[-]{0,1})*$/" data-scroll-anchor="client_mobile_number"/>
                                     </div>
                                     <div v-if="invoice.form.errors.has('client_mobile_number')" class="ui mini basic negative pointing prompt label visible">@{{ invoice.form.errors.first('client_mobile_number') }}</div>
                                     <div v-if="invoice.form.errors.has('client_calling_code')" class="ui mini basic negative pointing prompt label visible">@{{ invoice.form.errors.first('client_calling_code') }}</div>     
@@ -83,10 +83,10 @@
                                 <table class="invoice-items ui basic table table-primary table__borderless mt-h">
                                     <thead>
                                         <tr>
-                                            <th>Description</th>
-                                            <th class="invoice-items__quantity right aligned">Quantity</th>
-                                            <th class="invoice-items__price right aligned">Price</th>
-                                            <th class="invoice-items__amount right aligned">Amount</th>
+                                            <th>{{ trans('translations.description') }}</th>
+                                            <th class="invoice-items__quantity right aligned">{{ trans('translations.quantity') }}</th>
+                                            <th class="invoice-items__price right aligned">{{ trans('translations.price') }}</th>
+                                            <th class="invoice-items__amount right aligned">{{ trans('translations.amount') }}</th>
                                         </tr>
                                     </thead>
                                     <tbody>

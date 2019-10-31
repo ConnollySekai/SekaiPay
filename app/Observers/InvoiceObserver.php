@@ -2,10 +2,10 @@
 
 namespace App\Observers;
 
-use stdClass;
 use App\Invoice;
-use App\Notifications\NofityUser;
-use Illuminate\Support\Facades\Notification;
+use App\Mail\NotifyUser;
+use App\Mail\NotifyClient;
+use Illuminate\Support\Facades\Mail;
 
 class InvoiceObserver
 {
@@ -17,15 +17,19 @@ class InvoiceObserver
      */
     public function created(Invoice $invoice)
     {
+        $business_email = $invoice->business_email;
 
-        /* $user = new stdClass();
+        $client_email = $invoice->client_email;
 
-        $user->email = $invoice->business_email;
+        /* Send Email to User */
+        Mail::to($business_email)
+            ->locale(\App::getLocale())
+            ->send(new NotifyUser($invoice));
 
-        $client = new stdClass();
-
-        $client->email = $invoice->client_email;
-
-        Notification::locale(\App::getLocale())->send($user, new NofityUser()); */
+        /* Send Email to Client */
+        Mail::to($client_email)
+            ->locale(\App::getLocale())
+            ->send(new NotifyClient($invoice));
+        
     }
 }

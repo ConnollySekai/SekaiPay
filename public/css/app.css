@@ -25038,6 +25038,25 @@ i.flag:not(.icon):before {
   border-radius: 40px !important;
 }
 
+a.ui.button.primary,
+a.ui.button.secondary,
+a.ui.button.positive,
+a.ui.button.negative {
+  color: #ffffff !important;
+}
+a.ui.button.primary:hover, a.ui.button.primary:focus, a.ui.button.primary:visited,
+a.ui.button.secondary:hover,
+a.ui.button.secondary:focus,
+a.ui.button.secondary:visited,
+a.ui.button.positive:hover,
+a.ui.button.positive:focus,
+a.ui.button.positive:visited,
+a.ui.button.negative:hover,
+a.ui.button.negative:focus,
+a.ui.button.negative:visited {
+  color: #ffffff !important;
+}
+
 /* Divider */
 .ui.divider:not(.vertical):not(.horizontal) {
   border-top: 1px solid #E0E1E2;

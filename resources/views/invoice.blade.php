@@ -32,7 +32,7 @@
                         <div class="sixteen wide mobile eight width tablet eight wide computer column">
                             <div class="mb-1">
                                 <label for="invoiceDate">Invoice Date</label>
-                                <span id="invoiceDate">10-21-18</span>
+                                <span id="invoiceDate">{{ $invoice->created_at->format('m-d-Y') }}</span>
                             </div>
                             <div class="mb-h">
                                 <label for="toInfo">To</label>
@@ -62,12 +62,12 @@
                                     @if ($invoice->items->count())
                                         @php ($amount = 0)
                                         @foreach ($invoice->items as $item)
-                                            @php ($amount = $amount + ($item->quantity * $item->price_in_satoshi))
+                                            @php ($amount = bcadd($amount,bcmul($item->quantity,$item->price_in_satoshi)))
                                             <tr>
                                                 <td data-label="Description">{{ $item->description }}</td>
                                                 <td data-label="Quantity" class="right aligned">{{ $item->quantity }}</td>
                                                 <td data-label="Price" class="right aligned">{{ format_number($item->priceInBtc) }}</td>
-                                                <td data-label="Amount" class="right aligned">{{ format_number(compute_amount($item->price_in_satoshi, $item->quantity)) }}{{ $item->price_in_satoshi * 1}}</td>
+                                                <td data-label="Amount" class="right aligned">{{ format_number(compute_amount($item->price_in_satoshi, $item->quantity)) }}</td>
                                             </tr>
                                         @endforeach
                                     @endif
@@ -82,7 +82,7 @@
                         <div class="sixteen wide mobile eight width tablet eight wide computer column">
                             <div class="invoice-summary">
                                 <div class="invoice-summary__row">
-                                    <div><span>Subtotal</span></div>{{ number_format($amount, 0, '', '') }}
+                                    <div><span>Subtotal</span></div>
                                     <div><strong>{{ format_number(to_btc((string)$amount)) }}</strong></div>
                                 </div>
                                 <div class="invoice-summary__row invoice-summary__total">
@@ -100,8 +100,7 @@
                             <div class="text-center">
                                 <label for="">BTC Address</label>
                                 <a href="https://chain.so/address/BTC/{{ $invoice->btc_address }}" target="_blank" class="d-block break-word" rel="noreferrer">{{ $invoice->btc_address }}</a>
-                                <canvas id="qrCanvas"></canvas>
-                                <input ref="btcAddress" type="hidden" value="{{ $invoice->btc_address }}">
+                                <img src="data:image/png;base64, {{ base64_encode(QrCode::format('png')->size(146)->generate($invoice->btc_address)) }} ">
                             </div>
                         </div>
                         <div class="sixteen wide mobile eight width tablet eight wide computer column">
@@ -115,9 +114,15 @@
             </div>
         </div>
     </div>
+    <div class="row centered py-0">
+        <div class="sixteen wide mobile sixteen wide tablet twelve wide computer column">
+            <converter class="my-2"></converter>
+        </div>
+    </div>
     <div class="row centered">
         <div class="sixteen wide mobile sixteen wide tablet twelve wide computer column">
             <div class="ui item invoice-actions">
+                <button type="button" id="converterBtn" class="ui small primary button button--rounded mr-1"><i class="calculator icon"></i> <span>Show Converter</span></button>
                 <a href="{{ route('invoice.downloadPDF',['invoice' => $invoice]) }}" class="ui tiny negative button button--rounded"><i class="file pdf outline icon"></i> Download PDF</a>
             </div>
         </div>

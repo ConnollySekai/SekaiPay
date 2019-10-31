@@ -83,12 +83,13 @@ class InvoiceController extends Controller
      */
     public function downloadPDF(Request $request, Invoice $invoice)
     {
-        $pdf = PDF::loadView('pdf', ['invoice' => $invoice]);
 
-        return $pdf->download('invoice.pdf');
+       $pdf = \App::make('dompdf.wrapper');
 
-       //return $pdf->stream();
+       $pdf->getDomPDF()->set_option("enable_php", true);
 
-       //return view('pdf')->with(['invoice' => $invoice]);
+       $pdf->loadView('pdf',['invoice' => $invoice]);
+
+       return $pdf->download($invoice->contract_id.'.pdf');
     }
 }

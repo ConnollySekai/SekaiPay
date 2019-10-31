@@ -335,5 +335,18 @@
 /* Custom */
 .ui.button.button--rounded {
     border-radius: 40px !important;
-} 
+}
+
+a.ui.button.primary,
+a.ui.button.secondary,
+a.ui.button.positive,
+a.ui.button.negative {
+    color: #ffffff !important;
+
+    &:hover,
+    &:focus,
+    &:visited {
+        color: #ffffff !important;
+    }
+}
   
