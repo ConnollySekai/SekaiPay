@@ -31,7 +31,7 @@ class NotifyUser extends Mailable implements ShouldQueue
      */
     public function build()
     {
-        return $this->subject('Invoice Created')
+        return $this->subject(trans('translations.invoice_created'))
                 ->view('mail.notifyUser');
     }
 }
