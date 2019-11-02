@@ -30,7 +30,7 @@ Front-end assets are compiled by Laravel mix.
 
 #### Javascript
 - app.js is compiled into app.js inside public/js folder.
-- all global js are inside page-scripts.js which is initialized inside app.js
+- all global js are inside common.js which is initialized inside app.js
 - local and specific js can be included inside blade files themselves. 3rd party library can be included in page-script-before section and local script can be included in page-script-after section
 
 #### Compiling Style and Scripts
