@@ -176,27 +176,27 @@
                   </tr>
                   <tr>
                     <td align="left" style="font-size:0px;padding:10px 25px;word-break:break-word;">
-                      <div style="font-family:Roboto;font-size:16px;line-height:1;text-align:left;color:#6C6C6C;"> Hi, </div>
+                      <div style="font-family:Roboto;font-size:16px;line-height:1;text-align:left;color:#6C6C6C;"> {{ trans('translations.mail_opening') }}, </div>
                     </td>
                   </tr>
                   <tr>
                     <td align="left" style="font-size:0px;padding:10px 25px;word-break:break-word;">
-                      <div style="font-family:Roboto;font-size:16px;line-height:1.4;text-align:left;color:#6C6C6C;">An Invoice was created by {{ $invoice->business_name }} with the contract ID of <strong>{{ $invoice->contract_id }}</strong> for your recent transaction. </div>
+                      <div style="font-family:Roboto;font-size:16px;line-height:1.4;text-align:left;color:#6C6C6C;">{!! trans('translations.mail_client_line_1',['business_name' => $invoice->business_name, 'contract_id' => $invoice->contract_id]) !!}</div>
                     </td>
                   </tr>
                   <tr>
                     <td align="left" style="font-size:0px;padding:10px 25px;word-break:break-word;">
-                      <div style="font-family:Roboto;font-size:16px;line-height:1.4;text-align:left;color:#6C6C6C;">You can view the invoice in this link <a href="{{ route('invoice.show',['invoice' => $invoice]) }}" class="link" style="color: #0597F2;">{{ route('invoice.show',['invoice' => $invoice]) }}</a>. Please contact {{ $invoice->business_email }} if the invoice is incorrect.</div>
+                      <div style="font-family:Roboto;font-size:16px;line-height:1.4;text-align:left;color:#6C6C6C;">{!! trans('translations.mail_client_line_2',['invoice_link' => route('invoice.show',['invoice' => $invoice]), 'business_email' => $invoice->business_email]) !!}</div>
                     </td>
                   </tr>
                   <tr>
                     <td align="left" style="font-size:0px;padding:10px 25px;word-break:break-word;">
-                      <div style="font-family:Roboto;font-size:16px;line-height:1.4;text-align:left;color:#6C6C6C;">Please verify if the btc address is valid before sending payment. <br> <a href="https://chain.so/address/BTC/{{ $invoice->btc_address }}" target="_blank" class="link" style="color: #0597F2;" rel="noreferrer">{{ $invoice->btc_address }}</a></div>
+                      <div style="font-family:Roboto;font-size:16px;line-height:1.4;text-align:left;color:#6C6C6C;">{!! trans('translations.mail_client_line_3',['btc_address' => $invoice->btc_address]) !!}</div>
                     </td>
                   </tr>
                   <tr>
                     <td align="left" style="font-size:0px;padding:10px 25px;word-break:break-word;">
-                      <div style="font-family:Roboto;font-size:16px;line-height:1.4;text-align:left;color:#6C6C6C;"> Thank you for using our services. </div>
+                      <div style="font-family:Roboto;font-size:16px;line-height:1.4;text-align:left;color:#6C6C6C;"> {{ trans('translations.mail_closing') }} </div>
                     </td>
                   </tr>
                   <tr>
@@ -216,7 +216,7 @@
                   </tr>
                   <tr>
                     <td align="left" style="font-size:0px;padding:10px 25px;word-break:break-word;">
-                      <div style="font-family:Roboto;font-size:16px;line-height:1.4;text-align:left;color:#6C6C6C;"> Regards, <br>Sekaipay </div>
+                      <div style="font-family:Roboto;font-size:16px;line-height:1.4;text-align:left;color:#6C6C6C;"> {{ trans('translations.regards') }}, <br>{{ trans('translations.sekaipay')}} </div>
                     </td>
                   </tr>
                 </table>
@@ -262,7 +262,7 @@
                 <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:top;" width="100%">
                   <tr>
                     <td align="center" style="font-size:0px;padding:10px 25px;word-break:break-word;">
-                      <div style="font-family:Ubuntu, Helvetica, Arial, sans-serif;font-size:12px;line-height:1;text-align:center;color:#6C6C6C;"> © 2019 Sekaipay. All rights reserved. </div>
+                      <div style="font-family:Ubuntu, Helvetica, Arial, sans-serif;font-size:12px;line-height:1;text-align:center;color:#6C6C6C;"> {{ trans('translations.mail_footer',['current_year' => date("Y")]) }} </div>
                     </td>
                   </tr>
                 </table>

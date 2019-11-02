@@ -26,7 +26,7 @@ class InvoiceController extends Controller
             $client_mobile_number = ($request->input('client_calling_code') && $request->input('client_mobile_number')) ? $request->input('client_calling_code')." ".trim_mobile_number($request->input('client_mobile_number')): null;
 
             $created = Invoice::create([
-                'contract_id' => md5(uniqid(rand(), true)),
+                'contract_id' => create_unique_id(8),
                 'business_name' => $request->input('business_name'),
                 'business_email' => $request->input('business_email'),
                 'business_mobile_number' => $business_mobile_number,

@@ -5,6 +5,7 @@ namespace App\Observers;
 use App\Invoice;
 use App\Mail\NotifyUser;
 use App\Mail\NotifyClient;
+use App\Events\InvoiceCreated;
 use Illuminate\Support\Facades\Mail;
 
 class InvoiceObserver
@@ -30,6 +31,7 @@ class InvoiceObserver
         Mail::to($client_email)
             ->locale(\App::getLocale())
             ->send(new NotifyClient($invoice));
-        
+
+        event(new InvoiceCreated($invoice));
     }
 }

@@ -7,7 +7,7 @@ use Faker\Generator as Faker;
 
 $factory->define(Invoice::class, function (Faker $faker) {
     return [
-        'contract_id' => md5(uniqid(rand(), true)),
+        'contract_id' => create_unique_id(8),
         'business_name' => $faker->company(),
         'business_email' => $faker->unique()->safeEmail,
         'business_contact_number' => $faker->e164PhoneNumber(),

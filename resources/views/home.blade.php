@@ -114,16 +114,16 @@
                         </div>
                         <div class="row pt-0">
                             <div class="sixteen wide mobile eight width tablet eight wide computer column">
-                                <button type="button" class="ui mini basic primary button button--rounded mr-1" @click="addItem()"><i class="plus icon"></i> Add Item</button>
+                                <button type="button" class="ui mini basic primary button button--rounded mr-1" @click="addItem()"><i class="plus icon"></i>{{ trans('translations.add_item') }}</button>
                             </div>
                             <div class="sixteen wide mobile eight width tablet eight wide computer column">
                                 <div class="invoice-summary">
                                     <div class="invoice-summary__row">
-                                        <div><span>Subtotal</span></div>
+                                        <div><span>{{ trans('translations.subtotal') }}</span></div>
                                         <div v-cloak><strong>@{{ invoice.subtotal }}</strong></div>
                                     </div>
                                     <div class="invoice-summary__row invoice-summary__total">
-                                        <div><span>Total</span></div>
+                                        <div><span>{{ trans('translations.total') }}</span></div>
                                         <div v-cloak><strong>@{{ `${currency} ${invoice.total}` }}</strong></div>
                                     </div>
                                 </div>
@@ -136,7 +136,7 @@
                             <div class="sixteen wide mobile eight width tablet eight wide computer column"></div>
                             <div class="sixteen wide mobile eight width tablet eight wide computer column">
                                 <div class="field">
-                                    <label for="notes">Notes <small>(Optional)</small></label>
+                                    <label for="notes">{{ trans('translations.notes') }} <small>({{ trans('translations.optional') }})</small></label>
                                     <textarea id="notes" name="notes" rows="4" v-model="invoice.form.notes"></textarea>
                                 </div>
                             </div>
@@ -153,8 +153,8 @@
         <div class="row centered">
             <div class="sixteen wide mobile sixteen wide tablet twelve wide computer column">
                 <div class="ui item invoice-actions">
-                    <button type="button" id="converterBtn" class="ui small primary button button--rounded mr-1"><i class="calculator icon"></i> <span>Show Converter</span></button>
-                    <button type="submit" id="sendInvoiceBtn" class="ui small secondary button button--rounded"><i class="paper plane outline icon"></i> Send Invoice</button>
+                    <button type="button" id="converterBtn" class="ui small primary button button--rounded mr-1"><i class="calculator icon"></i> <span>{{ trans('translations.show_converter') }}</span></button>
+                    <button type="submit" id="sendInvoiceBtn" class="ui small secondary button button--rounded"><i class="paper plane outline icon"></i> {{ trans('translations.create_invoice') }}</button>
                 </div>
             </div>
         </div>

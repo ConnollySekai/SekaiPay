@@ -3,7 +3,7 @@
         <div class="ui form">
             <div class="two fields">
                 <div class="field text-left">
-                    <label for="btcInput">From</label>
+                    <label for="btcInput">{{ trans('translations.from') }}</label>
                     <div class="ui right action input">
                         <imask-input id="btcInput" v-model="btcInput" :mask="/^(\d+)?([.]?\d{0,8})$/"/>
                         <div class="ui basic floating dropdown button from">
@@ -12,7 +12,7 @@
                     </div>
                 </div>
                 <div class="field text-left">
-                    <label for="resultInput">To</label>
+                    <label for="resultInput">{{ trans('translations.to') }}</label>
                     <div class="ui right action input">
                         <input type="text" id="resultInput" v-model="resultInput">
                         <div class="ui basic floating dropdown button to">
@@ -61,7 +61,7 @@
                 selection: ['USD','EUR','GBP','JPY','AUD','CAD'],
                 url: 'https://api.coinbase.com/v2/prices/spot?currency=',
                 loading: false,
-                btnText: 'Convert'
+                btnText: this.trans('translations.convert')
             }
         },
         methods: {
@@ -76,7 +76,7 @@
                     
                     this.loading = true;
                     
-                    this.btnText = 'Converting';
+                    this.btnText = this.trans('translations.converting');
 
                     this.getRate(this.to).then(response => {
                         const data = response.data.data;
@@ -92,7 +92,7 @@
                             
                             vm.loading = false;
                             
-                            this.btnText = 'Convert';
+                            this.btnText = this.trans('translations.convert')
                         }, 1000);
                     });
                 }

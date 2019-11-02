@@ -25038,22 +25038,22 @@ i.flag:not(.icon):before {
   border-radius: 40px !important;
 }
 
-a.ui.button.primary,
-a.ui.button.secondary,
-a.ui.button.positive,
-a.ui.button.negative {
+a.ui.button.primary:not(.basic),
+a.ui.button.secondary:not(.basic),
+a.ui.button.positive:not(.basic),
+a.ui.button.negative:not(.basic) {
   color: #ffffff !important;
 }
-a.ui.button.primary:hover, a.ui.button.primary:focus, a.ui.button.primary:visited,
-a.ui.button.secondary:hover,
-a.ui.button.secondary:focus,
-a.ui.button.secondary:visited,
-a.ui.button.positive:hover,
-a.ui.button.positive:focus,
-a.ui.button.positive:visited,
-a.ui.button.negative:hover,
-a.ui.button.negative:focus,
-a.ui.button.negative:visited {
+a.ui.button.primary:not(.basic):hover, a.ui.button.primary:not(.basic):focus, a.ui.button.primary:not(.basic):visited,
+a.ui.button.secondary:not(.basic):hover,
+a.ui.button.secondary:not(.basic):focus,
+a.ui.button.secondary:not(.basic):visited,
+a.ui.button.positive:not(.basic):hover,
+a.ui.button.positive:not(.basic):focus,
+a.ui.button.positive:not(.basic):visited,
+a.ui.button.negative:not(.basic):hover,
+a.ui.button.negative:not(.basic):focus,
+a.ui.button.negative:not(.basic):visited {
   color: #ffffff !important;
 }
 

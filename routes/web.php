@@ -20,3 +20,5 @@ Route::get('/invoice/get/data', 'InvoiceController@getData')->name('invoice.getD
 Route::post('/invoice/store','InvoiceController@store')->name('invoice.store');
 
 Route::get('/invoice/download/pdf/{invoice}','InvoiceController@downloadPDF')->name('invoice.downloadPDF');
+
+Route::get('/js/lang.js','LocaleController@localizeForJs')->name('locale.localizeForJs');

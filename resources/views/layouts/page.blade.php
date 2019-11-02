@@ -13,6 +13,7 @@
             </main>
         </div>
         <input type="hidden" id="page" value="@yield('page')"> 
+        <script src="{{ route('locale.localizeForJs') }}"></script>
         @include('partials.scripts')
     </body>
 </html>

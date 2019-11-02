@@ -108,27 +108,27 @@
             
             <div class="invoice">
                 <div class="invoice__head">
-                    <div class="invoice__title"><h2>Invoice</h2></div>
+                    <div class="invoice__title"><h2>{{ trans('translations.invoice') }}</h2></div>
                     <div class="invoice__info">
                         <div class="row">
                             <div class="column half">
-                                <label>Contract ID</label>
+                                <label>{{ trans('translations.contract_id') }}</label>
                                 <span>{{ $invoice->contract_id }}</span>
                             </div>
                             <div class="column half">
-                                <label>Invoice Date</label>
+                                <label>{{ trans('translations.invoice_date') }}</label>
                                 <span>{{ $invoice->created_at->format('m-d-Y') }}</span>
                             </div>
                         </div>
                         <div class="row">
                             <div class="column half">
-                                <label>From</label>
+                                <label>{{ trans('translations.from') }}</label>
                                 <span class="block">{{ $invoice->business_name }}</span>
                                 <span class="block">{{ $invoice->business_email }}</span>
                                 <span class="block">{{ $invoice->business_mobile_number }}</span>
                             </div>
                             <div class="column half">
-                                <label>To</label>
+                                <label>{{ trans('translations.to') }}</label>
                                 <span class="block">{{ $invoice->client_name }}</span>
                                 <span class="block">{{ $invoice->client_email }}</span>
                                 <span class="block">{{ $invoice->client_mobile_number }}</span>
@@ -141,10 +141,10 @@
                     <table class="invoice__items">
                         <thead>
                             <tr>
-                                <th>Description</th>
-                                <th class="text-right">Quantity</th>
-                                <th class="text-right">Price</th>
-                                <th class="text-right">Amount</th>
+                                <th>{{ trans('translations.description') }}</th>
+                                <th class="text-right">{{ trans('translations.quantity') }}</th>
+                                <th class="text-right">{{ trans('translations.price') }}</th>
+                                <th class="text-right">{{ trans('translations.amount') }}</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -168,11 +168,11 @@
                             <td class="half">
                                 <table class="invoice__summary">
                                     <tr>
-                                        <td>Subtotal</td>
+                                        <td>{{ trans('translations.subtotal') }}</td>
                                         <td class="text-right"><strong>{{ format_number(to_btc((string)$amount)) }}</strong></td>
                                     </tr>
                                     <tr style="background-color:#E0E1E2">
-                                        <td>Total</td>
+                                        <td>{{ trans('translations.total') }}</td>
                                         <td class="text-right"><strong>{{ format_number(to_btc((string)$amount)) }}</strong></td>
                                     </tr>
                                 </table>
@@ -185,14 +185,14 @@
                     <div class="row">
                         <div class="column half">
                             <div class="text-center">
-                                <label>BTC Address</label>
+                                <label>{{ trans('translations.btc_address') }}</label>
                                 <a href="https://chain.so/address/BTC/{{ $invoice->btc_address }}" target="_blank" class="block" rel="noreferrer">{{ $invoice->btc_address }}</a>
                                 <img src="data:image/png;base64, {{ base64_encode(QrCode::format('png')->size(146)->generate($invoice->btc_address)) }} ">
                             </div>
                         </div>
                         <div class="column half">
                             @if ($invoice->notes)
-                                <label for="notes">Notes</label>
+                                <label for="notes">{{ trans('translations.notes') }}</label>
                                 <p>{{ $invoice->notes }}</p>
                             @endif
                         </div>
