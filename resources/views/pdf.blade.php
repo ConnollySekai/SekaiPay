@@ -1,13 +1,30 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
-        <meta charset="utf-8">
-        <meta name="base-url" content="{{ URL::to('/') }}" />
-        <meta name="csrf-token" content="{{ csrf_token() }}">
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
         <style>
+            /* @font-face {
+                font-family: SimHei;
+                src: url({{ storage_path('fonts/chinese.simhei.ttf') }}) format('truetype');
+            }
+
+            * {
+                font-family: SimHei, sans-serif !important;
+            } */
+            
+            /* @import url('https://fonts.googleapis.com/css?family=M+PLUS+1p&display=swap&subset=japanese'); */
+
+            @import url('https://fonts.googleapis.com/css?family=Sawarabi+Gothic&display=swap&subset=japanese');
+
+    
+            * {
+                /* font-family: 'M PLUS 1p', sans-serif; */
+                font-family: 'Sawarabi Gothic', sans-serif;
+                line-height: 1;
+            }
+
             html {
                 font-size: 16px;
-                font-family: 'Muli', sans-serif;
             }
 
             body {
@@ -108,12 +125,12 @@
             
             <div class="invoice">
                 <div class="invoice__head">
-                    <div class="invoice__title"><h2>{{ trans('translations.invoice') }}</h2></div>
+                    <div class="invoice__title"><h2>{{ trans('translations.invoice') }} 請求書 </h2> 請求書</div>
                     <div class="invoice__info">
                         <div class="row">
                             <div class="column half">
                                 <label>{{ trans('translations.contract_id') }}</label>
-                                <span>{{ $invoice->contract_id }}</span>
+                                <span>{{ $invoice->contract_id }} 有用</span>
                             </div>
                             <div class="column half">
                                 <label>{{ trans('translations.invoice_date') }}</label>

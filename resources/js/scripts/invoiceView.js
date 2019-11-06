@@ -8,7 +8,7 @@ export default {
     },
     mounted() {
    
-        toggleConverter();
+        toggleConverter(this.trans('translations.show_converter'), this.trans('translations.hide_converter'));
 
         toggleSearchBar();
 

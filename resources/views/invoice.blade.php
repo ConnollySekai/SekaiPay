@@ -98,8 +98,8 @@
                     <div class="row">
                         <div class="sixteen wide mobile eight width tablet eight wide computer column">
                             <div class="text-center">
-                                <label for="">BTC Address</label>
-                                <a href="https://chain.so/address/BTC/{{ $invoice->btc_address }}" target="_blank" class="d-block break-word" rel="noreferrer">{{ $invoice->btc_address }}</a>
+                                <label for="btcAddress">{{ trans('translations.btc_address') }}</label>
+                                <a id="btcAddress" href="https://chain.so/address/BTC/{{ $invoice->btc_address }}" target="_blank" class="d-block break-word" rel="noreferrer">{{ $invoice->btc_address }}</a>
                                 <img src="data:image/png;base64, {{ base64_encode(QrCode::format('png')->size(146)->generate($invoice->btc_address)) }} ">
                             </div>
                         </div>
@@ -121,9 +121,27 @@
     </div>
     <div class="row centered">
         <div class="sixteen wide mobile sixteen wide tablet twelve wide computer column">
-            <div class="ui item invoice-actions">   
-                <button type="button" id="converterBtn" class="ui small primary button button--rounded mr-1"><i class="calculator icon"></i> <span>{{ trans('translations.show_converter') }}</span></button>
-                <a href="{{ route('invoice.downloadPDF',['invoice' => $invoice]) }}" class="ui tiny negative button button--rounded"><i class="file pdf outline icon"></i> {{ trans('translations.download_pdf') }} </a>
+            <div class="invoice-actions-wrap">
+                <div class="language-switcher">
+                    <div class="ui selection dropdown">
+                        <input type="hidden" name="language" value="{{ session('locale', 'en') }}">
+                        <i class="dropdown icon"></i>
+                        <div class="default text">English</div>
+                        <div class="menu">
+                            <div class="item" data-value="en">{{ trans('translations.english') }}</div>
+                            <div class="item" data-value="zh-Hans">{{ trans('translations.chinese_simplified') }}</div>
+                            <div class="item" data-value="zh-Hant">{{ trans('translations.chinese_traditional') }}</div>
+                            <div class="item" data-value="ja">{{ trans('translations.japanese') }}</div>
+                            <div class="item" data-value="ko">{{ trans('translations.korean') }}</div>
+                            <div class="item" data-value="es">{{ trans('translations.spanish') }}</div>
+                            <div class="item" data-value="fr">{{ trans('translations.french') }}</div>
+                        </div>
+                    </div>
+                </div>  
+                <div class="ui item invoice-actions">   
+                    <button type="button" id="converterBtn" class="ui small primary button button--rounded mr-1"><i class="calculator icon"></i> <span>{{ trans('translations.show_converter') }}</span></button>
+                    <a href="{{ route('invoice.downloadPDF',['invoice' => $invoice]) }}" class="ui tiny negative button button--rounded"><i class="file pdf outline icon"></i> {{ trans('translations.download_pdf') }} </a>
+                </div>
             </div>
         </div>
     </div>

@@ -11,14 +11,19 @@
 |
 */
 
-Route::get('/','HomeController@index')->name('home.index');
+Route::middleware(['localizebybrowser'])->group(function(){ 
 
-Route::get('/invoice/{invoice}','InvoiceController@show')->name('invoice.show');
+    Route::get('/','HomeController@index')->name('home.index');
 
-Route::get('/invoice/get/data', 'InvoiceController@getData')->name('invoice.getData');
+    Route::get('/invoice/{invoice}','InvoiceController@show')->name('invoice.show');
 
-Route::post('/invoice/store','InvoiceController@store')->name('invoice.store');
+    Route::get('/invoice/get/data', 'InvoiceController@getData')->name('invoice.getData');
 
-Route::get('/invoice/download/pdf/{invoice}','InvoiceController@downloadPDF')->name('invoice.downloadPDF');
+    Route::post('/invoice/store','InvoiceController@store')->name('invoice.store');
 
-Route::get('/js/lang.js','LocaleController@localizeForJs')->name('locale.localizeForJs');
+    Route::get('/invoice/download/pdf/{invoice}','InvoiceController@downloadPDF')->name('invoice.downloadPDF');
+
+    Route::get('/js/lang.js','LocaleController@localizeForJs')->name('locale.localizeForJs');
+});
+
+Route::get('/setLocale','LocaleController@setLocale')->name('locale.setLocale');

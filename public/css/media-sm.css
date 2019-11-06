@@ -20,6 +20,24 @@
   .invoice-actions {
     justify-content: flex-end;
   }
+
+  .invoice-actions-wrap {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  .invoice-actions-wrap .language-switcher {
+    order: 1;
+  }
+  .invoice-actions-wrap .invoice-actions {
+    order: 2;
+  }
+}
+/* Language Switcher SM */
+@media screen and (min-width: 768px) {
+  .language-switcher {
+    margin-top: 0;
+    text-align: left;
+  }
 }
 /* Site Header SM */
 @media screen and (min-width: 768px) {

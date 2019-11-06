@@ -25285,10 +25285,6 @@ a.ui.button.negative:not(.basic):visited {
 }
 
 /* Layouts */
-.converter {
-  display: none;
-}
-
 .converter__button {
   width: 100%;
 }
@@ -25334,9 +25330,26 @@ a.ui.button.negative:not(.basic):visited {
   background-color: #E0E1E2;
 }
 
+.invoice-actions-wrap {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.invoice-actions-wrap .invoice-actions {
+  order: 1;
+}
+.invoice-actions-wrap .language-switcher {
+  order: 2;
+}
+
 .invoice-actions {
   display: flex;
   justify-content: center;
+}
+
+.language-switcher {
+  margin-top: 1rem;
+  text-align: center;
 }
 
 .site-header__nav .column {

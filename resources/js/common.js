@@ -37,7 +37,7 @@ export function toggleSearchBar() {
 }
 
 /* Toggle BTC converter */
-export function toggleConverter() {
+export function toggleConverter(showText,hideText) {
 
     const converterBtn = $('#converterBtn');
 
@@ -47,12 +47,12 @@ export function toggleConverter() {
 
         if (converter.is(':hidden')) {
 
-            converterBtn.find('span').text('Hide Converter');
+            converterBtn.find('span').text(hideText);
 
             converterBtn.removeClass('primary');
 
         } else {
-            converterBtn.find('span').text('Show Converter');
+            converterBtn.find('span').text(showText);
 
             converterBtn.addClass('primary');
         }

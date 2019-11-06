@@ -22,7 +22,25 @@ Vue.prototype.trans = (string, args) => {
     return value;
 };
 
+console.log(window.i18n);
+
 const app = new Vue({
     el: '#app',
-    mixins: [PageScript]
+    mixins: [PageScript],
+    mounted() {
+        $('.language-switcher .ui.dropdown').dropdown({
+            showOnFocus:false,
+            onChange: (value, text, selectedItem) => {
+                axios.get('/setLocale',{
+                    params: {
+                        locale: value
+                    }
+                }).then(response => {
+                    if (response.data.success === true) {
+                        location.reload();
+                    }
+                })
+            }
+        });
+    }
 });

@@ -57,7 +57,7 @@ if (!function_exists('format_number')) {
      */
     function format_number($number)
     {
-        return preg_replace('/(\.{1}0+)$/', '', (string)$number);
+        return preg_replace('/(\.{1}0+)$|(?<=\d)0+$/', '', (string)$number);
     }
 }
 

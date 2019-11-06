@@ -6,4 +6,17 @@
     .invoice-actions {
         justify-content: flex-end;
     }
+
+    .invoice-actions-wrap {
+        flex-direction: row;
+        justify-content: space-between;
+
+        .language-switcher {
+            order: 1;
+        }
+
+        .invoice-actions {
+            order: 2;
+        }
+    }
 }

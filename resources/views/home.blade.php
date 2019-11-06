@@ -152,9 +152,27 @@
         </div>
         <div class="row centered">
             <div class="sixteen wide mobile sixteen wide tablet twelve wide computer column">
-                <div class="ui item invoice-actions">
-                    <button type="button" id="converterBtn" class="ui small primary button button--rounded mr-1"><i class="calculator icon"></i> <span>{{ trans('translations.show_converter') }}</span></button>
-                    <button type="submit" id="sendInvoiceBtn" class="ui small secondary button button--rounded"><i class="paper plane outline icon"></i> {{ trans('translations.create_invoice') }}</button>
+                <div class="invoice-actions-wrap">
+                    <div class="language-switcher">
+                        <div class="ui selection dropdown">
+                            <input type="hidden" name="language" value="{{ session('locale', 'en') }}">
+                            <i class="dropdown icon"></i>
+                            <div class="default text">English</div>
+                            <div class="menu">
+                                <div class="item" data-value="en">{{ trans('translations.english') }}</div>
+                                <div class="item" data-value="zh-Hans">{{ trans('translations.chinese_simplified') }}</div>
+                                <div class="item" data-value="zh-Hant">{{ trans('translations.chinese_traditional') }}</div>
+                                <div class="item" data-value="ja">{{ trans('translations.japanese') }}</div>
+                                <div class="item" data-value="ko">{{ trans('translations.korean') }}</div>
+                                <div class="item" data-value="es">{{ trans('translations.spanish') }}</div>
+                                <div class="item" data-value="fr">{{ trans('translations.french') }}</div>
+                            </div>
+                        </div>
+                    </div>  
+                    <div class="ui item invoice-actions">      
+                        <button type="button" id="converterBtn" class="ui small primary button button--rounded mr-1"><i class="calculator icon"></i> <span>{{ trans('translations.show_converter') }}</span></button>
+                        <button type="submit" id="sendInvoiceBtn" class="ui small secondary button button--rounded"><i class="paper plane outline icon"></i> {{ trans('translations.create_invoice') }}</button>
+                    </div>
                 </div>
             </div>
         </div>

@@ -2,8 +2,26 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\Request;
+
 class LocaleController extends Controller
 {
+    /**
+     * Sets locale session
+     *
+     * @param  Illuminate\Http\Request $request
+     * @return Illuminate\Http\Response
+     */
+    public function setLocale(Request $request)
+    {
+        $locale = $request->input('locale');
+        session(['locale' =>  $locale]);
+        
+        return response()->json([
+            'success' => true
+        ],200);
+    }
+    
     /**
      * Outputs laravel's locale for js use
      *

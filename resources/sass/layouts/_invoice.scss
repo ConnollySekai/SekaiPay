@@ -45,6 +45,20 @@
     background-color: map-get($colors, 'grey-4');
 }
 
+.invoice-actions-wrap {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    .invoice-actions {
+        order: 1;
+    }
+
+    .language-switcher {
+        order: 2;
+    }
+}
+
 .invoice-actions {
     display: flex;
     justify-content: center;
