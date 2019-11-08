@@ -22,8 +22,6 @@ Vue.prototype.trans = (string, args) => {
     return value;
 };
 
-console.log(window.i18n);
-
 const app = new Vue({
     el: '#app',
     mixins: [PageScript],

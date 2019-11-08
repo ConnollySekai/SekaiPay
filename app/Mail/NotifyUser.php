@@ -2,6 +2,7 @@
 
 namespace App\Mail;
 
+use App;
 use App\Invoice;
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
@@ -14,6 +15,8 @@ class NotifyUser extends Mailable implements ShouldQueue
 
     public $invoice;
 
+    public $locale;
+
     /**
      * Create a new message instance.
      *
@@ -22,6 +25,8 @@ class NotifyUser extends Mailable implements ShouldQueue
     public function __construct(Invoice $invoice)
     {
         $this->invoice = $invoice;
+
+        $this->locale = App::getLocale();
     }
 
     /**

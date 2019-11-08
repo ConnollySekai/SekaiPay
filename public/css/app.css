@@ -25038,22 +25038,22 @@ i.flag:not(.icon):before {
   border-radius: 40px !important;
 }
 
-a.ui.button.primary:not(.basic),
-a.ui.button.secondary:not(.basic),
-a.ui.button.positive:not(.basic),
-a.ui.button.negative:not(.basic) {
+.ui.button.primary:not(.basic) a,
+.ui.button.secondary:not(.basic) a,
+.ui.button.positive:not(.basic) a,
+.ui.button.negative:not(.basic) a {
   color: #ffffff !important;
 }
-a.ui.button.primary:not(.basic):hover, a.ui.button.primary:not(.basic):focus, a.ui.button.primary:not(.basic):visited,
-a.ui.button.secondary:not(.basic):hover,
-a.ui.button.secondary:not(.basic):focus,
-a.ui.button.secondary:not(.basic):visited,
-a.ui.button.positive:not(.basic):hover,
-a.ui.button.positive:not(.basic):focus,
-a.ui.button.positive:not(.basic):visited,
-a.ui.button.negative:not(.basic):hover,
-a.ui.button.negative:not(.basic):focus,
-a.ui.button.negative:not(.basic):visited {
+.ui.button.primary:not(.basic) a:hover, .ui.button.primary:not(.basic) a:focus, .ui.button.primary:not(.basic) a:visited,
+.ui.button.secondary:not(.basic) a:hover,
+.ui.button.secondary:not(.basic) a:focus,
+.ui.button.secondary:not(.basic) a:visited,
+.ui.button.positive:not(.basic) a:hover,
+.ui.button.positive:not(.basic) a:focus,
+.ui.button.positive:not(.basic) a:visited,
+.ui.button.negative:not(.basic) a:hover,
+.ui.button.negative:not(.basic) a:focus,
+.ui.button.negative:not(.basic) a:visited {
   color: #ffffff !important;
 }
 
@@ -25285,6 +25285,10 @@ a.ui.button.negative:not(.basic):visited {
 }
 
 /* Layouts */
+.converter {
+  display: none;
+}
+
 .converter__button {
   width: 100%;
 }

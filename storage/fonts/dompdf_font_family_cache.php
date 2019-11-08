@@ -77,20 +77,16 @@
     'italic' => $rootDir . '\lib\fonts\DejaVuSerif-Italic',
     'normal' => $rootDir . '\lib\fonts\DejaVuSerif',
   ),
-  'simhei' => array(
-    'normal' => $fontDir . '\b34bd8bf8158acf94421bd47931aea6f',
-    'bold' => $fontDir . '\b34bd8bf8158acf94421bd47931aea6f',
-  ),
-  'noto sans jp' => array(
-    'normal' => $fontDir . '\f684be9622b951f75635d8e8f85d54f5',
-  ),
-  'kosugi' => array(
-    'normal' => $fontDir . '\e97741965f368dfaac99d47c156613f4',
-  ),
   'm plus 1p' => array(
-    'normal' => $fontDir . '\36549dc5685caac61fb5cc2fe5836da6',
+    'normal' => $fontDir . '\e03402791de2ad0b3fe588b22a1fc2b8',
+    'bold' => $fontDir . '\e03402791de2ad0b3fe588b22a1fc2b8',
   ),
-  'sawarabi gothic' => array(
-    'normal' => $fontDir . '\2a9fd2635fd43aba3ba29b306e97f4f7',
+  'nanum gothic' => array(
+    'normal' => $fontDir . '\83313e6f33f18e2d0f00472677276b73',
+    'bold' => $fontDir . '\de0fe4cc5028e6e3584ece4d926cc267',
+  ),
+  'simhei' => array(
+    'normal' => $fontDir . '\558e929a4f096e968d40997e54445a26',
+    'bold' => $fontDir . '\558e929a4f096e968d40997e54445a26',
   ),
 ) ?>

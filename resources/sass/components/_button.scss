@@ -337,10 +337,10 @@
     border-radius: 40px !important;
 }
 
-a.ui.button.primary:not(.basic),
-a.ui.button.secondary:not(.basic),
-a.ui.button.positive:not(.basic),
-a.ui.button.negative:not(.basic) {
+.ui.button.primary:not(.basic) a,
+.ui.button.secondary:not(.basic) a,
+.ui.button.positive:not(.basic) a,
+.ui.button.negative:not(.basic) a {
     color: #ffffff !important;
 
     &:hover,

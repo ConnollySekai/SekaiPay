@@ -80,10 +80,10 @@
         <![endif]-->
   <!--[if !mso]><!-->
   <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap" rel="stylesheet" type="text/css">
-  <link href="https://fonts.googleapis.com/css?family=Ubuntu:300,400,500,700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:800&display=swap" rel="stylesheet" type="text/css">
   <style type="text/css">
-    @import url(https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap);
-    @import url(https://fonts.googleapis.com/css?family=Ubuntu:300,400,500,700);
+    @import url('https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap');
+    @import url('https://fonts.googleapis.com/css?family=Open+Sans:800&display=swap');
   </style>
   <!--<![endif]-->
   <style type="text/css">
@@ -155,7 +155,7 @@
                 <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:top;" width="100%">
                   <tr>
                     <td align="left" style="font-size:0px;padding:10px 25px;word-break:break-word;">
-                      <div style="font-family:Ubuntu, Helvetica, Arial, sans-serif;font-size:24px;font-weight:800;line-height:1;text-align:left;color:#5EBAF2;"> SEKAIPAY </div>
+                      <div style="font-family:'Open Sans', Helvetica, Arial, sans-serif;font-size:24px;font-weight:800;line-height:1;text-align:left;color:#1188D2; text-transform:uppercase;"> {{ trans('translations.sekaipay', [], $locale) }} </div>
                     </td>
                   </tr>
                   <tr>
@@ -176,22 +176,22 @@
                   </tr>
                   <tr>
                     <td align="left" style="font-size:0px;padding:10px 25px;word-break:break-word;">
-                      <div style="font-family:Roboto;font-size:16px;line-height:1;text-align:left;color:#6C6C6C;"> {{ trans('translations.mail_opening')}}, </div>
+                      <div style="font-family:Roboto;font-size:16px;line-height:1;text-align:left;color:#6C6C6C;"> {{ trans('translations.mail_opening', [], $locale)}}, </div>
                     </td>
                   </tr>
                   <tr>
                     <td align="left" style="font-size:0px;padding:10px 25px;word-break:break-word;">
-                      <div style="font-family:Roboto;font-size:16px;line-height:1.4;text-align:left;color:#6C6C6C;"> {!! trans('translations.mail_business_line_1',['contract_id' => $invoice->contract_id, 'client_email' => $invoice->client_email]) !!} </div>
+                      <div style="font-family:Roboto;font-size:16px;line-height:1.4;text-align:left;color:#6C6C6C;"> {!! trans('translations.mail_business_line_1', ['contract_id' => $invoice->contract_id, 'client_email' => $invoice->client_email], $locale) !!} </div>
                     </td>
                   </tr>
                   <tr>
                     <td align="left" style="font-size:0px;padding:10px 25px;word-break:break-word;">
-                      <div style="font-family:Roboto;font-size:16px;line-height:1.4;text-align:left;color:#6C6C6C;">{!! trans('translations.mail_business_line_2',['invoice_link' =>  route('invoice.show',['invoice' => $invoice])]) !!}</div>
+                      <div style="font-family:Roboto;font-size:16px;line-height:1.4;text-align:left;color:#6C6C6C;">{!! trans('translations.mail_business_line_2', ['invoice_link' =>  route('invoice.show',['invoice' => $invoice])], $locale) !!}</div>
                     </td>
                   </tr>
                   <tr>
                     <td align="left" style="font-size:0px;padding:10px 25px;word-break:break-word;">
-                      <div style="font-family:Roboto;font-size:16px;line-height:1.4;text-align:left;color:#6C6C6C;"> {{ trans('translations.mail_closing') }} </div>
+                      <div style="font-family:Roboto;font-size:16px;line-height:1.4;text-align:left;color:#6C6C6C;"> {{ trans('translations.mail_closing', [], $locale) }} </div>
                     </td>
                   </tr>
                   <tr>
@@ -211,7 +211,7 @@
                   </tr>
                   <tr>
                     <td align="left" style="font-size:0px;padding:10px 25px;word-break:break-word;">
-                      <div style="font-family:Roboto;font-size:16px;line-height:1.4;text-align:left;color:#6C6C6C;"> {{ trans('translations.regards') }}, <br>{{ trans('translations.sekaipay') }} </div>
+                      <div style="font-family:Roboto;font-size:16px;line-height:1.4;text-align:left;color:#6C6C6C;"> {{ trans('translations.regards', [], $locale) }}, <br>{{ trans('translations.sekaipay', [], $locale) }} </div>
                     </td>
                   </tr>
                 </table>
@@ -257,7 +257,7 @@
                 <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:top;" width="100%">
                   <tr>
                     <td align="center" style="font-size:0px;padding:10px 25px;word-break:break-word;">
-                      <div style="font-family:Ubuntu, Helvetica, Arial, sans-serif;font-size:12px;line-height:1;text-align:center;color:#6C6C6C;"> {{ trans('translations.mail_footer',['current_year' => date("Y")]) }} </div>
+                      <div style="font-family:Roboto, Helvetica, Arial, sans-serif;font-size:12px;line-height:1;text-align:center;color:#6C6C6C;"> {{ trans('translations.mail_footer',['current_year' => date("Y")], $locale) }} </div>
                     </td>
                   </tr>
                 </table>

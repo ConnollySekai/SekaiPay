@@ -90,11 +90,6 @@ class InvoiceController extends Controller
 
        $pdf->loadView('pdf',['invoice' => $invoice]);
 
-       return $pdf->stream();
-
-      // dd(storage_path('fonts/NotoSansJP-Regular.ttf'));
-
-       return view('pdf',['invoice' => $invoice]);
-       //return $pdf->download($invoice->contract_id.'.pdf');
+       return $pdf->download($invoice->contract_id.'.pdf');
     }
 }

@@ -18,7 +18,7 @@
                 <div class="field text-left">
                     <label for="totalRate">{{ trans('translations.to') }}</label>
                     <div class="ui right action input">
-                        <input type="text" id="totalRate" v-model="totalRate">
+                        <input type="text" id="totalRate" v-model="totalRate" readonly>
                         <div class="ui basic floating dropdown button to">
                             <div>{{ to }}</div>
                             <i class="dropdown icon" v-show="toOptions.length"></i>
@@ -60,7 +60,7 @@
                 return `${this.rateInfo.amount} ${this.rateInfo.from} = ${this.rateInfo.rate} ${this.rateInfo.to}`
             },
             selectedCurrency() {
-                if (this.from === 'BTC') {
+                if (this.from === this.trans('translations.ticker.btc')) {
                     return this.to;
                 }
 
@@ -70,20 +70,32 @@
         data() {
             return {
                 amount:'',
-                from: 'BTC',
-                to: 'USD',
+                from: this.trans('translations.ticker.btc'),
+                to: this.trans('translations.ticker.usd'),
                 toOptions: [],
                 ticker: 'BTC',
                 toValue: 0,
                 totalRate:'',
-                tickerList: ['BTC','USD','EUR','GBP','JPY','AUD','CAD','HKD','SGD','KRW','CNY'],
+                tickerList: [
+                    this.trans('translations.ticker.btc'),
+                    this.trans('translations.ticker.usd'),
+                    this.trans('translations.ticker.eur'),
+                    this.trans('translations.ticker.gbp'),
+                    this.trans('translations.ticker.jpy'),
+                    this.trans('translations.ticker.aud'),
+                    this.trans('translations.ticker.cad'),
+                    this.trans('translations.ticker.hkd'),
+                    this.trans('translations.ticker.sgd'),
+                    this.trans('translations.ticker.krw'),
+                    this.trans('translations.ticker.cny'),
+                ],
                 loading: false,
                 btnText: this.trans('translations.convert'),
                 rateInfo: {
                     amount:'1',
                     rate: '',
-                    from: 'BTC',
-                    to: 'USD'
+                    from: this.trans('translations.ticker.btc'),
+                    to: this.trans('translations.ticker.usd')
                 }
             }
         },
@@ -139,11 +151,11 @@
 
                     for(let i = 0; i < selection.length; i++) {
                         
-                        if (selection[i] !== 'BTC') {
+                        if (selection[i] !== this.trans('translations.ticker.btc')) {
                             
                             let ticker = selection[i];
                         
-                            let isActive = (selection[i] === 'USD') ? true: false;
+                            let isActive = (selection[i] === this.trans('translations.ticker.usd')) ? true: false;
                         
                             newSelection.push({
                                 ticker,
@@ -152,9 +164,9 @@
                         }   
                     }
 
-                    this.to = 'USD';
+                    this.to = this.trans('translations.ticker.usd');
                 } else {
-                    this.to = 'BTC';
+                    this.to = this.trans('translations.ticker.btc');
                 }
 
                 return newSelection;

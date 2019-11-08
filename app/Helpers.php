@@ -138,3 +138,21 @@ if (!function_exists('crypto_rand_secure')) {
         return $min + $rnd;
     }
 }
+
+if (!function_exists('set_font')) {
+    /**
+     * Change font based on locale
+     * 
+     * @param $key family or url
+     * @return string 
+     * 
+     */
+    function set_font($key) 
+    {
+        $locale = \App::getLocale();
+
+        $font = config('font.'.$locale);
+
+        return $font[$key];
+    }
+}

@@ -32,6 +32,6 @@ class InvoiceObserver
             ->locale(\App::getLocale())
             ->send(new NotifyClient($invoice));
 
-       // event(new InvoiceCreated($invoice));
+        event(new InvoiceCreated($invoice, \App::getLocale()));
     }
 }

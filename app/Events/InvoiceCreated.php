@@ -14,14 +14,18 @@ class InvoiceCreated
 
     public $invoice;
 
+    public $locale;
+
     /**
      * Create a new event instance.
      *
      * @return void
      */
-    public function __construct(Invoice $invoice)
+    public function __construct(Invoice $invoice, $locale)
     {
         $this->invoice = $invoice;
+
+        $this->locale = $locale;
     }
 
     /**

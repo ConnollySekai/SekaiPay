@@ -3,25 +3,56 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
         <style>
-            /* @font-face {
-                font-family: SimHei;
-                src: url({{ storage_path('fonts/chinese.simhei.ttf') }}) format('truetype');
-            }
+            @php($locale = \App::getLocale())
 
-            * {
-                font-family: SimHei, sans-serif !important;
-            } */
-            
-            /* @import url('https://fonts.googleapis.com/css?family=M+PLUS+1p&display=swap&subset=japanese'); */
+            @if ($locale === 'ja')
 
-            @import url('https://fonts.googleapis.com/css?family=Sawarabi+Gothic&display=swap&subset=japanese');
+                @font-face {
+                    font-family: 'M PLUS 1p';
+                    src: url({{ public_path('fonts/MPLUS1p-Regular.ttf') }}) format('truetype');
+                }
 
-    
-            * {
-                /* font-family: 'M PLUS 1p', sans-serif; */
-                font-family: 'Sawarabi Gothic', sans-serif;
-                line-height: 1;
-            }
+                @font-face {
+                    font-family: 'M PLUS 1p';
+                    font-weight: bold;
+                    src: url({{ public_path('fonts/MPLUS1p-Regular.ttf') }}) format('truetype');
+                }
+        
+                * {
+                    font-family: 'M PLUS 1p', sans-serif;
+                    line-height: 1;
+                }
+
+            @elseif ($locale === 'ko')
+
+                @font-face {
+                    font-family: 'Nanum Gothic';
+                    src: url({{ public_path('fonts/NanumGothic-Regular.ttf') }}) format('truetype');
+                }
+
+                @font-face {
+                    font-family: 'Nanum Gothic';
+                    font-weight: bold;
+                    src: url({{ public_path('fonts/NanumGothic-Bold.ttf') }}) format('truetype');
+                }
+                
+                * {
+                    font-family: 'Nanum Gothic', sans-serif;
+                    line-height: 1;
+                }
+
+            @elseif ($locale === 'zh-Hans' || $locale === 'zh-Hant')
+
+                @font-face {
+                    font-family: SimHei;
+                    src: url({{ public_path('fonts/simhei.ttf') }}) format('truetype');
+                }
+
+                * {
+                    font-family: SimHei, sans-serif;
+                    line-height: 1;
+                }
+            @endif 
 
             html {
                 font-size: 16px;
@@ -125,12 +156,12 @@
             
             <div class="invoice">
                 <div class="invoice__head">
-                    <div class="invoice__title"><h2>{{ trans('translations.invoice') }} 請求書 </h2> 請求書</div>
+                    <div class="invoice__title"><h2>{{ trans('translations.invoice') }}</h2></div>
                     <div class="invoice__info">
                         <div class="row">
                             <div class="column half">
                                 <label>{{ trans('translations.contract_id') }}</label>
-                                <span>{{ $invoice->contract_id }} 有用</span>
+                                <span>{{ $invoice->contract_id }}</span>
                             </div>
                             <div class="column half">
                                 <label>{{ trans('translations.invoice_date') }}</label>

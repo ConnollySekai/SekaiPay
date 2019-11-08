@@ -30,10 +30,13 @@ class NotifyUserText implements ShouldQueue
         
             $user_number = format_mobile_number($event->invoice->business_mobile_number);
 
+            $locale = $event->locale;
+
             Nexmo::message()->send([
+                'type' => 'unicode',
                 'to'   => $user_number,
                 'from' => env('NEXMO_SMS_FROM'),
-                'text' => trans('translations.business_text_message',['client_email' => $event->invoice->client_email,'contract_id' => $event->invoice->contract_id])
+                'text' => trans('translations.business_text_message',['client_email' => $event->invoice->client_email,'contract_id' => $event->invoice->contract_id], $locale)
             ]);
        }
     }
