@@ -77,13 +77,13 @@
     'italic' => $rootDir . '\lib\fonts\DejaVuSerif-Italic',
     'normal' => $rootDir . '\lib\fonts\DejaVuSerif',
   ),
-  'm plus 1p' => array(
-    'normal' => $fontDir . '\e03402791de2ad0b3fe588b22a1fc2b8',
-    'bold' => $fontDir . '\e03402791de2ad0b3fe588b22a1fc2b8',
-  ),
   'nanum gothic' => array(
     'normal' => $fontDir . '\83313e6f33f18e2d0f00472677276b73',
     'bold' => $fontDir . '\de0fe4cc5028e6e3584ece4d926cc267',
+  ),
+  'm plus 1p' => array(
+    'normal' => $fontDir . '\e03402791de2ad0b3fe588b22a1fc2b8',
+    'bold' => $fontDir . '\e03402791de2ad0b3fe588b22a1fc2b8',
   ),
   'simhei' => array(
     'normal' => $fontDir . '\558e929a4f096e968d40997e54445a26',

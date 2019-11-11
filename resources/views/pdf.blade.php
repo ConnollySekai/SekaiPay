@@ -48,6 +48,12 @@
                     src: url({{ public_path('fonts/simhei.ttf') }}) format('truetype');
                 }
 
+                @font-face {
+                    font-family: SimHei;
+                    font-weight: bold;
+                    src: url({{ public_path('fonts/simhei.ttf') }}) format('truetype');
+                }
+
                 * {
                     font-family: SimHei, sans-serif;
                     line-height: 1;
@@ -127,7 +133,7 @@
 
         
             .invoice__items thead {
-                background-color: #5EBAF2;
+                background-color: #1188D2;
                 color: #ffffff;
             }
 

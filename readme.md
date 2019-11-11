@@ -2,8 +2,8 @@
 Invoice generator for BTC Transactions
 
 ### Local Setup
-- clone the project using `git clone https://github.com/thebakerdev/Sekaipay.git`
-- go to project directory `cd sekaipay`
+- clone the project using `git clone https://github.com/ConnollySekai/SekaiPay.git`
+- go to project directory `cd SekaiPay`
 - install composer dependencies `composer install`
 - install node dependecies `npm install`
 - create a .env file manually or run `cp .env.example .env`. Add your enviroment variables and database credentials
