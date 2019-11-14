@@ -75,6 +75,28 @@ class InvoiceController extends Controller
     }
 
     /**
+     * Search for invoice ID
+     *
+     * @param \Illuminate\Http\Request
+     * @return \Illuminate\Http\Response 
+     */
+    public function search(Request $request)
+    {
+        $contract_id = $request->input('contract_id'); 
+
+        $invoice = Invoice::getByContractId($contract_id)->first();
+
+        if ($invoice === null) {
+
+            session()->flash('not_found',true);
+
+            return back();
+        }
+
+        return redirect(route('invoice.show',['invoice' => $invoice]));
+    }
+
+    /**
      * Download pdf
      *
      * @param \Illuminate\Http\Request

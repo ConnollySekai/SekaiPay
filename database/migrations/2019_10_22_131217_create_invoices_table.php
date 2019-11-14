@@ -17,11 +17,11 @@ class CreateInvoicesTable extends Migration
             $table->bigIncrements('id');
             $table->string('contract_id')->unique();
             $table->string('business_name');
-            $table->string('business_email');
+            $table->string('business_email')->nullable();
             $table->string('business_mobile_number')->nullable();
             $table->string('btc_address');
             $table->string('client_name');
-            $table->string('client_email');
+            $table->string('client_email')->nullable();
             $table->string('client_mobile_number')->nullable();
             $table->text('notes')->nullable();
             $table->timestamps();

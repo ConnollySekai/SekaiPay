@@ -10,17 +10,10 @@ class HomeController extends Controller
     /**
      * Displays Homepage
      *
-     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index()
     {
-        $contract_id = $request->input('contract_id'); 
-
-        $invoice = Invoice::getByContractId($contract_id)->first();
-
-        return view('home')->with([
-            'invoice' => $invoice
-        ]);
+        return view('home');
     }
 }

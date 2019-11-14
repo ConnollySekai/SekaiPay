@@ -23,15 +23,20 @@ class InvoiceObserver
         $client_email = $invoice->client_email;
 
         /* Send Email to User */
-        Mail::to($business_email)
+        if ($business_email !== null) {
+            Mail::to($business_email)
             ->locale(\App::getLocale())
             ->send(new NotifyUser($invoice));
+        }
 
-        /* Send Email to Client */
-        Mail::to($client_email)
+        /* Send Email to CLient */
+        if ($client_email !== null) {
+            Mail::to($client_email)
             ->locale(\App::getLocale())
             ->send(new NotifyClient($invoice));
-
+        }
+        
+        
         event(new InvoiceCreated($invoice, \App::getLocale()));
     }
 }
