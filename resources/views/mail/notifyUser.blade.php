@@ -186,7 +186,7 @@
                   </tr>
                   <tr>
                     <td align="left" style="font-size:0px;padding:10px 25px;word-break:break-word;">
-                      <div style="font-family:Roboto;font-size:16px;line-height:1.4;text-align:left;color:#6C6C6C;">{!! trans('translations.mail_business_line_2', ['invoice_link' =>  route('invoice.show',['invoice' => $invoice])], $locale) !!}</div>
+                      <div style="font-family:Roboto;font-size:16px;line-height:1.4;text-align:left;color:#6C6C6C;">{!! trans('translations.mail_business_line_2', ['contract_id' =>  $invoice->contract_id], $locale) !!}</div>
                     </td>
                   </tr>
                   <tr>
