@@ -139,7 +139,7 @@
                     </div>
                 </div>  
                 <div class="ui item invoice-actions">   
-                    <button type="button" id="converterBtn" class="ui small primary button button--rounded mr-1"><i class="calculator icon"></i> <span>{{ trans('translations.show_converter') }}</span></button>
+                    <button type="button" id="converterBtn" class="ui small button button--rounded mr-1"><i class="calculator icon"></i> <span>{{ trans('translations.hide_converter') }}</span></button>
                     <button class="ui tiny negative button button--rounded"><i class="file pdf outline icon"></i> <a href="{{ route('invoice.downloadPDF',['invoice' => $invoice]) }}">{{ trans('translations.download_pdf') }}</a></button>
                 </div>
             </div>

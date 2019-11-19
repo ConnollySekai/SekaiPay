@@ -25285,8 +25285,23 @@ i.flag:not(.icon):before {
 }
 
 /* Layouts */
-.converter {
-  display: none;
+.converter__inputs {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.converter__input {
+  width: 100%;
+}
+
+.converter__arrow i {
+  color: #1188D2;
+  height: 20px;
+  margin: 10px;
+  transition: all 0.2s ease-in;
+  width: 20px;
 }
 
 .converter__button {

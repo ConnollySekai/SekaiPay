@@ -1,4 +1,12 @@
 @include mq(sm) {
+    .converter__inputs {
+        flex-direction: row;
+    }
+
+    .converter__input {
+        flex: 45%;
+    }
+
     .converter__button {
         width: auto;
     }

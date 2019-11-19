@@ -16,7 +16,9 @@ class Localization
     {
         $locale = App::getLocale();
 
-        $browser_locale = substr($_SERVER['HTTP_ACCEPT_LANGUAGE'], 0, 2);
+        $browser_locale = !empty($_SERVER['HTTP_ACCEPT_LANGUAGE']) ? strtok(strip_tags($_SERVER['HTTP_ACCEPT_LANGUAGE']), ',') : '';
+
+        $browser_locale = substr($browser_locale, 0, 2);
         
         if(session('locale')) {
             $locale = session('locale');

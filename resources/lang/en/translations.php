@@ -43,7 +43,7 @@ return [
     'mail_closing' => 'Thank you for using our services.',
 
     'mail_client_line_1' => 'An Invoice was created by <strong>:business_name</strong> with the contract ID of <strong>:contract_id</strong> for your recent transaction.',
-    'mail_client_line_2' => 'You can view the invoice in this link <a href="www.SekaiPay.com/invoice/:contract_id" class="link" style="color: #0597F2;">www.SekaiPay.com/invoice/:contract_id</a>. Please contact :business_email if the invoice is incorrect.',
+    'mail_client_line_2' => 'You can view the invoice in this link <a href="www.SekaiPay.com/invoice/:contract_id" class="link" style="color: #0597F2;">www.SekaiPay.com/invoice/:contract_id</a>. <br><br> Please contact :business_email if the invoice is incorrect.',
     'mail_client_line_3' => 'Please verify if the btc address is valid before sending payment. <br> <a href="https://chain.so/address/BTC/:btc_address" target="_blank" class="link" style="color: #0597F2;" rel="noreferrer">:btc_address</a>',
     'mail_footer' => '© :current_year Sekaipay. All rights reserved.',
     'mail_opening' => 'Hi',

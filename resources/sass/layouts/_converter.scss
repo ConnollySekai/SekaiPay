@@ -1,5 +1,22 @@
-.converter {
-    display: none;
+.converter__inputs {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.converter__input {
+    width: 100%;
+}
+
+.converter__arrow {
+    i {
+        color: map-get($colors, 'blue-3');
+        height: 20px;
+        margin: 10px;
+        transition: all .2s ease-in;
+        width: 20px;
+    }
 }
 
 .converter__button {

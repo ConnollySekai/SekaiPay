@@ -1,29 +1,34 @@
 <template>
     <div id="converter" class="converter raise rounded px-2 py-3 text-center">
         <div class="ui form">
-            <div class="two fields">
-                <div class="field text-left">
-                    <label for="amount">{{ trans('translations.from') }}</label>
-                    <div class="ui right action input">
-                        <imask-input id="amount" v-model="amount" :mask="/^(\d+)?([.]?\d{0,8})$/"/>
-                        <div class="ui basic floating dropdown button from">
-                            <div class="text">{{ from }}</div>
-                            <i class="dropdown icon"></i>
-                            <div class="menu">
-                                <div class="item" v-for="(item,key) in tickerList" :key="key">{{ item }}</div>
+            <div class="converter__inputs mb-1">
+                <div class="converter__input">
+                    <div class="field mb-0">
+                        <div class="ui right action input fluid">
+                            <imask-input id="leftInput" v-model="input.left" :mask="/^(\d+)?([.]?\d{0,8})$/" @change="updateResultOutput('right')"/> 
+                            <div class="ui basic floating dropdown button from">
+                                <div class="text">{{ from }}</div>
+                                <i class="dropdown icon"></i>
+                                <div class="menu">
+                                    <div class="item" v-for="(item,key) in tickerList" :key="key">{{ item }}</div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="field text-left">
-                    <label for="totalRate">{{ trans('translations.to') }}</label>
-                    <div class="ui right action input">
-                        <input type="text" id="totalRate" v-model="totalRate" readonly>
-                        <div class="ui basic floating dropdown button to">
-                            <div>{{ to }}</div>
-                            <i class="dropdown icon" v-show="toOptions.length"></i>
-                            <div class="menu" v-show="toOptions.length">
-                                <div class="item" v-for="(item,key) in toOptions" :key="key">{{ item.ticker }}</div>
+                <div class="converter__arrow">
+                    <i class="random icon" :class="{'horizontally flipped ': resultOutput === 'left'}"></i>
+                </div>
+                <div class="converter__input">
+                    <div class="field mb-0">
+                        <div class="ui right action input fluid">
+                            <imask-input id="rightInput" v-model="input.right" :mask="/^(\d+)?([.]?\d{0,8})$/" @change="updateResultOutput('left')"/> 
+                            <div class="ui basic floating dropdown button to">
+                                <div>{{ to }}</div>
+                                <i class="dropdown icon" v-show="toOptions.length"></i>
+                                <div class="menu" v-show="toOptions.length">
+                                    <div class="item" v-for="(item,key) in toOptions" :key="key">{{ item.ticker }}</div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -53,9 +58,6 @@
             'imask-input': IMaskComponent
         },
         computed: {
-            rate() {
-                return `${this.toValue} ${this.ticker}`;
-            },
             rateDisplay() {
                 return `${this.rateInfo.amount} ${this.rateInfo.from} = ${this.rateInfo.rate} ${this.rateInfo.to}`
             },
@@ -69,13 +71,10 @@
         },
         data() {
             return {
-                amount:'',
-                from: this.trans('translations.ticker.btc'),
-                to: this.trans('translations.ticker.usd'),
+                from: this.trans('translations.ticker.usd'),
+                to: this.trans('translations.ticker.btc'),
                 toOptions: [],
-                ticker: 'BTC',
                 toValue: 0,
-                totalRate:'',
                 tickerList: [
                     this.trans('translations.ticker.btc'),
                     this.trans('translations.ticker.usd'),
@@ -94,9 +93,14 @@
                 rateInfo: {
                     amount:'1',
                     rate: '',
-                    from: this.trans('translations.ticker.btc'),
-                    to: this.trans('translations.ticker.usd')
-                }
+                    from: this.trans('translations.ticker.usd'),
+                    to: this.trans('translations.ticker.btc')
+                },
+                input: {
+                    left: '',
+                    right: '',
+                },
+                resultOutput: 'right'
             }
         },
         methods: {
@@ -104,31 +108,43 @@
 
                 const vm = this;
 
-                if (this.amount.length) {
-                    
+                const amount = (this.resultOutput === 'right') ? this.input.left: this.input.right;
+
+                const from = (this.resultOutput === 'right') ? this.from : this.to;
+
+                const to = (this.resultOutput === 'right') ? this.to : this.from;
+
+
+                if (amount.length) {
                     this.loading = true;
-                    
+
                     this.btnText = this.trans('translations.converting');
 
                     this.getRate({
-                        amount: this.amount,
-                        from: this.from,
-                        to: this.to
+                        amount,
+                        from,
+                        to
                     }).then(response => {
-                        
+
                         const data = response.data;
 
-                        vm.totalRate = data.total;
+                        if (vm.resultOutput === 'right') {
 
-                        vm.rateInfo.from = vm.from;
+                            vm.input.right = data.total;
+                        } else {
+                            vm.input.left = data.total;
+                        }
 
-                        vm.rateInfo.to = vm.to;
+                        vm.rateInfo.from = from;
+
+                        vm.rateInfo.to = to;
 
                         vm.rateInfo.rate = data.rate;
                             
                         vm.loading = false;
                         
                         this.btnText = this.trans('translations.convert');
+
                     });
                 }
             },
@@ -171,6 +187,12 @@
 
                 return newSelection;
             },
+            updateResultOutput(position) {
+
+                this.resultOutput = position;
+
+                this.convertCurrency();
+            }
         },
         mounted() {
 
@@ -188,9 +210,13 @@
                         vm.from = value.toUpperCase();
                         
                         vm.toOptions = vm.setToOptions();
+
+                        vm.resultOutput = 'right';
                         
                     } else {
                         vm.to = value.toUpperCase();
+
+                        vm.resultOutput = 'left';
                     }
 
                     vm.totalRate = '';
@@ -200,8 +226,8 @@
 
             this.getRate({
                 amount: '1',
-                from: this.from,
-                to: this.to
+                from: 'USD',
+                to: 'BTC'
             }).then(response => {
 
                 const data = response.data;
