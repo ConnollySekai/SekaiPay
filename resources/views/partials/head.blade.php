@@ -1,4 +1,15 @@
 <head>
+
+ <!-- Global site tag (gtag.js) - Google Analytics -->
+ <script async src="https://www.googletagmanager.com/gtag/js?id=UA-152610947-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-152610947-1');
+    </script>
+    
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -11,10 +22,12 @@
     <meta name="theme-color" content="#ffffff">
 
     <!-- SEO -->
-    <meta name="description" content="description">
-    <meta name="Keywords" content="keywords">
+    <meta name="description" content="An invoice generator in Bitcoin">
+    <meta name="Keywords" content="BTC Bitcoin invoice generator">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="url">
+
+    
 
     <!-- Favicon -->
     <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('images/favicon/apple-touch-icon.png') }}">
