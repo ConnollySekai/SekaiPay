@@ -16,9 +16,9 @@ return [
     'client_email_placeholder' => 'e-mail_client@example.com',
     'client_name' => 'Nom du client',
     'client_name_placeholder' => 'Jean Dupont',
-    'business_text_message' => 'Facture SekaiPay émise.
-    ID: :contract_id. www.SekaiPay.com/invoice/:contract_id', 'client_text_message' => 'Facture SekaiPay émise.
-    ID: :contract_id. www.SekaiPay.com/invoice/:contract_id', 'confirm_btc_address' => "Confirmez l'adresse BTC",
+    'business_text_message' => 'Facture SekaiPay émise. ID: :contract_id. www.SekaiPay.com/invoice/:contract_id', 
+    'client_text_message' => 'Facture SekaiPay émise. ID: :contract_id. www.SekaiPay.com/invoice/:contract_id', 
+    'confirm_btc_address' => "Confirmez l'adresse BTC",
     'contract_id' => 'Numéro du contrat',
     'convert' => 'Convertir',
     'converting' => 'Conversion',
