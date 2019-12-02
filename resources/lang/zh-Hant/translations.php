@@ -17,10 +17,8 @@ return [
     'client_email_placeholder' => 'clientemail@example.com',
     'client_name' => '客戶名稱',
     'client_name_placeholder' => 'John Doe',
-    'business_text_message' => 'SekaiPay發票生成.
-    編號: :contract_id. www.SekaiPay.com/invoice/:contract_id',
-    'client_text_message' => 'SekaiPay發票生成.
-    編號: :contract_id. www.SekaiPay.com/invoice/:contract_id',
+    'business_text_message' => 'SekaiPay發票生成. 編號: :contract_id. www.SekaiPay.com/invoice/:contract_id',
+    'client_text_message' => 'SekaiPay發票生成. 編號: :contract_id. www.SekaiPay.com/invoice/:contract_id',
     'confirm_btc_address' => '確認BTC地址',
     'contract_id' => '合同編號',
     'convert' => '轉換',
