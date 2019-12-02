@@ -46,7 +46,7 @@ return [
 
 'convert' => '전환',
 'converting' => '전환중',
-, 'create_invoice' => '인보이스 생성',                           
+'create_invoice' => '인보이스 생성',                           
 'description' => '설명',
 'download_pdf' => 'PDF로 다운로드',
 'english' => '영어',
