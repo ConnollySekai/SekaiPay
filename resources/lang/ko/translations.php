@@ -24,6 +24,7 @@ return [
 
 'calling_code_placeholder' => '+1',
 	
+'english' => 'English',
 
 'chinese_simplified' => '中文（简体)',
     'chinese_traditional' => '中文（繁體)',
@@ -52,7 +53,6 @@ return [
 'create_invoice' => '인보이스 생성',                           
 'description' => '설명',
 'download_pdf' => 'PDF로 다운로드',
-'english' => '영어',
 'found' => '찾기',
 
 'from' => '에서',
