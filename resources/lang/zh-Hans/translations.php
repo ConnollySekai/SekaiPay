@@ -11,8 +11,11 @@ return [
     'business_name' => '企业名称',
     'business_name_placeholder' => '公司XYZ',
     'calling_code_placeholder' => '+1',
-    'chinese_simplified' => '中文（简体）',
-    'chinese_traditional' => '中文（繁体）',
+    'chinese_simplified' => '中文（简体)',
+    'chinese_traditional' => '中文（繁體)',
+    'japanese' => '日本語',
+    'korean' => '한국어',
+    'spanish' => 'Español',
     'client_email' => '客户电子邮箱',
     'client_email_placeholder' => 'clientemail@example.com',
     'client_name' => '客户名称',
@@ -35,8 +38,7 @@ return [
     'invoice' => '发票',
     'invoice_created' => '发票创建完毕',
     'invoice_date' => '开票日期',
-    'japanese' => '日语',
-    'korean' => '韩语',
+    
     'notes' => '注释',
     'mail_business_line_1' => '合同编号为
     <strong>:contract_id</strong>的发票已发送至<strong>:client_email</
@@ -67,7 +69,6 @@ return [
     'search' => '搜索',
     'sekaipay' => 'Sekaipay',
     'show_converter' => '显示转换器',
-    'spanish' => '西班牙语',
     'subtotal' => '小计',
     'ticker' => [
         'aud' => '澳元',

@@ -25,9 +25,12 @@ return [
 'calling_code_placeholder' => '+1',
 	
 
-'chinese_simplified' => '중국어 (간체)',
-
-'chinese_traditional' => '중국어 (번체)',
+'chinese_simplified' => '中文（简体)',
+    'chinese_traditional' => '中文（繁體)',
+    'japanese' => '日本語',
+    'korean' => '한국어',
+    'spanish' => 'Español',
+    'french' => 'Français',
 
 'client_email' => '클라이언트 이메일',
 
@@ -51,7 +54,6 @@ return [
 'download_pdf' => 'PDF로 다운로드',
 'english' => '영어',
 'found' => '찾기',
-'french' => '프랑스어',
 
 'from' => '에서',
 
@@ -64,9 +66,7 @@ return [
 'invoice_created' => '인보이스가 생성되었습니다', 
 'invoice_date' => '인보이스 날짜',
 
-'japanese' => '일본어',
 
-'korean' => '한국어',
 
 'notes' => '노트',
 
@@ -110,7 +110,6 @@ return [
 'sekaipay' => 'Sekaipay',					
 
 'show_converter' => 'Show Converter',
-'spanish' => '스페인어',
 
 'subtotal' => '소계',
 
