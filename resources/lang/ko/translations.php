@@ -4,7 +4,7 @@ return [
 
 'add_item' => '아이템 추가',		
 
-'amount' => 'Amount',						
+'amount' => '수량',						
 
 'btc_address' => '비트코인 주소',
 	
@@ -48,8 +48,8 @@ return [
 	'confirm_btc_address' => '비트코인 주소 확인',
 	'contract_id' =>'계약 ID',
 
-'convert' => '전환',
-'converting' => '전환중',
+'convert' => '통화 변경',
+'converting' => '변경중',
 'create_invoice' => '인보이스 생성',                           
 'description' => '설명',
 'download_pdf' => 'PDF로 다운로드',
@@ -57,7 +57,7 @@ return [
 
 'from' => '에서',
 
-'hide_converter' => '번역 숨기기',
+'hide_converter' => '통화 숨기기',
 
 'home' => '홈',
 
@@ -109,7 +109,7 @@ return [
 
 'sekaipay' => 'Sekaipay',					
 
-'show_converter' => 'Show Converter',
+'show_converter' => '통화 보기',
 
 'subtotal' => '소계',
 
