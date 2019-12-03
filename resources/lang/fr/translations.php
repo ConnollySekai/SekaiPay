@@ -10,6 +10,8 @@ return [
     'business_email_placeholder' => 'votre_e-mail@example.com', 'business_name' => "Nom de l'entreprise",
     'business_name_placeholder' => 'Société XYZ',
     'calling_code_placeholder' => '+1',
+    'english' => 'English',
+
     'chinese_simplified' => '中文（简体)',
     'chinese_traditional' => '中文（繁體)',
     'japanese' => '日本語',
@@ -29,7 +31,6 @@ return [
     'create_invoice' => 'Établir la facture',
     'description' => 'Description',
     'download_pdf' => 'Télécharger le PDF',
-    'english' => 'anglais',
     'found' => 'trouvé',
     'from' => 'De',
     'hide_converter' => 'Masquer le convertisseur',
