@@ -18,7 +18,7 @@
         </div>
         <div class="site-search__mobile">
             <div class="site-search__form">
-                <form action="{{ route('home.index') }}" method="get" class="ui form">
+                <form action="{{ route('invoice.search') }}" method="get" class="ui form">
                     <div class="ui action fluid input">
                         <input type="text" name="contract_id" placeholder="{{ trans('translations.contract_id') }}" aria-label="Contract ID" value="{{ request('contract_id') }}">
                         <button class="ui primary button">{{ trans('translations.search') }}</button>

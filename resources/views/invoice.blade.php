@@ -6,6 +6,9 @@
 <div class="ui container vertically padded grid pb-3">
     <div class="row centered pt-0">
         <div class="sixteen wide mobile sixteen wide tablet twelve wide computer column">
+            @if (session('not_found'))
+                @include('partials.notification')
+            @endif
             <div class="invoice-view raise rounded mt-2">
                 <input type="hidden" ref="invoiceId" value="{{ $invoice->id }}">
                 <div class="ui column grid">

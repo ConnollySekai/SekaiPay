@@ -4,7 +4,7 @@
 
 @section('content')
 
-<form action="{{ route('invoice.store') }}" method="post" class="ui form" ref="form" @submit.prevent="handleSubmit()" @keydown="invoice.form.errors.clear($event.target.name)" v-cloak>
+<form action="{{ route('invoice.store') }}" method="post" class="ui form" ref="form" @submit.prevent="handleSubmit()" @keydown="invoice.form.errors.clear($event.target.name)">
     <div class="ui container vertically padded grid">
         <div class="row centered pt-0">
             <div class="sixteen wide mobile sixteen wide tablet twelve wide computer column">
@@ -23,12 +23,16 @@
                                 <div class="field" :class="invoice.form.errors.has('business_name') ? 'error':''">
                                     <label for="businessName">{{ trans('translations.business_name') }}</label>
                                     <input type="text" id="businessName" name="business_name" placeholder="{{ trans('translations.business_name_placeholder') }}" v-model="invoice.form.business_name" data-scroll-anchor="business_name">
-                                    <div v-if="invoice.form.errors.has('business_name')" class="ui mini basic negative pointing prompt label visible">@{{ invoice.form.errors.first('business_name') }}</div>
+                                    <template v-cloak>
+                                        <div v-if="invoice.form.errors.has('business_name')" class="ui mini basic negative pointing prompt label visible">@{{ invoice.form.errors.first('business_name') }}</div>
+                                    </template>
                                 </div>
                                 <div class="field" :class="invoice.form.errors.has('business_email') ? 'error':''">
                                     <label for="businessEmail">{{ trans('translations.business_email') }}</label>
                                     <input type="text" id="businessEmail" name="business_email" placeholder="{{ trans('translations.business_email_placeholder') }}" v-model="invoice.form.business_email" data-scroll-anchor="business_email">
-                                    <div v-if="invoice.form.errors.has('business_email')" class="ui mini basic negative pointing prompt label visible">@{{ invoice.form.errors.first('business_email') }}</div>
+                                    <template v-cloak>
+                                        <div v-if="invoice.form.errors.has('business_email')" class="ui mini basic negative pointing prompt label visible">@{{ invoice.form.errors.first('business_email') }}</div>
+                                    </template>
                                 </div>
                                 <div class="field" :class="(invoice.form.errors.has('business_calling_code') || invoice.form.errors.has('business_mobile_number')) ? 'error':''">
                                     <label for="businessMobileNumber">{{ trans('translations.mobile_number') }} <small>({{ trans('translations.optional') }})</small></label>
@@ -38,19 +42,25 @@
                                         </div>
                                         <imask-input id="businessMobileNumber" v-model="invoice.form.business_mobile_number" placeholder="{{ trans('translations.mobile_number_placeholder') }}" name="business_mobile_number" :mask="/^(\d+[-]{0,1})*$/" data-scroll-anchor="business_mobile_number" />
                                     </div>
-                                    <div v-if="invoice.form.errors.has('business_mobile_number')" class="ui mini basic negative pointing prompt label visible">@{{ invoice.form.errors.first('business_mobile_number') }}</div>
+                                    <template v-cloak>
+                                        <div v-if="invoice.form.errors.has('business_mobile_number')" class="ui mini basic negative pointing prompt label visible">@{{ invoice.form.errors.first('business_mobile_number') }}</div>
+                                    </template>
                                 </div>
                             </div>
                             <div class="sixteen wide mobile eight width tablet eight wide computer column">
                                 <div class="field" :class="invoice.form.errors.has('client_name') ? 'error':''">
                                     <label for="clientName">{{ trans('translations.client_name') }}</label>
                                     <input type="text" id="clientName" name="client_name" placeholder="{{ trans('translations.client_name_placeholder') }}" v-model="invoice.form.client_name" data-scroll-anchor="client_name">
-                                    <div v-if="invoice.form.errors.has('client_name')" class="ui mini basic negative pointing prompt label visible">@{{ invoice.form.errors.first('client_name') }}</div>
+                                    <template v-cloak>
+                                        <div v-if="invoice.form.errors.has('client_name')" class="ui mini basic negative pointing prompt label visible">@{{ invoice.form.errors.first('client_name') }}</div>
+                                    </template>
                                 </div>
                                 <div class="field" :class="invoice.form.errors.has('client_email') ? 'error':''">
                                     <label for="clientEmail">{{ trans('translations.client_email') }}</label>
                                     <input type="text" id="clientEmail" name="client_email" placeholder="{{ trans('translations.client_email_placeholder') }}"  v-model="invoice.form.client_email" data-scroll-anchor="client_email">
-                                    <div v-if="invoice.form.errors.has('client_email')" class="ui mini basic negative pointing prompt label visible">@{{ invoice.form.errors.first('client_email') }}</div>
+                                    <template v-cloak>
+                                        <div v-if="invoice.form.errors.has('client_email')" class="ui mini basic negative pointing prompt label visible">@{{ invoice.form.errors.first('client_email') }}</div>
+                                    </template>
                                 </div>
                                 <div class="field" :class="(invoice.form.errors.has('client_calling_code') || invoice.form.errors.has('client_mobile_number')) ? 'error':''">
                                     <label for="clientMobileNumber">{{ trans('translations.mobile_number') }} <small>({{ trans('translations.optional') }})</small></label>
@@ -60,7 +70,9 @@
                                         </div>
                                         <imask-input id="clientMobileNumber" v-model="invoice.form.client_mobile_number" placeholder="{{ trans('translations.mobile_number_placeholder') }}" name="client_mobile_number" :mask="/^(\d+[-]{0,1})*$/" data-scroll-anchor="client_mobile_number"/>
                                     </div>
-                                    <div v-if="invoice.form.errors.has('client_mobile_number')" class="ui mini basic negative pointing prompt label visible">@{{ invoice.form.errors.first('client_mobile_number') }}</div> 
+                                    <template v-cloak>
+                                        <div v-if="invoice.form.errors.has('client_mobile_number')" class="ui mini basic negative pointing prompt label visible">@{{ invoice.form.errors.first('client_mobile_number') }}</div>
+                                    </template> 
                                 </div>
                             </div>
                         </div>
@@ -69,7 +81,9 @@
                                 <div class="field" :class="invoice.form.errors.has('btc_address') ? 'error':''">
                                     <label for="btcAddress">{{ trans('translations.btc_address') }}</label>
                                     <input type="text" id="btcAddress" name="btc_address" placeholder="{{ trans('translations.btc_address_placeholder') }}" v-model="invoice.form.btc_address" data-scroll-anchor="btc_address">
-                                    <div v-if="invoice.form.errors.has('btc_address')" class="ui mini basic negative pointing prompt label visible">@{{ invoice.form.errors.first('btc_address') }}</div>
+                                    <template v-cloak>
+                                        <div v-if="invoice.form.errors.has('btc_address')" class="ui mini basic negative pointing prompt label visible">@{{ invoice.form.errors.first('btc_address') }}</div>
+                                    </template>
                                 </div>
                                 <div class="field">
                                     <label for="btcAddressConfirmation">{{ trans('translations.confirm_btc_address') }}</label>
