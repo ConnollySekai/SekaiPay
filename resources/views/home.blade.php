@@ -186,7 +186,7 @@
                         </div>
                     </div>  
                     <div class="ui item invoice-actions">      
-                        <button type="button" id="converterBtn" class="ui small button button--rounded mr-1"><i class="calculator icon"></i> <span>{{ trans('translations.hide_converter') }}</span></button>
+                        <button type="button" id="converterBtn" class="ui small button button--rounded"><i class="calculator icon"></i> <span>{{ trans('translations.hide_converter') }}</span></button>
                         <button type="submit" id="sendInvoiceBtn" class="ui small secondary button button--rounded"><i class="paper plane outline icon"></i> {{ trans('translations.create_invoice') }}</button>
                     </div>
                 </div>

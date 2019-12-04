@@ -4,13 +4,20 @@
     }
 
     .invoice-actions {
+        flex-direction: row;
         justify-content: flex-end;
+
+        #converterBtn {
+            margin-bottom: 0;
+            margin-right: 1rem;
+        }
     }
 
     .invoice-actions-wrap {
         flex-direction: row;
         justify-content: space-between;
-
+        padding-left: 0;
+        padding-right: 0;
         .language-switcher {
             order: 1;
         }

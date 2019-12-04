@@ -26,12 +26,19 @@
   }
 
   .invoice-actions {
+    flex-direction: row;
     justify-content: flex-end;
+  }
+  .invoice-actions #converterBtn {
+    margin-bottom: 0;
+    margin-right: 1rem;
   }
 
   .invoice-actions-wrap {
     flex-direction: row;
     justify-content: space-between;
+    padding-left: 0;
+    padding-right: 0;
   }
   .invoice-actions-wrap .language-switcher {
     order: 1;
@@ -45,6 +52,9 @@
   .language-switcher {
     margin-top: 0;
     text-align: left;
+  }
+  .language-switcher .ui.selection.dropdown {
+    min-width: 14em;
   }
 }
 /* Site Header SM */

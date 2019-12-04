@@ -44,8 +44,8 @@ class ConverterController extends Controller
         return response()->json([
             'base_currency' => $from,
             'quoted_currency' => $to,
-            'total' => format_number($total),
-            'rate' => format_number($rate)
+            'total' => format_number(number_format($total,8,'.','')),
+            'rate' => format_number(number_format($rate,8,'.',''))
         ],200);
     }
 

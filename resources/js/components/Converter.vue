@@ -93,8 +93,8 @@
                 rateInfo: {
                     amount:'1',
                     rate: '',
-                    from: this.trans('translations.ticker.usd'),
-                    to: this.trans('translations.ticker.btc')
+                    from: this.trans('translations.ticker.btc'),
+                    to: this.trans('translations.ticker.usd')
                 },
                 input: {
                     left: '',
@@ -139,7 +139,9 @@
 
                         vm.rateInfo.to = to;
 
-                        vm.rateInfo.rate = data.rate;
+                        vm.rateInfo.rate = (amount === '1') ? data.total : data.rate;
+
+                        console.log(data.amount);
                             
                         vm.loading = false;
                         
@@ -226,13 +228,13 @@
 
             this.getRate({
                 amount: '1',
-                from: 'USD',
-                to: 'BTC'
+                from: 'BTC',
+                to: 'USD'
             }).then(response => {
 
                 const data = response.data;
 
-                this.rateInfo.rate = response.data.rate;
+                this.rateInfo.rate = response.data.total;
             });
         }
     }

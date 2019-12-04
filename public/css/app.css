@@ -25698,6 +25698,8 @@ i.flag:not(.icon):before {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
 }
 .invoice-actions-wrap .invoice-actions {
   order: 1;
@@ -25708,12 +25710,20 @@ i.flag:not(.icon):before {
 
 .invoice-actions {
   display: flex;
+  flex-direction: column;
   justify-content: center;
+}
+.invoice-actions #converterBtn {
+  margin-bottom: 1rem;
+  margin-right: 0;
 }
 
 .language-switcher {
   margin-top: 1rem;
   text-align: center;
+}
+.language-switcher .ui.selection.dropdown {
+  min-width: 100%;
 }
 
 .site-header__nav .column {

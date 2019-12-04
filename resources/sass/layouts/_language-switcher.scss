@@ -1,4 +1,8 @@
 .language-switcher {
     margin-top: 1rem;
     text-align: center;
+
+    .ui.selection.dropdown {
+        min-width: 100%;
+    }
 }
