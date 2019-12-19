@@ -18,6 +18,7 @@ return [
     'korean' => '한국어',
     'spanish' => 'Español',
     'french' => 'Français',
+    'portuguese' => 'Portuguese',
     'client_email' => 'Email del cliente',
     'client_email_placeholder' => 'email_cliente@example.com',
     'client_name' => 'Nombre del cliente',
@@ -38,7 +39,7 @@ return [
     'invoice' => 'Factura',
     'invoice_created' => 'Factura generada',
     'invoice_date' => 'Fecha de la factura',
-    
+    'items_services' => 'Items / Services',
     'notes' => 'Notas',
     'mail_business_line_1' => 'Una factura con el número de contrato
     <strong>:contract_id</strong> ha sido enviada a <strong>:client_email</

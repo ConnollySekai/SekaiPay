@@ -17,6 +17,7 @@ return [
     'korean' => '한국어',
     'spanish' => 'Español',
     'french' => 'Français',
+    'portuguese' => 'Portuguese',
     'client_email' => 'Client Email',
     'client_email_placeholder' => 'clientemail@example.com',
     'client_name' => 'Client Name',
@@ -37,7 +38,7 @@ return [
     'invoice' => 'Invoice',
     'invoice_created' => 'Invoice Created',
     'invoice_date' => 'Invoice Date',
-    
+    'items_services' => 'Items / Services',
     'notes' => 'Notes',
 
     'mail_business_line_1' => 'An invoice with contract ID of <strong>:contract_id</strong> was sent to <strong>:client_email</strong>',

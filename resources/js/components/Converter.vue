@@ -140,8 +140,6 @@
                         vm.rateInfo.to = to;
 
                         vm.rateInfo.rate = (amount === '1') ? data.total : data.rate;
-
-                        console.log(data.amount);
                             
                         vm.loading = false;
                         

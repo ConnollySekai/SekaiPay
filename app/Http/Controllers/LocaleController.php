@@ -30,6 +30,11 @@ class LocaleController extends Controller
     public function localizeForJs()
     {
         $lang = config('app.locale');
+
+        //check if lang folder exist then set to english if not
+        if (!is_dir(resource_path('lang/'.$lang))) {
+            $lang = 'en';
+        }
             
         $files   = glob(resource_path('lang/' . $lang . '/*.php'));
         $strings = [];

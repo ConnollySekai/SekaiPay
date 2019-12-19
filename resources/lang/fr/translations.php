@@ -11,13 +11,13 @@ return [
     'business_name_placeholder' => 'Société XYZ',
     'calling_code_placeholder' => '+1',
     'english' => 'English',
-
     'chinese_simplified' => '中文（简体)',
     'chinese_traditional' => '中文（繁體)',
     'japanese' => '日本語',
     'korean' => '한국어',
     'spanish' => 'Español',
     'french' => 'Français',
+    'portuguese' => 'Portuguese',
     'client_email' => 'E-mail du client',
     'client_email_placeholder' => 'e-mail_client@example.com',
     'client_name' => 'Nom du client',
@@ -38,7 +38,7 @@ return [
     'invoice' => 'Facture',
     'invoice_created' => 'Facture établie',
     'invoice_date' => 'Date de la facture',
-    
+    'items_services' => 'Items / Services',
     'notes' => 'Notes',
     'mail_business_line_1' => 'Une facture portant sur le contrat numéro <strong>:contract_id</strong> a été envoyée à <strong>:client_email</ strong>',
     'mail_business_line_2' => 'Veuillez confirmer auprès de votre client que la facture est correcte. Vous pouvez la visualiser ici <a href="www.SekaiPay.com/invoice/:contract_id" class="link" style="color: #0597F2;">www.SekaiPay.com/invoice/:contract_id</a>',

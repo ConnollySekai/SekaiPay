@@ -21,6 +21,34 @@
 }
 /* Invoice SM */
 @media screen and (min-width: 768px) {
+  .invoice-items label {
+    display: none;
+  }
+
+  .invoice-item__delete-btn {
+    box-shadow: none;
+    right: -35px;
+    top: 0;
+  }
+
+  .ui.table tr.invoice-items__header--desktop {
+    display: table-row !important;
+  }
+  .ui.table tr.invoice-items__header--mobile {
+    display: none !important;
+  }
+
+  .invoice-item__quantity,
+.invoice-item__price {
+    text-align: right;
+  }
+
+  .invoice-item__amount {
+    height: 30px;
+    position: relative;
+    text-align: right;
+  }
+
   .invoice-view {
     padding: 3rem !important;
   }

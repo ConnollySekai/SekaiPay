@@ -222,11 +222,11 @@
                             <td class="half">
                                 <table class="invoice__summary">
                                     <tr>
-                                        <td>{{ trans('translations.subtotal') }}</td>
+                                        <td><strong>{{ trans('translations.subtotal') }}</strong></td>
                                         <td class="text-right"><strong>{{ format_number(to_btc((string)$amount)) }}</strong></td>
                                     </tr>
                                     <tr style="background-color:#E0E1E2">
-                                        <td>{{ trans('translations.total') }}</td>
+                                        <td><strong>{{ trans('translations.total') }}</strong></td>
                                         <td class="text-right"><strong>{{ format_number(to_btc((string)$amount)) }}</strong></td>
                                     </tr>
                                 </table>

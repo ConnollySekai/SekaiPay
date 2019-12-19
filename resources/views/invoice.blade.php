@@ -3,7 +3,7 @@
 @section('title', trans('translations.invoice'))
 
 @section('content')
-<div class="ui container vertically padded grid pb-3">
+<div class="ui container vertically padded grid">
     <div class="row centered pt-0">
         <div class="sixteen wide mobile sixteen wide tablet twelve wide computer column">
             @if (session('not_found'))
@@ -52,13 +52,16 @@
                 <div class="ui column grid">
                     <div class="row">
                         <div class="sixteen wide column">
-                            <table class="ui basic table table-primary table__borderless mt-h">
+                            <table class="invoice-items ui basic table table-primary table__borderless mt-h">
                                 <thead>
-                                    <tr>
+                                    <tr class="invoice-items__header--desktop">
                                         <th>{{ trans('translations.description') }}</th>
-                                        <th class="right aligned">{{ trans('translations.quantity') }}</th>
-                                        <th class="right aligned">{{ trans('translations.price') }}</th>
-                                        <th class="right aligned">{{ trans('translations.amount') }}</th>
+                                        <th class="invoice-items__quantity right aligned">{{ trans('translations.quantity') }}</th>
+                                        <th class="invoice-items__price right aligned">{{ trans('translations.price') }} ({{ trans('translations.ticker.btc') }}) </th>
+                                        <th class="invoice-items__amount right aligned">{{ trans('translations.amount') }}</th>
+                                    </tr>
+                                    <tr class="invoice-items__header--mobile pb-0">
+                                        <th colspan="4">{{ trans('translations.items_services') }}</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -66,11 +69,23 @@
                                         @php ($amount = 0)
                                         @foreach ($invoice->items as $item)
                                             @php ($amount = bcadd($amount,bcmul($item->quantity,$item->price_in_satoshi)))
-                                            <tr>
-                                                <td data-label="{{ trans('translations.description') }}">{{ $item->description }}</td>
-                                                <td data-label="{{ trans('translations.quantity') }}" class="right aligned">{{ $item->quantity }}</td>
-                                                <td data-label="{{ trans('translations.price') }}" class="right aligned">{{ format_number($item->priceInBtc) }}</td>
-                                                <td data-label="{{ trans('translations.amount') }}" class="right aligned">{{ format_number(compute_amount($item->price_in_satoshi, $item->quantity)) }}</td>
+                                            <tr class="invoice-item">
+                                                <td data-label="{{ trans('translations.description') }}">
+                                                    <label>{{ trans('translations.description') }}</label>
+                                                    {{ $item->description }}
+                                                </td>
+                                                <td data-label="{{ trans('translations.quantity') }}" class="right aligned">
+                                                    <label>{{ trans('translations.quantity') }}</label>
+                                                    {{ $item->quantity }}
+                                                </td>
+                                                <td data-label="{{ trans('translations.price') }}" class="right aligned">
+                                                <label>{{ trans('translations.price') }} ({{ trans('translations.ticker.btc') }})</label>
+                                                    {{ format_number($item->priceInBtc) }}
+                                                </td>
+                                                <td data-label="{{ trans('translations.amount') }}" class="right aligned">
+                                                    <label>{{ trans('translations.amount') }} </label>
+                                                    {{ format_number(compute_amount($item->price_in_satoshi, $item->quantity)) }}
+                                                </td>
                                             </tr>
                                         @endforeach
                                     @endif
@@ -85,11 +100,11 @@
                         <div class="sixteen wide mobile eight width tablet eight wide computer column">
                             <div class="invoice-summary">
                                 <div class="invoice-summary__row">
-                                    <div><span>{{ trans('translations.subtotal') }}</span></div>
+                                    <div><strong>{{ trans('translations.subtotal') }}</strong></div>
                                     <div><strong>{{ format_number(to_btc((string)$amount)) }}</strong></div>
                                 </div>
                                 <div class="invoice-summary__row invoice-summary__total">
-                                    <div><span>{{ trans('translations.total') }}</span></div>
+                                    <div><strong>{{ trans('translations.total') }}</strong></div>
                                     <div><strong>{{ format_number(to_btc((string)$amount)) }}</strong></div>
                                 </div>
                             </div>
@@ -132,12 +147,13 @@
                         <div class="default text">English</div>
                         <div class="menu">
                             <div class="item" data-value="en">{{ trans('translations.english') }}</div>
+                            <div class="item" data-value="es">{{ trans('translations.spanish') }}</div>
+                            <div class="item" data-value="pt">{{ trans('translations.portuguese') }}</div>
+                            <div class="item" data-value="fr">{{ trans('translations.french') }}</div>
                             <div class="item" data-value="zh-Hans">{{ trans('translations.chinese_simplified') }}</div>
                             <div class="item" data-value="zh-Hant">{{ trans('translations.chinese_traditional') }}</div>
                             <div class="item" data-value="ja">{{ trans('translations.japanese') }}</div>
                             <div class="item" data-value="ko">{{ trans('translations.korean') }}</div>
-                            <div class="item" data-value="es">{{ trans('translations.spanish') }}</div>
-                            <div class="item" data-value="fr">{{ trans('translations.french') }}</div>
                         </div>
                     </div>
                 </div>  

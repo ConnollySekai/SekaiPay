@@ -19,6 +19,7 @@ return [
     'korean' => '한국어',
     'spanish' => 'Español',
     'french' => 'Français',
+    'portuguese' => 'Portuguese',
     'client_email' => 'E メールアドレス',
     'client_email_placeholder' => 'clientemail@example.com',
     'client_name' => 'お名前',
@@ -41,7 +42,7 @@ return [
     'invoice' => 'インボイス',
     'invoice_created' => 'インボイスを発行する',
     'invoice_date' => '発行日',
-   
+    'items_services' => 'Items / Services',
     'notes' => '備考欄',
     'mail_business_line_1' => 'お客様の ID が記載されたインボイスが
     <strong>:contract_id</strong> に送信されます<strong>:client_email</

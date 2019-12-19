@@ -98,31 +98,41 @@
                             <div class="sixteen wide column">
                                 <table class="invoice-items ui basic table table-primary table__borderless mt-h">
                                     <thead>
-                                        <tr>
+                                        <tr class="invoice-items__header--desktop">
                                             <th>{{ trans('translations.description') }}</th>
                                             <th class="invoice-items__quantity right aligned">{{ trans('translations.quantity') }}</th>
-                                            <th class="invoice-items__price right aligned">{{ trans('translations.price') }}</th>
+                                            <th class="invoice-items__price right aligned">{{ trans('translations.price') }} ({{ trans('translations.ticker.btc') }}) </th>
                                             <th class="invoice-items__amount right aligned">{{ trans('translations.amount') }}</th>
+                                        </tr>
+                                        <tr class="invoice-items__header--mobile pb-0">
+                                            <th colspan="4">{{ trans('translations.items_services') }}</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <tr class="invoice-item" v-for="(item,key) in invoice.form.items" :key="`item-${key}`">
-                                            <td data-label="Description">
+                                            <td data-label="{{ trans('translations.description') }}">
+                                                <label :for="`item-description-${key}`">{{ trans('translations.description') }}</label> 
                                                 <div class="field mb-0" :class="invoice.form.errors.has(`items.${key}.description`) ? 'error':''">
-                                                    <input type="text" v-model="invoice.form.items[key].description" :name="`items.${key}.description`" :data-scroll-anchor="`items.${key}.description`" :aria-label="`Item Description ${key}`">
+                                                    <input type="text" v-model="invoice.form.items[key].description" :name="`items.${key}.description`" :data-scroll-anchor="`items.${key}.description`" :id="`item-description-${key}`">
                                                 </div>
                                             </td>
-                                            <td data-label="Quantity" class="right aligned">
+                                            <td data-label="{{ trans('translations.quantity') }}" class="right aligned">
+                                                <label :for="`item-quantity-${key}`">{{ trans('translations.quantity') }}</label>
                                                 <div class="field mb-0" :class="invoice.form.errors.has(`items.${key}.quantity`) ? 'error':''">
-                                                    <imask-input class="text-right" :name="`items.${key}.quantity`" v-model="invoice.form.items[key].quantity" :mask="Number" @change="updateAmount(key)" :data-scroll-anchor="`items.${key}.quantity`" :aria-label="`Item Quantity ${key}`"/>
+                                                    <imask-input class="invoice-item__quantity" :name="`items.${key}.quantity`" v-model="invoice.form.items[key].quantity" :mask="Number" @change="updateAmount(key)" :data-scroll-anchor="`items.${key}.quantity`" :id="`item-quantity-${key}`"/>
                                                 </div>
                                             </td>
-                                            <td data-label="Price" class="right aligned">
+                                            <td data-label="{{ trans('translations.price') }}" class="right aligned">
+                                                <label :for="`item-price-${key}`">{{ trans('translations.price') }} ({{ trans('translations.ticker.btc') }})</label>
                                                 <div class="field mb-0" :class="invoice.form.errors.has(`items.${key}.price_in_satoshi`) ? 'error':''">
-                                                    <imask-input class="text-right" :name="`items.${key}.price_in_satoshi`" v-model="invoice.form.items[key].price" :mask="/^(\d+)?([.]?\d{0,8})$/" @change="updateAmount(key)" :data-scroll-anchor="`items.${key}.price`" :aria-label="`Item Price ${key}`"/>
+                                                    <imask-input class="invoice-item__price" :name="`items.${key}.price_in_satoshi`" v-model="invoice.form.items[key].price" :mask="/^(\d+)?([.]?\d{0,8})$/" @change="updateAmount(key)" :data-scroll-anchor="`items.${key}.price`" :id="`item-price-${key}`"/>
                                                 </div>
                                             </td>
-                                            <td v-cloak data-label="Amount" class="right aligned"><div class="invoice-item__amount">@{{ item.amount }} <i class="times icon invoice-item__delete-btn" @click="deleteItem(key)" v-show="invoice.form.items.length != 1"></i></div></td>
+                                            <td v-cloak data-label="{{ trans('translations.amount') }}">
+                                                <div class="invoice-item__amount">
+                                                    <label>{{ trans('translations.amount') }} </label>@{{ item.amount }} <div class="invoice-item__delete-btn" role="button" aria-label="Invoice item delete button" @click="deleteItem(key)" v-show="invoice.form.items.length != 1"><i class="times icon"></i></div>
+                                                </div>
+                                            </td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -135,11 +145,11 @@
                             <div class="sixteen wide mobile eight width tablet eight wide computer column">
                                 <div class="invoice-summary">
                                     <div class="invoice-summary__row">
-                                        <div><span>{{ trans('translations.subtotal') }}</span></div>
+                                        <div><strong>{{ trans('translations.subtotal') }}</strong></div>
                                         <div v-cloak><strong>@{{ invoice.subtotal }}</strong></div>
                                     </div>
                                     <div class="invoice-summary__row invoice-summary__total">
-                                        <div><span>{{ trans('translations.total') }}</span></div>
+                                        <div><strong>{{ trans('translations.total') }}</strong></div>
                                         <div v-cloak><strong>@{{ `${currency} ${invoice.total}` }}</strong></div>
                                     </div>
                                 </div>
@@ -173,15 +183,16 @@
                         <div class="ui selection dropdown">
                             <input type="hidden" name="language" value="{{ session('locale', 'en') }}">
                             <i class="dropdown icon"></i>
-                            <div class="default text">English</div>
+                            <div class="default text">{{ trans('translations.english') }}</div>
                             <div class="menu">
                                 <div class="item" data-value="en">{{ trans('translations.english') }}</div>
+                                <div class="item" data-value="es">{{ trans('translations.spanish') }}</div>
+                                <div class="item" data-value="pt">{{ trans('translations.portuguese') }}</div>
+                                <div class="item" data-value="fr">{{ trans('translations.french') }}</div>
                                 <div class="item" data-value="zh-Hans">{{ trans('translations.chinese_simplified') }}</div>
                                 <div class="item" data-value="zh-Hant">{{ trans('translations.chinese_traditional') }}</div>
                                 <div class="item" data-value="ja">{{ trans('translations.japanese') }}</div>
                                 <div class="item" data-value="ko">{{ trans('translations.korean') }}</div>
-                                <div class="item" data-value="es">{{ trans('translations.spanish') }}</div>
-                                <div class="item" data-value="fr">{{ trans('translations.french') }}</div>
                             </div>
                         </div>
                     </div>  

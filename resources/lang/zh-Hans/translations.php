@@ -17,6 +17,7 @@ return [
     'japanese' => '日本語',
     'korean' => '한국어',
     'spanish' => 'Español',
+    'portuguese' => 'Portuguese',
     'client_email' => '客户电子邮箱',
     'client_email_placeholder' => 'clientemail@example.com',
     'client_name' => '客户名称',
@@ -38,7 +39,7 @@ return [
     'invoice' => '发票',
     'invoice_created' => '发票创建完毕',
     'invoice_date' => '开票日期',
-    
+    'items_services' => 'Items / Services',
     'notes' => '注释',
     'mail_business_line_1' => '合同编号为
     <strong>:contract_id</strong>的发票已发送至<strong>:client_email</

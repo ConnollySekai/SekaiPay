@@ -7,6 +7,36 @@
     max-width: 100px;
 }
 
+.ui.table tr.invoice-items__header {
+    &--desktop {
+        display: none !important;
+    }
+
+    &--mobile {
+        display: block !important;
+
+        th {
+            padding: 15px !important;
+        }
+    }
+}
+
+.invoice-item {
+    position: relative;
+}
+
+.invoice-item__delete-btn {
+
+    position: absolute;
+    right: 20px;
+    text-align: center;
+    top: 20px;
+
+    i {
+        margin: 0 !important;
+    }
+}
+
 .invoice-items__quantity {
     width: 100px;
 }
@@ -17,11 +47,6 @@
 
 .invoice-items__amount {
     min-width: 140px;
-}
-
-.invoice-item__amount {
-    display: flex;
-    justify-content: flex-end;
 }
 
 .invoice-item__delete-btn {

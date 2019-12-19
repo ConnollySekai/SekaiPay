@@ -1,4 +1,38 @@
 @include mq(sm) {
+
+    .invoice-items {
+        label {
+            display: none;
+        }
+    }
+
+    .invoice-item__delete-btn {
+        box-shadow: none;
+        right: -35px;
+        top: 0;
+    }
+
+    .ui.table tr.invoice-items__header {
+        &--desktop {
+            display: table-row !important;
+        }
+    
+        &--mobile {
+            display: none !important;
+        }
+    }
+
+    .invoice-item__quantity,
+    .invoice-item__price {
+        text-align: right;
+    }
+
+    .invoice-item__amount {
+        height: 30px;
+        position: relative;
+        text-align: right;
+    }
+    
     .invoice-view {
        padding: (1rem * 3) !important;
     }
