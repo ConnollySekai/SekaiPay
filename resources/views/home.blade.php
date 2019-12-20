@@ -187,7 +187,7 @@
                             <div class="menu">
                                 <div class="item" data-value="en">{{ trans('translations.english') }}</div>
                                 <div class="item" data-value="es">{{ trans('translations.spanish') }}</div>
-                                <div class="item" data-value="pt">{{ trans('translations.portuguese') }}</div>
+                                <div class="item" data-value="pt">Português</div>
                                 <div class="item" data-value="fr">{{ trans('translations.french') }}</div>
                                 <div class="item" data-value="zh-Hans">{{ trans('translations.chinese_simplified') }}</div>
                                 <div class="item" data-value="zh-Hant">{{ trans('translations.chinese_traditional') }}</div>

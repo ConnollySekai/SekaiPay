@@ -39,7 +39,7 @@ return [
     'invoice' => 'Factura',
     'invoice_created' => 'Factura generada',
     'invoice_date' => 'Fecha de la factura',
-    'items_services' => 'Items / Services',
+    'items_services' => 'Artículos / Servicios',
     'notes' => 'Notas',
     'mail_business_line_1' => 'Una factura con el número de contrato
     <strong>:contract_id</strong> ha sido enviada a <strong>:client_email</

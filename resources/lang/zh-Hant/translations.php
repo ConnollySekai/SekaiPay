@@ -39,7 +39,7 @@ return [
     'invoice' => '發票',
     'invoice_created' => '發票創建完畢',
     'invoice_date' => '開票日期',
-    'items_services' => 'Items / Services',
+    'items_services' => '項目/服務',
     'notes' => '註釋',
     'mail_business_line_1' => '合同編號為
     <strong>:contract_id</strong>的發票已發送至<strong>:client_email</

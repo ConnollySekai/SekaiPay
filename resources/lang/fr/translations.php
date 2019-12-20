@@ -38,7 +38,7 @@ return [
     'invoice' => 'Facture',
     'invoice_created' => 'Facture établie',
     'invoice_date' => 'Date de la facture',
-    'items_services' => 'Items / Services',
+    'items_services' => 'Articles / Services',
     'notes' => 'Notes',
     'mail_business_line_1' => 'Une facture portant sur le contrat numéro <strong>:contract_id</strong> a été envoyée à <strong>:client_email</ strong>',
     'mail_business_line_2' => 'Veuillez confirmer auprès de votre client que la facture est correcte. Vous pouvez la visualiser ici <a href="www.SekaiPay.com/invoice/:contract_id" class="link" style="color: #0597F2;">www.SekaiPay.com/invoice/:contract_id</a>',
