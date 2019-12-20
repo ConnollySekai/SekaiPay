@@ -185,12 +185,12 @@
                             <i class="dropdown icon"></i>
                             <div class="default text">{{ trans('translations.english') }}</div>
                             <div class="menu">
-                                <div class="item" data-value="en">{{ trans('translations.english') }}</div>
-                                <div class="item" data-value="es">{{ trans('translations.spanish') }}</div>
+                                <div class="item" data-value="en">English</div>
+                                <div class="item" data-value="es">Español</div>
                                 <div class="item" data-value="pt">Português</div>
-                                <div class="item" data-value="fr">{{ trans('translations.french') }}</div>
-                                <div class="item" data-value="zh-Hans">{{ trans('translations.chinese_simplified') }}</div>
-                                <div class="item" data-value="zh-Hant">{{ trans('translations.chinese_traditional') }}</div>
+                                <div class="item" data-value="fr">Français</div>
+                                <div class="item" data-value="zh-Hans">中文（简体)</div>
+                                <div class="item" data-value="zh-Hant">中文（繁體)</div>
                                <!-- <div class="item" data-value="ja">{{ trans('translations.japanese') }}</div>
                                 <div class="item" data-value="ko">{{ trans('translations.korean') }}</div> -->
                             </div>
