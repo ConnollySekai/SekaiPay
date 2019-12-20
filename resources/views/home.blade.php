@@ -191,8 +191,8 @@
                                 <div class="item" data-value="fr">{{ trans('translations.french') }}</div>
                                 <div class="item" data-value="zh-Hans">{{ trans('translations.chinese_simplified') }}</div>
                                 <div class="item" data-value="zh-Hant">{{ trans('translations.chinese_traditional') }}</div>
-                                <div class="item" data-value="ja">{{ trans('translations.japanese') }}</div>
-                                <div class="item" data-value="ko">{{ trans('translations.korean') }}</div>
+                               <!-- <div class="item" data-value="ja">{{ trans('translations.japanese') }}</div>
+                                <div class="item" data-value="ko">{{ trans('translations.korean') }}</div> -->
                             </div>
                         </div>
                     </div>  
