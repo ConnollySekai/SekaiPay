@@ -6,7 +6,7 @@
 
 <form action="{{ route('invoice.store') }}" method="post" class="ui form" ref="form" @submit.prevent="handleSubmit()" @keydown="invoice.form.errors.clear($event.target.name)">
     <div class="ui container vertically padded grid">
-        <div class="row centered pt-0">
+        <div class="row pt-0">
             <div class="sixteen wide mobile sixteen wide tablet twelve wide computer column">
                 @if (session('not_found'))
                     @include('partials.notification')
@@ -170,13 +170,26 @@
                     </div>
                 </div>
             </div>
+            <div class="sixteen wide mobile sixteen wide tablet four wide computer column mt-2">
+                <div class="ads">
+                    <div class="ads__side">
+                        <img src="https://via.placeholder.com/160x600" alt=""> <!-- Temporary -->
+                    </div>
+                    <div class="ads__center">
+                        <img src="https://via.placeholder.com/728x90" alt=""> <!-- Temporary -->
+                    </div>
+                    <div class="ads__center-mobile">
+                        <img src="https://via.placeholder.com/320x100" alt=""> <!-- Temporary -->
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="row centered py-0">
+        <div class="row py-0">
             <div class="sixteen wide mobile sixteen wide tablet twelve wide computer column">
                 <converter class="my-2"></converter>
             </div>
         </div>
-        <div class="row centered">
+        <div class="row">
             <div class="sixteen wide mobile sixteen wide tablet twelve wide computer column">
                 <div class="invoice-actions-wrap">
                     <div class="language-switcher">

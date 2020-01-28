@@ -1,5 +1,5 @@
 <nav class="site-header__nav row centered">
-    <div class="sixteen wide mobile sixteen wide tablet twelve wide computer column">
+    <div class="sixteen wide column">
         <a href="{{ route('home.index') }}" class="site-logo active">
             @include('partials.logo')
         </a>

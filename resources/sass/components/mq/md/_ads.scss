@@ -1,0 +1,15 @@
+@include mq(md) {
+
+    .ads__side {
+        display: block;
+        
+        img {
+            max-height: 600px;
+            max-width: 160px;
+        }
+    }
+
+    .ads__center {
+        display: none;
+    }
+}

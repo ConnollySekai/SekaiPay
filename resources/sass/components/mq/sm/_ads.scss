@@ -1,0 +1,15 @@
+@include mq(sm) {
+
+    .ads__center {
+        display: block;
+        img {
+            max-height: 90px;
+            max-width: 768px;
+        }
+        
+    }
+
+    .ads__center-mobile {
+        display: none;
+    }
+}
