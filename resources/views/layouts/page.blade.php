@@ -4,9 +4,6 @@
     <body>
         <div id="app">
             <header class="site-header raise">
-            <!--add Sense-->
-            <script data-ad-client="ca-pub-1215267988895809" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-
                 <div class="ui container vertically padded grid">
                     @include('partials.nav')
                 </div>   
