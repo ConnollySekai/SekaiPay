@@ -9,6 +9,7 @@
                 </div>   
             </header>
             <main class="site-content py-2">
+                <div class="invoice__counter text-center"><strong>{{ \App\Invoice::all()->count() }}</strong> {{ trans('translations.btc_invoices_created') }}</div>
                 @yield('content')
             </main>
             <footer class="text-center pt-2 pb-2 raise">

@@ -4,6 +4,7 @@ return [
     'amount' => 'Quantia',
     'btc_address' => 'Endereço BTC',
     'btc_address_placeholder' => '1AoojGN94Uab8mT2LHDnbsuM4ojHnm85jA',
+    'btc_invoices_created' => 'BTC Invoices Created',
     'business_email' => 'Email Comercial',
     'business_email_placeholder' => 'seuemail@exemplo.com',
     'business_name' => 'Nome Comercial',

@@ -96,3 +96,12 @@
         margin-right: 0;
     }
 }
+
+.invoice__counter {
+    color: map-get($colors, 'grey-1');
+    font-size: 24px;
+
+    strong {
+        color: map-get($colors, 'blue-3');
+    }
+}

@@ -4,8 +4,8 @@ return [
     'add_item' => 'Añadir una línea',
     'amount' => 'Importe',
     'btc_address' => 'Dirección BTC',
-    'btc_address_placeholder' =>
-    '1AoojGN94Uab8mT2LHDnbsuM4ojHnm85jA',
+    'btc_address_placeholder' => '1AoojGN94Uab8mT2LHDnbsuM4ojHnm85jA',
+    'btc_invoices_created' => 'BTC Invoices Created',
     'business_email' => 'Email de la empresa',
     'business_email_placeholder' => 'su_email@example.com',
     'business_name' => 'Nombre de la empresa',

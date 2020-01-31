@@ -4,8 +4,8 @@ return [
     'add_item' => '添加项目',
     'amount' => '总金额',
     'btc_address' => 'BTC地址',
-    'btc_address_placeholder' =>
-    '1AoojGN94Uab8mT2LHDnbsuM4ojHnm85jA',
+    'btc_address_placeholder' => '1AoojGN94Uab8mT2LHDnbsuM4ojHnm85jA',
+    'btc_invoices_created' => 'BTC Invoices Created',
     'business_email' => '企业电子邮箱 ',
     'business_email_placeholder' => 'youremail@example.com',
     'business_name' => '企业名称',

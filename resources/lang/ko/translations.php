@@ -9,6 +9,7 @@ return [
     'btc_address' => '비트코인 주소',
 
     'btc_address_placeholder' => '1AoojGN94Uab8mT2LHDnbsuM4ojHnm85jA',
+    'btc_invoices_created' => 'BTC Invoices Created',
 
     'business_email' => '비즈니스 이메일',
 

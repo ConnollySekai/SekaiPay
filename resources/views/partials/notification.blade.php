@@ -1,4 +1,4 @@
-<div class="notification notification--negative raise rounded mb-2 ">
+<div class="notification notification--negative raise rounded mb-2 mt-2">
     <div class="notification__message">
         <div class="notification__message-icon mr-h">
             <i class="times circle outline icon"></i>
