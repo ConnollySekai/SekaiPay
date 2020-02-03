@@ -6,7 +6,7 @@ return [
     'amount' => '合計金額',
     'btc_address' => 'BTC アドレス',
     'btc_address_placeholder' => '1AoojGN94Uab8mT2LHDnbsuM4ojHnm85jA',
-    'btc_invoices_created' => 'BTC Invoices Created',
+    'btc_invoices_created' => 'Bitcoin Invoices Created',
     'business_email' => 'E メールアドレス',
     'business_email_placeholder' => 'youremail@example.com',
     'business_name' => '法人名',

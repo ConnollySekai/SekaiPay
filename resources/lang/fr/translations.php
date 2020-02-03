@@ -5,7 +5,7 @@ return [
     'amount' => 'Montant',
     'btc_address' => 'Adresse BTC',
     'btc_address_placeholder' => '1AoojGN94Uab8mT2LHDnbsuM4ojHnm85jA',
-    'btc_invoices_created' => 'BTC Invoices Created',
+    'btc_invoices_created' => 'Bitcoin Invoices Created',
     'business_email' => "E-mail de l'entreprise",
     'business_email_placeholder' => 'votre_e-mail@example.com', 'business_name' => "Nom de l'entreprise",
     'business_name_placeholder' => 'Société XYZ',
