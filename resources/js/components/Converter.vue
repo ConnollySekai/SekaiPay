@@ -7,10 +7,10 @@
                         <div class="ui right action input fluid">
                             <imask-input id="leftInput" v-model="input.left" :mask="/^(\d+)?([.]?\d{0,8})$/" @change="updateResultOutput('right')"/> 
                             <div class="ui basic floating dropdown button from">
-                                <div class="text">{{ from }}</div>
+                                <div class="text">{{ from_text }}</div>
                                 <i class="dropdown icon"></i>
                                 <div class="menu">
-                                    <div class="item" v-for="(item,key) in tickerList" :key="key">{{ item }}</div>
+                                    <div class="item" v-for="(item,key) in tickerList" :key="key" :data-value="item.ticker">{{ item.text }}</div>
                                 </div>
                             </div>
                         </div>
@@ -24,10 +24,10 @@
                         <div class="ui right action input fluid">
                             <imask-input id="rightInput" v-model="input.right" :mask="/^(\d+)?([.]?\d{0,8})$/" @change="updateResultOutput('left')"/> 
                             <div class="ui basic floating dropdown button to">
-                                <div>{{ to }}</div>
+                                <div>{{ to_text }}</div>
                                 <i class="dropdown icon" v-show="toOptions.length"></i>
                                 <div class="menu" v-show="toOptions.length">
-                                    <div class="item" v-for="(item,key) in toOptions" :key="key">{{ item.ticker }}</div>
+                                    <div class="item" v-for="(item,key) in toOptions" :key="key" :data-value="item.ticker">{{ item.text }}</div>
                                 </div>
                             </div>
                         </div>
@@ -62,7 +62,7 @@
                 return `${this.rateInfo.amount} ${this.rateInfo.from} = ${this.rateInfo.rate} ${this.rateInfo.to}`
             },
             selectedCurrency() {
-                if (this.from === this.trans('translations.ticker.btc')) {
+                if (this.from === 'BTC') {
                     return this.to;
                 }
 
@@ -71,22 +71,57 @@
         },
         data() {
             return {
-                from: this.trans('translations.ticker.usd'),
-                to: this.trans('translations.ticker.btc'),
+                from: 'USD',
+                from_text: this.trans('translations.ticker.usd'),
+                to: 'BTC',
+                to_text: this.trans('translations.ticker.btc'),
                 toOptions: [],
                 toValue: 0,
                 tickerList: [
-                    this.trans('translations.ticker.btc'),
-                    this.trans('translations.ticker.usd'),
-                    this.trans('translations.ticker.eur'),
-                    this.trans('translations.ticker.gbp'),
-                    this.trans('translations.ticker.jpy'),
-                    this.trans('translations.ticker.aud'),
-                    this.trans('translations.ticker.cad'),
-                    this.trans('translations.ticker.hkd'),
-                    this.trans('translations.ticker.sgd'),
-                    this.trans('translations.ticker.krw'),
-                    this.trans('translations.ticker.cny'),
+                    {
+                        ticker: 'BTC',
+                        text: this.trans('translations.ticker.btc')
+                    },
+                    {
+                        ticker: 'USD',
+                        text: this.trans('translations.ticker.usd')
+                    },
+                    {
+                        ticker: 'EUR',
+                        text: this.trans('translations.ticker.eur')
+                    },
+                    {
+                        ticker: 'GBP',
+                        text: this.trans('translations.ticker.gbp')
+                    },
+                    {
+                        ticker: 'JPY',
+                        text: this.trans('translations.ticker.jpy')
+                    },
+                    {
+                        ticker: 'AUD',
+                        text: this.trans('translations.ticker.aud')
+                    },
+                    {
+                        ticker: 'CAD',
+                        text: this.trans('translations.ticker.cad')
+                    },
+                    {
+                        ticker: 'HKD',
+                        text: this.trans('translations.ticker.hkd')
+                    },
+                    {
+                        ticker: 'SGD',
+                        text: this.trans('translations.ticker.sgd')
+                    },
+                    {
+                        ticker: 'KRW',
+                        text: this.trans('translations.ticker.krw')
+                    },
+                    {
+                        ticker: 'CNY',
+                        text: this.trans('translations.ticker.cny')
+                    }
                 ],
                 loading: false,
                 btnText: this.trans('translations.convert'),
@@ -112,8 +147,11 @@
 
                 const from = (this.resultOutput === 'right') ? this.from : this.to;
 
+                const from_text = (this.resultOutput === 'right') ? this.from_text : this.to_text;
+
                 const to = (this.resultOutput === 'right') ? this.to : this.from;
 
+                const to_text = (this.resultOutput === 'right') ? this.to_text : this.from_text;
 
                 if (amount.length) {
                     this.loading = true;
@@ -135,9 +173,9 @@
                             vm.input.left = data.total;
                         }
 
-                        vm.rateInfo.from = from;
+                        vm.rateInfo.from = from_text;
 
-                        vm.rateInfo.to = to;
+                        vm.rateInfo.to = to_text;
 
                         vm.rateInfo.rate = (amount === '1') ? data.total : data.rate;
                             
@@ -166,23 +204,26 @@
                 if (this.from === 'BTC') {
 
                     for(let i = 0; i < selection.length; i++) {
-                        
-                        if (selection[i] !== this.trans('translations.ticker.btc')) {
+
+                        if (selection[i].ticker !== 'BTC') {
                             
                             let ticker = selection[i];
                         
-                            let isActive = (selection[i] === this.trans('translations.ticker.usd')) ? true: false;
+                            let isActive = (selection[i] === 'USD') ? true: false;
                         
                             newSelection.push({
-                                ticker,
+                                ticker: ticker.ticker,
+                                text: ticker.text,
                                 isActive
                             });
                         }   
                     }
 
-                    this.to = this.trans('translations.ticker.usd');
+                    this.to = 'USD';
+                    this.to_text = this.trans('translations.ticker.usd');
                 } else {
-                    this.to = this.trans('translations.ticker.btc');
+                    this.to = 'BTC';
+                    this.to_text = this.trans('translations.ticker.btc');
                 }
 
                 return newSelection;
@@ -208,6 +249,8 @@
                     if (parent.hasClass('from')) {
                         
                         vm.from = value.toUpperCase();
+
+                        vm.from_text = text;
                         
                         vm.toOptions = vm.setToOptions();
 
@@ -215,6 +258,8 @@
                         
                     } else {
                         vm.to = value.toUpperCase();
+
+                        vm.to_text = text;
 
                         vm.resultOutput = 'left';
                     }
