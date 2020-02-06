@@ -142,7 +142,7 @@
             <div class="invoice-actions-wrap">
                 <div class="language-switcher">
                     <div class="ui selection dropdown">
-                        <input type="hidden" name="language" value="{{ session('locale', 'en') }}">
+                        <input type="hidden" name="language" value="{{ \App::getLocale() }}">
                         <i class="dropdown icon"></i>
                         <div class="default text">English</div>
                         <div class="menu">
