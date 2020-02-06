@@ -150,8 +150,8 @@
                                 <div class="item" data-value="es">Español</div>
                                 <div class="item" data-value="pt">Português</div>
                                 <div class="item" data-value="fr">Français</div>
-                                <div class="item" data-value="zh-Hans">中文（简体)</div>
-                                <div class="item" data-value="zh-Hant">中文（繁體)</div>
+                                <div class="item" data-value="zh-CN">中文（简体)</div>
+                                <div class="item" data-value="zh-TW">中文（繁體)</div>
                                <!-- <div class="item" data-value="ja">{{ trans('translations.japanese') }}</div>
                                 <div class="item" data-value="ko">{{ trans('translations.korean') }}</div> -->
                         </div>
