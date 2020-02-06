@@ -41,7 +41,7 @@
                     line-height: 1;
                 }
 
-            @elseif ($locale === 'zh-Hans' || $locale === 'zh-Hant')
+            @elseif ($locale === 'zh-CN' || $locale === 'zh-TW')
 
                 @font-face {
                     font-family: SimHei;
