@@ -1,7 +1,10 @@
 <?php
 
 return [
+    'ad_layout_for' => 'Ad layout on desktop and mobile ',
+    'ad_space_for' => 'Ad space for desktop and mobile',
     'add_item' => 'Añadir una línea',
+    'advertise_with_us' => 'Advertise with us',
     'amount' => 'Importe',
     'btc_address' => 'Dirección BTC',
     'btc_address_placeholder' => '1AoojGN94Uab8mT2LHDnbsuM4ojHnm85jA',
@@ -26,6 +29,7 @@ return [
     'business_text_message' => 'Factura SekaiPay emitida. ID: :contract_id. www.SekaiPay.com/invoice/:contract_id',
     'client_text_message' => 'Factura SekaiPay emitida. ID: :contract_id. www.SekaiPay.com/invoice/:contract_id',
     'confirm_btc_address' => 'Confirmar la dirección BTC',
+    'contact_us' => 'Contact us',
     'contract_id' => 'Número del contrato',
     'convert' => 'Convertir',
     'converting' => 'Conversión',
@@ -64,6 +68,7 @@ return [
     'mail_opening' => 'Hola',
     'mobile_number' => 'Número de móvil',
     'mobile_number_placeholder' => '202-555-111',
+    'month' => 'month',
     'must_enter_valid_contract' => 'Debe introducir un contrato válido',
     'optional' => 'Opcional',
     'price' => 'Precio',

@@ -179,13 +179,13 @@
                                 <label>{{ trans('translations.from') }}</label>
                                 <span class="block">{{ $invoice->business_name }}</span>
                                 <span class="block">{{ $invoice->business_email }}</span>
-                                <span class="block">{{ $invoice->business_mobile_number }}</span>
+                                <!-- <span class="block">{{ $invoice->business_mobile_number }}</span> -->
                             </div>
                             <div class="column half">
                                 <label>{{ trans('translations.to') }}</label>
                                 <span class="block">{{ $invoice->client_name }}</span>
                                 <span class="block">{{ $invoice->client_email }}</span>
-                                <span class="block">{{ $invoice->client_mobile_number }}</span>
+                                <!-- <span class="block">{{ $invoice->client_mobile_number }}</span> -->
                             </div>
                         </div>
                     </div>

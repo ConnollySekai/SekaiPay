@@ -1,0 +1,10 @@
+@include mq(md) {
+
+    .ads__side {
+        display: block;
+    }
+
+    .ads__mobile {
+        display: none;
+    }
+}

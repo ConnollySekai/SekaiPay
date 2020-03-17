@@ -1,0 +1,22 @@
+.ads__side {
+    display: none;
+
+    img {
+        height: auto;
+        max-height: 600px;
+        max-width: 160px;
+        width: 100%;
+    }
+}
+
+.ads__mobile {
+    display: block;
+    text-align: center;
+
+    img {
+        height: auto;
+        max-height: 100px;
+        max-width: 320px;
+        width: 100%;
+    }
+}

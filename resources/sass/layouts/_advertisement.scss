@@ -1,0 +1,17 @@
+.advertisement {
+
+    padding: 2rem 1rem;
+
+    img {
+        border-radius: 5px;
+        height: auto;
+        width: 100%;
+    }
+}
+
+.advertisement__mobile {
+
+    img {
+        max-width: 300px;
+    }
+}

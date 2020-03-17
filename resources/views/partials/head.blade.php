@@ -39,4 +39,5 @@
     <!-- Styles -->
     <link rel="stylesheet" href="{{ asset('css/app.css') }}" type="text/css">
     <link rel="stylesheet" href="{{ asset('css/media-sm.css') }}" media="(min-width: 768px)">
+    <link rel="stylesheet" href="{{ asset('css/media-md.css') }}" media="(min-width: 992px)">
 </head>

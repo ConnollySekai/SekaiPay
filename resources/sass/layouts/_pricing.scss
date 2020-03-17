@@ -1,0 +1,25 @@
+.pricing {
+    border: solid 1px map-get($colors, 'grey-4');
+    border-radius: 5px;
+    margin: 0 auto;
+    max-width: 100%;
+    padding-top: 1.8rem;
+    padding-bottom: 3rem;
+    width: 100%;
+}
+
+.pricing__heading {
+    font-weight: 700;
+
+    span {
+        color: map-get($colors,'blue-3');
+        font-size: 50px;
+    }
+}
+
+.pricing__body {
+     p {
+         margin: 0 auto;
+         width: 185px;
+     }
+}

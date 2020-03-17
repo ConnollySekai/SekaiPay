@@ -16,6 +16,7 @@ mix.setPublicPath('public')
     .js('resources/js/app.js', 'public/js')
     .sass('resources/sass/app.scss', 'public/css')
     .sass('resources/sass/media-sm.scss', 'public/css')
+    .sass('resources/sass/media-md.scss', 'public/css')
     .options({
         processCssUrls: false
     })

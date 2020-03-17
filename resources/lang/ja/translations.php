@@ -2,7 +2,10 @@
 
 
 return [
+    'ad_layout_for' => 'Ad layout on desktop and mobile ',
+    'ad_space_for' => 'Ad space for desktop and mobile',
     'add_item' => 'アイテムを追加する',
+    'advertise_with_us' => 'Advertise with us',
     'amount' => '合計金額',
     'btc_address' => 'BTC アドレス',
     'btc_address_placeholder' => '1AoojGN94Uab8mT2LHDnbsuM4ojHnm85jA',
@@ -29,6 +32,7 @@ return [
     'client_text_message' => 'SekaiPay よりインボイスを発行しました。
     ID: :contract_id. www.SekaiPay.com/invoice/:contract_id',
     'confirm_btc_address' => '確認のためもう一度入力してください',
+    'contact_us' => 'Contact us',
     'contract_id' => 'お客さま ID',
     'convert' => '変換する',
     'converting' => '変換しています。しばらくお待ちください',
@@ -68,6 +72,7 @@ return [
     'mail_opening' => 'こんにちは。',
     'mobile_number' => '電話番号',
     'mobile_number_placeholder' => '202-555-111',
+    'month' => 'month',
     'must_enter_valid_contract' => '入力されたお客さま ID が存在しません',
     'optional' => 'オプション',
     'price' => '価格',

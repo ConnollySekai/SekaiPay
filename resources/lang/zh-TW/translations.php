@@ -1,7 +1,10 @@
 <?php
 
 return [
+    'ad_layout_for' => 'Ad layout on desktop and mobile ',
+    'ad_space_for' => 'Ad space for desktop and mobile',
     'add_item' => '添加项目',
+    'advertise_with_us' => 'Advertise with us',
     'amount' => '總金額',
     'btc_address' => 'BTC地址',
     'btc_address_placeholder' => '1AoojGN94Uab8mT2LHDnbsuM4ojHnm85jA',
@@ -26,6 +29,7 @@ return [
     'business_text_message' => 'SekaiPay發票生成. 編號: :contract_id. www.SekaiPay.com/invoice/:contract_id',
     'client_text_message' => 'SekaiPay發票生成. 編號: :contract_id. www.SekaiPay.com/invoice/:contract_id',
     'confirm_btc_address' => '確認BTC地址',
+    'contact_us' => 'Contact us',
     'contract_id' => '合同編號',
     'convert' => '轉換',
     'converting' => '轉換中',
@@ -62,6 +66,7 @@ return [
     'mail_opening' => '您好',
     'mobile_number' => '手機號碼',
     'mobile_number_placeholder' => '202-555-111',
+    'month' => 'month',
     'must_enter_valid_contract' => '必須輸入有效合同',
     'optional' => '可選的',
     'price' => '價格',

@@ -10,11 +10,11 @@ class Invoice extends Model
         'contract_id',
         'business_name',
         'business_email',
-        'business_mobile_number',
+        //'business_mobile_number',
         'btc_address',
         'client_name',
         'client_email',
-        'client_mobile_number',
+        //'client_mobile_number',
         'notes'
     ];
 

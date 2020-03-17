@@ -1,7 +1,10 @@
 <?php
 
 return [
+    'ad_layout_for' => 'Ad layout on desktop and mobile ',
+    'ad_space_for' => 'Ad space for desktop and mobile',
     'add_item' => 'Ajouter une ligne',
+    'advertise_with_us' => 'Advertise with us',
     'amount' => 'Montant',
     'btc_address' => 'Adresse BTC',
     'btc_address_placeholder' => '1AoojGN94Uab8mT2LHDnbsuM4ojHnm85jA',
@@ -25,6 +28,7 @@ return [
     'business_text_message' => 'Facture SekaiPay émise. ID: :contract_id. www.SekaiPay.com/invoice/:contract_id', 
     'client_text_message' => 'Facture SekaiPay émise. ID: :contract_id. www.SekaiPay.com/invoice/:contract_id', 
     'confirm_btc_address' => "Confirmez l'adresse BTC",
+    'contact_us' => 'Contact us',
     'contract_id' => 'Numéro du contrat',
     'convert' => 'Convertir',
     'converting' => 'Conversion',
@@ -51,7 +55,7 @@ return [
     'mail_client_line_3' => "Veuillez vérifier que l'adresse BTC est valide avant d'envoyer le paiement. <br> <a href='https://chain.so/address/ BTC/:btc_address' target='_blank' class='link' style='color: #0597F2;' rel='noreferrer'>:btc_address</a>",
     'mail_footer' => '© :current_year Sekaipay. Tous droits réservés.', 'mail_opening' => 'Bonjour',
     'mobile_number' => 'Numéro de portable', 'mobile_number_placeholder' => '202-555-111', 'must_enter_valid_contract' => 'Vous devez saisir un contrat valide', 'optional' => 'Facultatif',
-    
+    'month' => 'month',
     'price' => 'Prix',
     'quantity' => 'Quantité',
     'regards' => 'Cordialement',

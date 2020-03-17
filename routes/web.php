@@ -24,6 +24,8 @@ Route::middleware(['localizebybrowser'])->group(function(){
     Route::get('/search','InvoiceController@search')->name('invoice.search');
 
     Route::get('/js/lang.js','LocaleController@localizeForJs')->name('locale.localizeForJs');
+
+    Route::get('/advertise-with-us','AdvertiseController@index')->name('advertise.index');
 });
 
 Route::get('/setLocale','LocaleController@setLocale')->name('locale.setLocale');

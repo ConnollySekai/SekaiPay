@@ -37,6 +37,7 @@ class InvoiceObserver
         }
         
         
-        event(new InvoiceCreated($invoice, \App::getLocale()));
+        //uncomment to trigger sms 
+        //event(new InvoiceCreated($invoice, \App::getLocale()));
     }
 }

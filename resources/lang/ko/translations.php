@@ -1,8 +1,11 @@
 <?php
 
 return [
-
+    'ad_layout_for' => 'Ad layout on desktop and mobile ',
+    'ad_space_for' => 'Ad space for desktop and mobile',
     'add_item' => '아이템 추가',
+
+    'advertise_with_us' => 'Advertise with us',
 
     'amount' => '수량',
 
@@ -41,6 +44,7 @@ return [
     'client_text_message' => 'SekaiPay 인보이스가 생성되었습니다. ID: :contract_id. www.SekaiPay.com/invoice/:contract_id',
 
     'confirm_btc_address' => '비트코인 주소 확인',
+    'contact_us' => 'Contact us',
     'contract_id' => '계약 ID',
 
     'convert' => '통화 변경',
@@ -82,6 +86,7 @@ return [
     'mobile_number' => '휴대전화 번호',
 
     'mobile_number_placeholder' => '202-555-111',
+    'month' => 'month',
 
     'must_enter_valid_contract' => '유효한 계약을 입력하세요 ',
 

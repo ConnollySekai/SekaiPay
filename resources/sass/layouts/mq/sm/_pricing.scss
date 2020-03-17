@@ -1,0 +1,12 @@
+@include mq(sm) {
+
+    .pricing {
+        max-width: 300px;
+    }
+    
+    .pricing__heading {
+        span {
+            font-size: 70px;
+        }
+    }
+}
