@@ -9,7 +9,7 @@
     @endif
     <div class="advertisement raise rounded my-2 text-center">
         <h2>{{ trans('translations.advertise_with_us') }}</h2>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum recusandae sint officia, quam non rem eum, asperiores reprehenderit accusamus explicabo expedita molestias dicta consequatur impedit quisquam autem amet, perferendis dolore.</p>
+        
         <div class="advertisement__desktop mb-2">
             <h4>{{ trans('translations.ad_layout_for') }}</h4>
             <img src="{{ asset('images/ad_layout_desktop.jpg') }}" alt="Desktop Ad Layout ">
