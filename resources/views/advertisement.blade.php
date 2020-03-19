@@ -17,11 +17,11 @@
         <div>
             <div class="pricing">
                 <div class="pricing__heading">
-                    <span>$30</span>/{{ trans('translations.month') }}
+                    <span>$100</span>/{{ trans('translations.month') }}
                 </div>
                 <div class="pricing__body">
                     <p class="mb-1">{{ trans('translations.ad_space_for') }}</p>
-                    <p>{{ trans('translations.contact_us') }} <br> <strong>support@sekaipay.com</strong></p>
+                    <p>{{ trans('translations.contact_us') }} <br> <strong>s.c@connollysekai.com</strong></p>
                 </div>
             </div>
         </div>
