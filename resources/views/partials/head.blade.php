@@ -16,7 +16,7 @@
     <meta name="base-url" content="{{ URL::to('/') }}" />
     <meta name="csrf-token" content="{{ csrf_token() }}">
     
-    <title>@yield('title') - {{ config('app.name') }}</title>
+    <title>{{ config('app.name') }}</title>
     
     <meta name="msapplication-TileColor" content="#da532c">
     <meta name="theme-color" content="#ffffff">
