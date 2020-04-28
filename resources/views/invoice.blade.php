@@ -1,4 +1,4 @@
-@extends('layouts.page')
+@extends('layouts.page-ads')
 
 @section('title', trans('translations.invoice'))
 
@@ -127,9 +127,11 @@
             </div>
         </div>
     </div>
-    <!-- <div class="ads__mobile">
-        <img src="https://via.placeholder.com/320x100" alt=""> 
-    </div> -->
+    <div class="ads__mobile">
+        <a href="https://itadakiru.com/" target="_blank">
+            <img class="raise" src="{{ asset('images/ads/320x100.jpg') }}" alt="Ad Space">
+        </a>
+    </div>
     <converter class="my-2"></converter>
     <div class="invoice-actions-wrap mt-2">
         <div class="language-switcher">
