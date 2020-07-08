@@ -19,7 +19,7 @@
                         </div>
                         <div class="sixteen wide mobile sixteen wide tablet four wide computer column">
                             <div class="ads__side  pt-2">
-                                <a href="https://itadakiru.com/" target="_blank">
+                                <a href="https://connollysekai.com/" target="_blank">
                                     <img class="raise" src="{{ asset('images/ads/160x600.jpg') }}" alt="Ad Space">
                                 </a>
                             </div>

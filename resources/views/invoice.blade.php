@@ -128,7 +128,7 @@
         </div>
     </div>
     <div class="ads__mobile">
-        <a href="https://itadakiru.com/" target="_blank">
+        <a href="https://connollysekai.com/" target="_blank">
             <img class="raise" src="{{ asset('images/ads/320x100.jpg') }}" alt="Ad Space">
         </a>
     </div>
